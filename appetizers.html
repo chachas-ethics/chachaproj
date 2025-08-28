@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+     body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/appetizer.avif);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ccc;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+        
+    }
+</style>
+</head>
+<body>
+
+    <h1 Class="heading"> APPETIZERS </h1>
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Lollipop</div>
+            <div class="menu-desc">Tender chicken drumettes 5 pieces, expertly marinated and coated in a flavorful blend of herbs and spices.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mayo Steak Bites</div>
+            <div class="menu-desc">150g Tender steak bites coated in flour and smothered in creamy mayo.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Shrimp Dynamite</div>
+            <div class="menu-desc">100g Shrimp marinated in a blend of spices, lightly battered and fried. Served with dipping sauce</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Vegetable Pakoras</div>
+            <div class="menu-desc">Crispy and flavourful mixed vegetables fritters. Served with a dipping sauce.</div>
+            <div class="menu-price">6,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Crispy Calamari</div>
+            <div class="menu-desc">5 Rings delightfully crispy and tender calamari rings. Served with dipping sauce.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Prawns</div>
+            <div class="menu-desc">5 Pieces crispy and succulent prawns coated in a golden, crunchy batter. Served with a dipping sauce.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+ <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>

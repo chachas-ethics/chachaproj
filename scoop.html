@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE SCOOP COCO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    @media screen and (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+    
+    @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    :root {
+      --mint: #cfe8dc;
+      --cream: #fffdf5;
+      --text-dark: #2e2e2e;
+      --accent: #88bfa6;
+      --border: #e3e3e3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    
+
+    body {
+      background: var(--cream);
+      color: var(--text-dark);
+      font-family: 'Inter', sans-serif;
+    }
+
+    nav {
+  background-color: rgba(255, 253, 245, 0.7);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    header {
+      background: rgba(207, 232, 220, 0.7);
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: white;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: white;
+    ;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h2 {
+      font-size: 2.75rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: white;
+
+    }
+
+    .hero a {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .hero a:hover {
+      background: #6cae94;
+    }
+
+    .flavors {
+      padding: 4rem 2rem;
+      background: rgba(207, 232, 220, 0.7) ;
+      text-align: center;
+      
+    }
+
+    .flavors h3 {
+      font-size: 2.25rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 2rem;
+    }
+
+    .flavor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .flavor-item {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+      margin-top: 30px;
+     
+    }
+
+    .flavor-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .flavor-item h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .flavor-item p {
+      font-size: 0.95rem;
+      color: #555;
+
+
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid var(--border);
+    }
+    
+    .logo{
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .icepara{
+      display: block;
+      text-align: center;
+      font-weight: bold;
+      font-size: 30px;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color:#fffdf5; ;
+      font-family: sans-serif;
+    }
+    footer .socials a{
+      color:#333;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    footer .socials a:hover{
+      color: #ff6b6b;
+    }
+
+    .flavor-ite {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .flavor-ite:hover {
+      transform: translateY(-5px);
+    }
+
+
+  #floating-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 999;
+    transition: transform 0.3s;
+  }
+
+  #floating-cart.highlight {
+    transform: scale(1.1);
+    background-color: darkred;
+  }
+
+  body { 
+    background-size: cover;
+  background-position:  center;
+  background-attachment: fixed;
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.6s ease-in forwards;
+  object-position: top;
+  animation: fadeIn 0.6s ease-in forwards;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)),
+   url('thumbnails/the scoop dp.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(5px);
+  z-index: -1; 
+}
+
+
+
+  #cart-panel {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    z-index: 999;
+  }
+
+  #cart-panel h3 {
+    margin-top: 0;
+  }
+
+  .cart-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .cart-item button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  #cart-panel button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+
+.inblock{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+
+}
+
+.inside{
+  width: 100%;
+  
+}
+</style>
+
+</style>
+</head>
+<body>
+ <nav>
+    <a href="#">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section>
+    <img class="logo" src="thumbnails/the scoop logo.jpg">
+    <p class="icepara">Ice Cream & Desserts Café</p>
+</section>
+  
+
+  <section class="hero">
+    <h2>Welcome to The Scoop!</h2>
+    <p>Indulge in Sweet Bliss at The Scoop!
+Discover over 12 irresistible ice cream flavors, handcrafted to perfection, alongside freshly brewed teas and a full range of hot and cold coffee beverages. Whether you're craving creamy waffles, crispy churros, or just a cozy cup of cappuccino, we’ve got the perfect treat for every mood. Step in, cool down, warm up, and treat yourself — dessert has never been this good.</p>
+    <a href="#menu">Explore Menu</a>
+  </section>
+
+  <section class="flavors" id="menu">
+    <h3 >Our Menu</h3>
+
+    <a href="icecream.html" style="text-decoration: none; color: inherit;">
+  <div class="flavor-item">
+    <img class="inside" src="thumbnails/ICECREAM.jpg">
+    <h4>Icecream</h4>
+    <p>Explore Over 12 Homemade Icecream Flavors</p>
+  </div>
+</a>
+     <a href="coffee.html" style="text-decoration: none; color: inherit;">
+      
+      <div class="flavor-item">
+         <img class="inside" src="thumbnails/coffee.jpg">
+        <h4>Coffee</h4>
+        <p>Try Our Unmatched Coffee Products Served In Both Hot And Cold</p>
+      </div>
+    </a>
+      <a href="cakesbrownies.html" style="text-decoration: none; color: inherit;">
+      <div class="flavor-item">
+         <img class="inside" src="thumbnails/cakeback.jpg">
+        <h4>Cake Slices And Brownies</h4>
+        <p>Get To Taste Our Cakes, Or Quench Your Thirst With Our Cupcakes Or Brownies</p>
+      </div>
+    </a>
+    <a href="desserts.html" style="text-decoration: none; color: inherit;">
+      <div class="flavor-item">
+         <img class="inside" src="thumbnails/affogato.webp">
+        <h4>Desserts</h4>
+        <p>Buttery caramel with a hint of sea salt for balance.</p>
+      </div>
+    </a>
+    <a href="tea.html" style="text-decoration: none; color: inherit;">
+      <div class="flavor-item">
+         <img class="inside" src="thumbnails/tea.jpg">
+        <h4>Tea</h4>
+        <p>Taste Our Delicious Tea Varieties Served In Cold And Hot</p>
+      </div>
+    </a>
+
+    <a href="shakes.html" style="text-decoration: none; color: inherit;">
+      <div class="flavor-item">
+         <img class="inside" src="thumbnails/milkshakes.jpg">
+        <h4>Milkshakes</h4>
+        <p>Sip Our Thick, Creamy And Blended To Perfection Milkshakes</p>
+      </div>
+    </a>
+    </div>
+    </section>
+  </section>
+  <footer id="contact">
+  <div class="socials">
+   <a href="https://www.instagram.com/thescoop.tz" target="_blank">Instagram</a>
+    |
+  <a href="https://wa.me/255788801010" target="_blank">WhatsApp</a> </div>
+    <p>
+      &copy; 2025. THE SCOOP COCO. 
+    </p>
+    <p style="margin-top: 20px;" class="designer"> 
+  Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">CEETECH</a>
+</p>
+  </footer>
+
+  <!-- Floating Cart -->
+<div id="floating-cart" onclick="toggleCart()">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Hidden Cart Panel -->
+<div id="cart-panel">
+  <h3>Your Cart</h3>
+  <div id="cart-items"></div>
+  <button onclick="placeOrder()">Place Order</button>
+</div>
+<script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartPanel();
+  }
+
+  function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.length;
+  }
+
+  function highlightCart() {
+    const cartIcon = document.getElementById('floating-cart');
+    cartIcon.classList.add('highlight');
+    setTimeout(() => {
+      cartIcon.classList.remove('highlight');
+    }, 500);
+  }
+
+  function toggleCart() {
+  const panel = document.getElementById('cart-panel');
+  const isHidden = window.getComputedStyle(panel).display === 'none';
+  panel.style.display = isHidden ? 'block' : 'none';
+}
+
+  function renderCartPanel() {
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <strong>${item.name}</strong> - $${item.price}<br>
+        <button onclick="removeItem(${index})">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+  }
+
+  function placeOrder() {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    const message = cart.map((item, i) => `${i + 1}. ${item.name} - $${item.price}`).join('\n');
+    const phone = '255788801010'; // replace with your WhatsApp number
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent("Order:\n" + message)}`;
+    window.location.href = url;
+  }
+
+  // Handle order-now buttons (this part connects to buttons)
+  document.querySelectorAll('.order-now').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = {
+        id: button.dataset.id,
+        name: button.dataset.name,
+        price: button.dataset.price,
+        image: button.dataset.image || ''
+      };
+
+      cart.push(item);
+      saveCart();
+      highlightCart();
+      alert(`${item.name} added to your cart!`);
+    });
+  });
+
+  // On page load
+  updateCartCount();
+  renderCartPanel();
+</script>
+
+</body>
+</html>
+

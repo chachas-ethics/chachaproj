@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kayy Kafe | The Scoop</title>
+  <style>
+
+    body {
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* Reset and base */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgb(11, 11, 46);
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+    body:before {
+       content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)),
+   url('thumbnails/indexback.jpg');
+  background-size: cover;
+  background-position: 10% center;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  z-index: -1; 
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 1000;
+      position: relative;
+      height: 50px;
+    }
+    .hamburger {
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+    }
+    .links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      white-space: nowrap;
+    }
+    .links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 50px;
+      margin-left: 30px;
+    }
+    /* Dropdown toggle menu */
+    .toggle-menu {
+      position: absolute;
+      top: 50px;
+      left: 10px;
+      background: #444;
+      border-radius: 4px;
+      padding: 10px;
+      gap: 10px;
+      flex-direction: column;
+      display: flex;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, max-height 0.3s ease;
+      z-index: 1100;
+      width: 120px;
+    }
+    .toggle-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .toggle-menu.show {
+      opacity: 1;
+      max-height: 500px;
+      pointer-events: auto;
+    }
+
+    /* Slideshow */
+    .slideshow-container {
+      max-width: 100%;
+      width: 100%;
+      height: 500px;
+      position: relative;
+      margin: 0px auto 20px auto;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+      margin-bottom: 60px;
+    }
+    .slide {
+      display: none;
+      width: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 470px;
+      display: block;
+      user-select: none;
+     
+      object-fit: cover;
+    }
+    .slide.active {
+      display: block;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 12px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      border-radius: 50%;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .prev:hover, .next:hover {
+      background: rgba(0,0,0,0.8);
+    }
+    .prev {
+      left: 15px;
+    }
+    .next {
+      right: 15px;
+    }
+    .dots {
+      text-align: center;
+      padding: 10px 0;
+      background: #fff;
+      border-radius: 0 0 10px 10px;
+      user-select: none;
+    }
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+    .dot.active {
+      background-color: #333;
+    }
+
+    /* Featured Products Heading */
+    .featured-products {
+      text-align: center;
+      color: white;
+      margin: 0px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      font-family: 'Playfair Display', serif;
+      padding: 0 10px;
+    }
+
+    /* Grid Container */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .grid-item {
+      background: rgb(214, 210, 210);
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+      max-height: 180px;
+    }
+    .grid-item button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #333;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    .grid-item button:hover {
+      background-color: #555;
+    }
+
+    @media screen and (max-width: 768px) {
+      nav {
+        padding: 10px 15px;
+      }
+      .links a {
+        font-size: 1rem;
+        margin-left: 15px;
+      }
+      .hamburger {
+        font-size: 1.6rem;
+      }
+      .featured-products {
+        font-size: 2rem;
+        margin-top: 15px;
+      }
+      .grid-container {
+        padding: 15px 10px;
+        gap: 15px;
+      }
+      .grid-item img {
+        max-height: 150px;
+      }
+      .grid-item button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .links a {
+        font-size: 0.9rem;
+        margin-left: 10px;
+      }
+      .hamburger {
+        font-size: 1.4rem;
+      }
+      .featured-products {
+        font-size: 1.7rem;
+      }
+      .grid-item img {
+        max-height: 120px;
+        margin-bottom: 20px;
+      }
+      .grid-item button {
+        font-size: 0.8rem;
+        padding: 5px 10px;
+      }
+    }
+
+  .tabs-slider {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: black;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  .tab-btn.active,
+  .tab-btn:hover {
+    background: #333;
+    color: white;
+  }
+  .tabs-content {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 0 10px;
+  }
+  .tab-content {
+    display: none;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .tab-content.active {
+    display: block;
+    
+  }
+
+  .foot{
+    color: black;
+    text-align: center;
+  }
+
+  .divfoot{
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="links">
+      <a href="kayy.html">Kayy</a>
+      <a href="scoop.html">The Scoop</a>
+    </div>
+  </nav>
+
+  <div class="slideshow-container">
+    <div class="slide active">
+      <img src="thumbnails/the scoop dp.jpg" alt="Product 1" />
+    </div>
+    <div class="slide">
+      <img src="thumbnails/black forest cake.webp" alt="Product 2" />
+    </div>
+    <div class="slide">
+      <img src="thumbnails/pistachio brownie.jpg" alt="Product 3" />
+    </div>
+    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    <div class="dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+  </div>
+
+  <p class="featured-products">Featured Products</p>
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Achari" />
+      <button>Kayy. Achari</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Mabuyu" />
+      <button>Kayy. Mabuyu</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Keyholders" />
+      <button>Kayy. Keyholders</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Korosho" />
+      <button>Kayy. Korosho</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Achari" />
+      <button>Kayy. Achari</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Mabuyu" />
+      <button>Kayy. Mabuyu</button>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Keyholders" />
+      <button>Kayy. Keyholders</button>
+    </div>
+     <div class="grid-item">
+      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Korosho" />
+      <button>Kayy. Korosho</button>
+    </div>
+</div>
+
+
+
+<div class="divfoot">
+    <footer class="foot">Kayy. | The Scoop. Copyright 2025.</footer>
+    <p style="text-align: center;
+    color: grey;" class="designer"> 
+  Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">CEETECH</a>
+</p>
+    </div>
+  <div id="toggleMenu" class="toggle-menu">
+    <a href="homepage">Home</a>
+    <a href="kayy.html">Kayy</a>
+    <a href="scoop.html">The Scoop</a>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('toggleMenu').classList.toggle('show');
+    }
+    // Close toggle menu on clicking outside
+    window.addEventListener('click', function(e) {
+      const menu = document.getElementById('toggleMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('show');
+      }
+    });
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function changeSlide(n) {
+      showSlide(currentSlide + n);
+    }
+
+    function goToSlide(n) {
+      showSlide(n);
+    }
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+      changeSlide(1);
+    }, 5000);
+
+    const buttons = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active from all buttons and contents
+      buttons.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active to clicked button and corresponding content
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.target).classList.add('active');
+    });
+  });
+
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+  </script>
+</body>
+</html>

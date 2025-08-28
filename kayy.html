@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+  <title>Kayy Kafe And Grill</title>
+    <head>
+      <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+
+        <style>
+html {
+    scroll-behavior: smooth; 
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.kayylogo {
+    max-width: 80%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .links {
+        display: none;
+    }
+    .toggle-menu {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .headingone {
+        font-size: 2rem;
+    }
+    .paragraphone, .paragraphtwo, .paragraphthree, .paragraphtwoo, .testi {
+        font-size: 1.2rem;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .grid-item button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Make buttons and text scale on smaller screens */
+@media (max-width: 480px) {
+    .book-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    .paragraphtwoo {
+        font-size: 1.5rem;
+    }
+}
+
+body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+ 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgb(27, 27, 55);
+      width: 100%;
+            }
+  body:before {
+       content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.5)),
+   url('thumbnails/kayyback.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(10px);
+  z-index: -1; 
+    }
+     
+    nav {
+      display: flex;
+  justify-content: space-between; /* pushes left and right sides apart */
+  align-items: center;            /* centers items vertically */
+  padding-right: 20px;
+  background: #f5f5f5;
+  width: 100%;
+    }
+
+     .hamburger {
+      
+      font-size: 4rem;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+      position: sticky;
+
+     }
+
+     .links {
+      margin-left: auto;
+      font-size: 2.4rem;
+      font-weight: bold;
+     }
+
+     
+
+     .links a {
+      margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+     }
+
+     .toggle-menu {
+      position: sticky;
+      top: 50px;
+      left: 10px;
+      background: #444;
+      border-radius: 4px;
+      padding: 10px;
+      gap: 10px;
+      flex-direction: column;
+      display: flex;
+      opacity: 0;
+      max-height: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, max-height 0.3s ease;
+      z-index: 1100;
+      width: 120px;
+    }
+
+    .toggle-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: sticky;
+    }
+    .toggle-menu.show {
+      opacity: 1;
+      max-height: 500px;
+      pointer-events: auto;
+      position:sticky;
+    }
+
+    .headingone{
+        color: white;
+        text-align: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        font-weight: bold;
+        text-decoration: underline;
+        
+    }
+
+    .kayylogo{
+       border-radius: 250px;
+       display: block;
+       margin: auto;
+       height: 500px;
+       margin-top: 5px;
+
+    }
+
+.grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      row-gap: 50px;
+      column-gap: 50px;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 500px;
+      margin-bottom: 30px;
+    }
+    .grid-item {
+      background: transparent;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      
+      
+    }
+
+    .grid-items {
+      background: transparent;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      word-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .grid-items button {
+      padding: 20px 60px 20px 60px;
+      font-size: 2rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 20px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+    .grid-item img {
+      width: 100%;
+      border-radius: 8px;
+      object-fit:cover;
+      height: auto;
+      overflow: hidden;
+      width: 470px;
+      height: 263.92px;
+      
+    }
+    .grid-item button {
+      padding: 20px 60px 20px 60px;
+      font-size: 2rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 20px;
+      background-color: #ffffff;
+      color: rgb(0, 0, 0);
+      transition: background-color 0.3s;
+    }
+    .grid-item button:hover {
+      background-color: #555;
+    }
+
+  .paragraphone{
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+
+  }
+
+  .paragraphtwo{
+    color: white;
+    font-size: 3rem;
+    font-family: 'playfair display' , serif;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+
+  }
+
+  .paragraphthree{
+    color: white;
+    text-align: center ;
+    font-size: 2rem;
+    font-family: 'playfair display' serif;
+    
+ }
+
+ .footer{
+  background: white;
+  padding: 20px 20px 20px 20px;
+  text-align: center;
+  width: 100%;
+  font-size: 1.1rem;
+ }
+
+ .designer{
+  color: rgb(161, 160, 160);
+ }
+
+ .book-button{
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  transition: background-color 0.3s;
+  border: none;
+  padding: 20px 60px 20px 60px;
+  border-radius: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 90px;
+  font-family: 'playfair display', serif;
+    }
+    .book-button:hover {
+      background-color: #555;
+      cursor: pointer;
+    }
+
+    .paragraphtwoo{
+      color: white;
+    font-size: 3rem;
+    font-family: 'playfair display' , serif;
+    font-weight: bold;
+    margin-bottom: 50px;
+    text-align: center;
+    }
+
+    .testi{
+      color: white;
+      font-size: 2rem;
+      
+    }
+
+    .navbar{
+      height: 150px;
+    }
+
+    .image{
+    object-fit: cover;
+    border-radius: 70px;
+    width: 550px;
+    display: inline-block
+    }
+
+    .best{
+      color: white;
+      font-size: 2rem;
+      width: 100%;
+      display: inline-block;
+
+    }
+
+    .divisio{
+      border-style: solid;
+      border-color: red;
+    
+    }
+
+    .divide{
+      border-style: solid;
+      border-color: rgb(99, 210, 84);
+      border-width: 30px;
+      object-fit: cover;
+      width: 700px;
+      display: inline-block;
+
+    }
+
+    .strong{
+      color: green;
+    }
+
+    .logoo{
+      color: white; display: block; margin: auto; text-align: center; 
+font-size: 10rem; 
+font-weight: 400;
+font-family: 'Abril fatface', serif;
+border-style: solid; 
+border-width: 20px;
+border-radius: 150px;
+background-color: black;
+padding: 20px;
+width: 200px;
+height: 200px;
+    }
+
+      </style>
+    </head>
+    <body>
+       <nav class="navbar">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <div class="links">
+     <a href="#menu">MENU</a> 
+     <a href="#About">ABOUT</a>
+     <a href="#Contact">CONTACTS</a>
+      <a href="#navbar"></a>
+    </div>
+  </nav> 
+
+  <div id="toggleMenu" class="toggle-menu">
+    <a href="index.html">Home</a>
+    <a href="scoop.html">The Scoop</a>
+  </div>
+
+<logo class="logoo">k.</logo>
+
+   <p class="paragraphone">
+    Welcome To Kayy Kafe And Grill For The Best Foods Beachside, 
+    Welcome To Kayy Kafe And Grill For The Best Foods Beachside, 
+    Welcome To Kayy Kafe And Grill For The Best Foods Beachside, 
+  </p>
+
+  <p class="paragraphtwoo">Book a table Now!</p>
+<button class="book-button"><a href="https://wa.me/+255786786111?text=Hello%20I%20would%20like%20to%20book%20a%20table%20for%20">Book Now</a></button>
+  <h1 id="menu" class="headingone">
+    Main Menu 
+  </h1>
+ 
+
+<div  class="grid-container">
+    <div class="grid-items">
+      <img src="thumbnails/platters.jpg"  loading="lazy">
+      <button><a href="platters.html" style="text-decoration: none; color: inherit;">Platters</button></a>
+   
+
+<div style="display: grid;
+grid-template-columns: 1fr 1fr;">
+     <div class="grid-item">
+      <img src="thumbnails/appetizer.avif"  loading="lazy">
+      <button><a href="appetizers.html" style="text-decoration: none; color: inherit;">Appetizers</button></a>
+    </div>
+     <div class="grid-item">
+      <img src="thumbnails/soup.jpg"  loading="lazy">
+      <button><a href="soup.html" style="text-decoration: none; color: inherit;">Soup</button></a>
+    </div>
+     <div class="grid-item">
+      <img src="thumbnails/btn the slices.jpg"  loading="lazy">
+      <button><a href="btslices.html" style="text-decoration: none; color: inherit;">Between The Slices</button></a>
+    </div>
+     <div class="grid-item">
+      <img src="thumbnails/burger.jpg" loading="lazy" >
+      <button><a href="burger.html" style="text-decoration: none; color: inherit;">Burgers</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/cheese.avif"  loading="lazy">
+      <button><a href="cheese.html" style="text-decoration: none; color: inherit;">Stay Cheezey</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/captain fav.jpg" loading="lazy" >
+      <button><a href="captain.html" style="text-decoration: none; color: inherit;">Captain's Favourite</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/pasta.jpg"  loading="lazy">
+      <button><a href="pasta.html" style="text-decoration: none; color: inherit;">Pasta</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/wings.jpg"  loading="lazy">
+      <button><a href="wings.html" style="text-decoration: none; color: inherit;">Wings</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/chicken makange.jpg"  loading="lazy">
+      <button><a href="main.html" style="text-decoration: none; color: inherit;">Main Dishes</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/chomachoma.webp"  loading="lazy">
+      <button><a href="chomachoma.html" style="text-decoration: none; color: inherit;">Choma Choma</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/choma platters.jpeg"  loading="lazy">
+      <button><a href="chomaplatters.html" style="text-decoration: none; color: inherit;">Choma Platters</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/platters.jpg"  loading="lazy">
+      <button><a href="platters.html" style="text-decoration: none; color: inherit;">Platters</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/chipsyai.jpg"  loading="lazy">
+      <button><a href="sides.html" style="text-decoration: none; color: inherit;">Sides</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/kidsmeal.jpg"  loading="lazy">
+      <button><a href="kmeal.html" style="text-decoration: none; color: inherit;">Kids Meal</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/fresh juice.jpg"  loading="lazy">
+      <button><a href="juice.html" style="text-decoration: none; color: inherit;">Juice</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/mojito.jpg"  loading="lazy">
+      <button><a href="mojitos.html" style="text-decoration: none; color: inherit;">Mojitos</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/coconut water.webp"  loading="lazy">
+      <button><a href="extras.html" style="text-decoration: none; color: inherit;">Extras</button></a>
+    </div>
+    <div class="grid-item">
+      <img src="thumbnails/fruitfusion.avif"  loading="lazy">
+      <button><a href="fusion.html" style="text-decoration: none; color: inherit;">Fruit Fusion</button></a>
+    </div>
+</div>
+
+ <p id="About" class="paragraphtwo">
+    About Us
+  </p>
+  <p class="paragraphthree">Since 2010, The Scoop Café has been the heart of dessert lovers in Dar es Salaam. Born from a passion for handcrafted treats, we blend traditional recipes with a modern twist to create flavors that make every moment sweeter.
+
+Our mission is simple: serve happiness in every bite. We source our ingredients locally, work with trusted farmers, and craft every dessert with care—because we believe the best moments are shared over something delicious.
+
+Over the years, we’ve been honored to feature in Taste Africa Magazine, win the Best Dessert Spot Award 2023, and cater to events for brands like Coca-Cola and Airtel.
+
+Whether you’re here for our signature milkshake or just good vibes, we can’t wait to serve you.
+📅 Book your table today or order online!</p>
+
+
+
+<footer id="Contact" class="footer">
+<a href="https://www.instagram.com/kayykafengrill" target="_blank">Instagram</a>  | <a href="https://wa.me/+255786786111" target="_blank">WhatsApp</a> <br>
+<br> 
+Kayy Kafe and Grill 2025. All Rights Reserved. <br>
+<p class="designer"> 
+  Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">CEETECH</a>
+</p>
+</footer>
+
+
+
+
+
+
+
+<script>
+  function toggleMenu() {
+      document.getElementById('toggleMenu').classList.toggle('show');
+    }
+    // Close toggle menu on clicking outside
+    window.addEventListener('click', function(e) {
+      const menu = document.getElementById('toggleMenu');
+      const hamburger = document.querySelector('.hamburger');
+      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+        menu.classList.remove('show');
+      }
+    });
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      if (index >= slides.length) currentSlide = 0;
+      else if (index < 0) currentSlide = slides.length - 1;
+      else currentSlide = index;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+    }
+
+    function changeSlide(n) {
+      showSlide(currentSlide + n);
+    }
+
+    function goToSlide(n) {
+      showSlide(n);
+    }
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+      changeSlide(1);
+    }, 5000);
+
+    const buttons = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active from all buttons and contents
+      buttons.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active to clicked button and corresponding content
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.target).classList.add('active');
+    });
+  });
+
+   window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+
+    </body>
+</html>

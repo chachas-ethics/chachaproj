@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Drinks Menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+ body {
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+
+  :root{
+    --green:#5ca841;
+    --green-dark:#3e7e2b;
+    --panel:#1a1f24;
+    --text:#ffffff;
+    --muted:rgba(255,255,255,.85);
+    /* Replace this with your photo */
+    --left-bg:url('thumbnails/coconut\ water.webp');
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background: rgb(27, 27, 55);
+    display:grid;
+    place-items:center;
+    min-height:100svh;
+  }
+
+  .menu{
+    width:min(980px, 95vw);
+    height:min(96vh, 1280px);
+    background:#fff;
+    display:grid;
+    grid-template-columns: 38% 62%;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 30px 60px rgba(0,0,0,.18);
+  }
+
+  /* LEFT PANEL */
+  .left{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
+      var(--left-bg) center/cover no-repeat;
+    color:var(--text);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .logo{
+    width:78px; height:78px;
+    border:3px solid #fff;
+    display:grid; place-items:center;
+    font-weight:800; font-size:40px;
+    line-height:1; border-radius:4px;
+  }
+  .big-title{
+    font-size:54px;
+    font-weight:800;
+    letter-spacing:.04em;
+    line-height:1;
+    margin:0 0 14px 0;
+  }
+  .jar-accent{
+    position:absolute; left:0; right:0; bottom:0;
+    height:34%;
+    background:linear-gradient(180deg, transparent, rgba(0,0,0,.55) 45%, rgba(0,0,0,.75));
+    pointer-events:none;
+  }
+
+  /* RIGHT PANEL */
+  .right{
+    background:linear-gradient(0deg, var(--green), var(--green-dark));
+    color:#fff;
+    padding:34px 28px 26px 28px;
+    overflow:auto;
+  }
+  .card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:8px;
+    padding:18px 16px;
+  }
+
+  .section-title{
+    font-weight:800;
+    font-size:28px;
+    letter-spacing:.03em;
+    margin:4px 6px 14px;
+    text-transform:uppercase;
+  }
+
+  .list{
+    display:grid;
+    gap:10px;
+    margin:0 6px 16px;
+  }
+
+  /* Row with dotted leader */
+  .row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:16px;
+    color:var(--muted);
+  }
+  .name{
+    white-space:nowrap;
+  }
+  .dots{
+    flex:1 1 auto;
+    border-bottom:1px dotted rgba(255,255,255,.65);
+    transform:translateY(-2px);
+  }
+  .price{
+    white-space:nowrap;
+    font-weight:600;
+    color:#fff;
+  }
+
+  /* Layout of sections in right panel */
+  .grid{
+    display:grid;
+    gap:18px;
+  }
+
+  /* Footer extras spacing tweak */
+  .extras .section-title{ margin-top:2px }
+
+  /* Scrollbar subtle */
+  .right::-webkit-scrollbar{ width:10px }
+  .right::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.25); border-radius:20px
+  }
+
+  /* Responsive */
+  @media (max-width: 860px){
+    .menu{ grid-template-columns: 1fr; height:auto; }
+    .left{ min-height:300px }
+    .big-title{ font-size:44px }
+  }
+  @media (max-width: 420px){
+    .logo{ width:64px; height:64px; font-size:34px }
+    .big-title{ font-size:38px }
+    .section-title{ font-size:24px }
+  }
+</style>
+</head>
+<body>
+  <main class="menu">
+    <!-- LEFT PANEL -->
+    <section class="left">
+      <div class="logo">k.</div>
+      <div>
+        <h1 class="big-title">Extras<br></h1>
+      </div>
+      <div class="jar-accent"></div>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="right">
+      <div class="grid">
+
+  
+
+        <!-- EXTRAS -->
+        <div class="card extras">
+          <h2 class="section-title">Extras</h2>
+          <div class="list">
+            <div class="row"><span class="name">Small Water</span><span class="dots"></span><span class="price">1,000/=</span></div>
+            <div class="row"><span class="name">Large Water</span><span class="dots"></span><span class="price">2,000/=</span></div>
+            <div class="row"><span class="name">Coconut Water</span><span class="dots"></span><span class="price">2,000/=</span></div>
+            <div class="row"><span class="name">Soft Drink</span><span class="dots"></span><span class="price">1,000/=</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <script>
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+</script>
+
+</body>
+</html>

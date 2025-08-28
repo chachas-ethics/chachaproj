@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+     body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/wings.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 75% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ccc;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+
+    .para{
+        color:#ff5733;
+        }
+</style>
+</head>
+<body>
+
+    <h1 class="heading">JUST WING IT</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Crispy Chicken Wings</div>
+            <div class="menu-desc">Chicken wings seasoned to perfection, crunchy exterior and fried to a golden perfection. served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Hot Garlic</div>
+            <div class="menu-desc">Coated in a blend of garlic, onion, fresh chili and sauce, creating a fiery taste. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Honey BBQ</div>
+            <div class="menu-desc">Blend of honey and smoky barbecue sauce, creating a perfect harmony of flavors. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Sticky Thai</div>
+            <div class="menu-desc">Glazed with a sticky blend of sesame seeds, tangy BBQ sauce, and savory sauce. Served with fries, coleslaw and dipping sauce. </div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Sweet Chilli</div>
+            <div class="menu-desc">Coated in a tantalizing sweet chilli sauce that perfec sweetness and spiceness. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">13,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Chilli</div>
+            <div class="menu-desc">Seasoned with a blend of garlic, onion, fresh chili, and fragrant coriander. Garnished with a sprinkle of chili flakes, served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+ <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>

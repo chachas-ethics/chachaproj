@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+     body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/soup.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 40% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ccc;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+</style>
+</head>
+<body>
+
+    <h1 class="heading"> YOU-ARE-SOUPER</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Creamy Mushroom Soup</div>
+            <div class="menu-desc">A blend of earthly mushrooms, chopped onions, and a touch of creamy goodness.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Seafood Chowder Soup</div>
+            <div class="menu-desc">A tantalizing combination of red snapper, prawns, calamari and squid. finely chopped onions and a touch of creamy goodness.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Chicken Corn Soup</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Mchemsho Wa samaki</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Creamy Vegetable Soup</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+   <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+
+</body>
+</html>

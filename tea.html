@@ -1,0 +1,256 @@
+<!-- icecream.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tea</title>
+  <style>
+     @media screen and (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .grid {
+    grid-template-columns: repeat (2, 1fr);
+  }
+        }
+    
+    @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #cfe8dc;
+    }
+    h1 {
+      text-align: center;
+      color: #ff69b4;
+    }
+    .grid {
+      display: block;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+    .flavor {
+      background-color: #cfe8dc;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+      color: white;
+      margin-bottom: 30px;
+      color: black;
+    }
+    .flavor:hover {
+      transform: scale(1.05);
+    }
+
+      body {
+  background: var(--cream);
+  color: var(--text-dark);
+  font-family: 'Inter', sans-serif;
+  animation: fadeIn 0.6s ease-in forwards;
+}
+
+.flavtext{
+  color: black;
+}
+
+
+  #floating-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 999;
+    transition: transform 0.3s;
+  }
+
+  #floating-cart.highlight {
+    transform: scale(1.1);
+    background-color: darkred;
+  }
+
+  #cart-panel {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    display: none;
+    z-index: 999;
+  }
+
+  #cart-panel h3 {
+    margin-top: 0;
+  }
+
+  .cart-item {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+
+  .cart-item button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  #cart-panel button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    width: 100%;
+    margin-top: 10px;
+  }
+</style>
+
+  </style>
+</head>
+<body>
+
+  <h1 class="flavtext">Our Tea Varieties</h1>
+
+  <div class="grid">
+    <a href="teatea.html" style="text-decoration: none; color: inherit;">
+    <div class="flavor">Tea</div>
+    </a>
+    <a href="icetea.html" style="text-decoration: none; color: inherit;">
+    <div class="flavor">Iced Tea</div>
+    </a>
+    <a href="teapots.html" style="text-decoration: none; color: inherit;">
+      <div class="flavor">Tea Pots</div>
+      </a>
+
+      <!-- Floating Cart -->
+<div id="floating-cart" onclick="toggleCart()">
+  🛒 <span id="cart-count">0</span>
+</div>
+
+<!-- Hidden Cart Panel -->
+<div id="cart-panel">
+  <h3>Your Cart</h3>
+  <div id="cart-items"></div>
+  <button onclick="placeOrder()">Place Order</button>
+</div>
+
+    <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartPanel();
+  }
+
+  function updateCartCount() {
+    document.getElementById('cart-count').innerText = cart.length;
+  }
+
+  function highlightCart() {
+    const cartIcon = document.getElementById('floating-cart');
+    cartIcon.classList.add('highlight');
+    setTimeout(() => {
+      cartIcon.classList.remove('highlight');
+    }, 500);
+  }
+
+  function toggleCart() {
+  const panel = document.getElementById('cart-panel');
+  const isHidden = window.getComputedStyle(panel).display === 'none';
+  panel.style.display = isHidden ? 'block' : 'none';
+}
+
+  function renderCartPanel() {
+    const container = document.getElementById('cart-items');
+    container.innerHTML = '';
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <strong>${item.name}</strong> - $${item.price}<br>
+        <button onclick="removeItem(${index})">Remove</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    saveCart();
+  }
+
+  function placeOrder() {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    const message = cart.map((item, i) => `${i + 1}. ${item.name} - $${item.price}`).join('\n');
+    const phone = '255788801010'; // replace with your WhatsApp number
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent("Order:\n" + message)}`;
+    window.location.href = url;
+  }
+
+  // Handle order-now buttons (this part connects to buttons)
+  document.querySelectorAll('.order-now').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = {
+        id: button.dataset.id,
+        name: button.dataset.name,
+        price: button.dataset.price,
+        image: button.dataset.image || ''
+      };
+
+      cart.push(item);
+      saveCart();
+      highlightCart();
+      alert(`${item.name} added to your cart!`);
+    });
+  });
+
+  // On page load
+  updateCartCount();
+  renderCartPanel();
+</script>
+
+
+</body>
+</html>

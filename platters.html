@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+    body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/platters.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 75% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ffffff;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+</style>
+</head>
+<body>
+
+    <h1 class="heading">PLATTERS</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fisherman Platter</div>
+            <div class="menu-desc">Delightful assortment of calamari, prawns, fish fillet and grilled octopus served with sauces, salad and fries (4 pax).</div>
+            <div class="menu-price">55,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mixed Grill Platter</div>
+            <div class="menu-desc">A delicious assortment of grilled beef, chicken and fish served with sauces, salad and fries (3 pax).</div>
+            <div class="menu-price">45,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Wings Platter</div>
+            <div class="menu-desc">16 pcs Mouthwatering chicken wings, each coated in your choice of four flavors. Served with a dipping sauce, salad and fries (2 pax).</div>
+            <div class="menu-price">25,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kuku Platter</div>
+            <div class="menu-desc">Feast of crispy chicken, chicken wings, juicy chicken tenders, chicken lollipops and chicken sausages. Served with dipping sauces, salad and fries (5 pax).<br> Served with soft drinks.</div>
+            <div class="menu-price">62,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Platter</div>
+            <div class="menu-desc">Delicious combination of crispy calamari, golden prawns, grilled octopus, fish fillet, grilled beef, and coated chicken. Served with dipping sauce, salad and fries (6 pax).</div>
+            <div class="menu-price">90,000/=</div>
+        </div>
+    </div>
+
+    
+    </div>
+    <script>
+ window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+        </script>
+</body>
+</html>

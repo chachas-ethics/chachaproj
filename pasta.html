@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+    body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/pasta.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 75% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ffffff;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+
+    .para{
+        color:#ff5733;
+        }
+</style>
+</head>
+<body>
+
+    <h1 class="heading">OH PASTA-BILITIES</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Spaghetti Bolognese</div>
+            <div class="menu-desc">Spaghetti with minced meat in a tomato gravy, onion, carrot, parsley, topped with parmesan cheese.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Penne Arabiata</div>
+            <div class="menu-desc">Penne pasta in a zesty tomato sauce with chili flakes, topped with parmesan cheese.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Creamy Chicken Pasta</div>
+            <div class="menu-desc">Fusilli pasta, tender chicken breast, cajun spice, in creamy sauce, topped with parmesan cheese.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chef Style Shrimp Pasta</div>
+            <div class="menu-desc">Choice of pasta, shrimp, mushroom in white sauce, black olives, topped with parmesan cheese.</div>
+            <div class="menu-price">20,000/=</div>
+        </div>
+    </div>
+ <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>

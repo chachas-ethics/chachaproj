@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Grid</title>
+<style>
+
+     body {
+        opacity: 0;
+        transition: opacity 0.8s ease-in;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: white;
+        padding: 20px;
+        background-image: url(thumbnails/chicken\ makange.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 35% center;
+        background-color: rgba(0,0,0,0.9);
+        background-blend-mode: darken;
+    }
+
+    .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ffffff;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        text-decoration: underline;
+        text-decoration-color: white;
+    }
+
+    .para{
+        color:#ff5733;
+        }
+</style>
+</head>
+<body>
+
+    <h1 class="heading">EXPLORE THE MAIN</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Asian Steak and Potatoes </div>
+            <div class="menu-desc">Tender grilled steak marinated in a flavorful blend of Asian spices and fried cubed potatoes seasoned with aromatic herbs.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with tender chicken pieces, aromatic spices and garnished with herbs.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Lamb Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with succulent pieces of lamb, aromatic spices and garnished with herbs.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Fish Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with flavorful fish pieces, aromatic spices, and garnished with herbs.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Fried Rice</div>
+            <div class="menu-desc">Savory stir-fried rice with tender pieces of chicken, mixed vegetables and aromatic seasoning.</div>
+            <div class="menu-price">13,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Shrimp Fried Rice</div>
+            <div class="menu-desc">Flavoful stir-fried rice with succulent shrimp, mixed vegetables, and savory seasonings.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Veg Fried Rice</div>
+            <div class="menu-desc">Stir-fried rice with a colorful assortment of vegetables and flavorful seasoning.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Butter Chicken</div>
+            <div class="menu-desc">Chicken pieces marinated in aromatic spices, velvety tomato and butter-based sauce , blend of indian spices with a touch of cream.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Makange</div>
+            <div class="menu-desc">Tender chicken cooked in a spicy and flavorsome tomato-based sauce with aromatic spices, served with a side of your choice.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Fish Makange</div>
+            <div class="menu-desc">Fresh fish cooked in a flavorful and tangy tomato-based sauce with aromatic spices and herbs, served with side of your choice.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Spicy Crispy Chicken</div>
+            <div class="menu-desc">Crispy and succulent chicken pieces, seasoned and fried to golden perfection, served with fries and salad.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Changu Fried</div>
+            <div class="menu-desc">Crispy and seasoned fried changu fish, served with a side of your choice and tangy dipping sauce.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+ <script>
+        window.addEventListener("load", function() {
+            document.body.classList.add("loaded");
+        });
+    </script>
+</body>
+</html>
