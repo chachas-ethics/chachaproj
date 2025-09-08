@@ -71,6 +71,68 @@
         text-decoration: underline;
         text-decoration-color: white;
     }
+
+    .orderbutt:hover {
+        cursor: pointer;
+        color: rgb(211, 202, 202);
+        background-color: #ff5733;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      background-color: black;
+    }
+
+    .cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 3px 8px;
+      font-size: 14px;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+    }
+
+    .cart-panel {
+      display: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 300px;
+      height: 50%;
+      background: #f9f9f9;
+      color: black;
+      border-left: 1px solid #ddd;
+      padding: 20px;
+      box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .cart-total {
+      margin-top: 20px;
+      font-weight: bold;
+    }
 </style>
 </head>
 <body>
@@ -91,7 +153,15 @@
         <div class="menu-details">
             <div class="menu-title">Mixed Grill Platter</div>
             <div class="menu-desc">A delicious assortment of grilled beef, chicken and fish served with sauces, salad and fries (3 pax).</div>
-            <div class="menu-price">45,000/=</div>
+            <div class="menu-price">45,000/=
+                <button onclick="addToCart('Mixed grill Platter', 45000)" style="display: block;
+                margin-top: 20px;
+                border-radius: 20px;
+                border: none;
+                padding: 15px 20px;background-color: rgb(211, 202, 202);
+                color: #ff5733;
+                " class="orderbutt">Order Now</button>
+            </div>
         </div>
     </div>
 
@@ -122,12 +192,63 @@
         </div>
     </div>
 
+     <!-- Cart Icon -->
+  <div class="cart-icon" onclick="toggleCart()">
+    🛒 Docket <span class="cart-count" id="cartCount">0</span>
+  </div>
+
+  <!-- Cart Panel -->
+  <div class="cart-panel" id="cartPanel">
+    <h2 style="font-family: 'abril fatface', serif;
+    font-size: 3rem;
+    text-align: center;
+     ">kayy.</h2>
+     <h2>
+    Your Cart 
+    <span style="float:right; cursor:pointer; font-size:20px;" onclick="toggleCart()">✖</span>
+  </h2>
+    <div id="cartItems"></div>
+    <p class="cart-total" id="cartTotal">Total: $0</p>
+  </div>
+
     
     </div>
     <script>
  window.addEventListener("load", function() {
             document.body.classList.add("loaded");
         });
+
+         let cart = [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      document.getElementById("cartCount").innerText = cart.length;
+
+      let cartItemsDiv = document.getElementById("cartItems");
+      cartItemsDiv.innerHTML = "";
+
+      let total = 0;
+
+      cart.forEach(item => {
+        total += item.price;
+        cartItemsDiv.innerHTML += `
+          <div class="cart-item">
+            <p>${item.name} - $${item.price}</p>
+          </div>
+        `;
+      });
+
+      document.getElementById("cartTotal").innerText = "Total: $" + total;
+    }
+
+    function toggleCart() {
+      let panel = document.getElementById("cartPanel");
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    }
         </script>
 </body>
 </html>
