@@ -1,114 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kayy Kafe | The Scoop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kayy Kafe | The Scoop</title>
   <style>
-
-    body {
-      opacity: 0;
-      transition: opacity 1s ease-in;
+    html{
+      scroll-behavior: smooth;
     }
 
-    body.loaded {
-      opacity: 1;
-    }
-
-    /* Reset and base */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      width: 100%;
-      box-sizing: border-box;
-      background-color: rgb(11, 11, 46);
+     background-color:  rgb(11, 11, 46);
     }
+
     *, *::before, *::after {
       box-sizing: inherit;
     }
 
-    body:before {
+     body:before {
        content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)),
    url('thumbnails/indexback.jpg');
-  background-size: cover;
-  background-position: 10% center;
+  background-position: center;
   background-repeat: no-repeat;
   filter: blur(4px);
   z-index: -1; 
     }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #333;
-      color: white;
+    @media (max-width: 480px) {
+  body:before {
+    background-size: contain;  /* keeps full image visible */
+  }
+}
+
+
+    .navbar {
       display: flex;
+      justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      z-index: 1000;
+      background: #222;
+      color: white;
+      height: 60px;
+      font-size: 1.5rem;
       position: relative;
-      height: 50px;
-    }
-    .hamburger {
-      font-size: 1.8rem;
-      cursor: pointer;
-      user-select: none;
-      z-index: 1100;
-    }
-    .links {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-      white-space: nowrap;
-    }
-    .links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      line-height: 50px;
-      margin-left: 30px;
-    }
-    /* Dropdown toggle menu */
-    .toggle-menu {
-      position: absolute;
-      top: 50px;
-      left: 10px;
-      background: #444;
-      border-radius: 4px;
-      padding: 10px;
-      gap: 10px;
-      flex-direction: column;
-      display: flex;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      pointer-events: none;
-      transition: opacity 0.3s ease, max-height 0.3s ease;
-      z-index: 1100;
-      width: 120px;
-    }
-    .toggle-menu a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    .toggle-menu.show {
-      opacity: 1;
-      max-height: 500px;
-      pointer-events: auto;
+      z-index: 999;
     }
 
-    /* Slideshow */
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      background: #333;
+      border-radius: 5px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 9999;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      
+    }
+
+
+    .show {
+      display: block;
+    }
+
     .slideshow-container {
       max-width: 100%;
       width: 100%;
@@ -185,8 +166,7 @@
       background-color: #333;
     }
 
-    /* Featured Products Heading */
-    .featured-products {
+      .featured-products {
       text-align: center;
       color: white;
       margin: 0px;
@@ -240,120 +220,229 @@
       background-color: #555;
     }
 
-    @media screen and (max-width: 768px) {
-      nav {
-        padding: 10px 15px;
-      }
-      .links a {
-        font-size: 1rem;
-        margin-left: 15px;
-      }
-      .hamburger {
-        font-size: 1.6rem;
-      }
-      .featured-products {
-        font-size: 2rem;
-        margin-top: 15px;
-      }
-      .grid-container {
-        padding: 15px 10px;
-        gap: 15px;
-      }
-      .grid-item img {
-        max-height: 150px;
-      }
-      .grid-item button {
-        font-size: 0.9rem;
-        padding: 6px 12px;
-      }
-    }
-
-    @media screen and (max-width: 480px) {
-      .links a {
-        font-size: 0.9rem;
-        margin-left: 10px;
-      }
-      .hamburger {
-        font-size: 1.4rem;
-      }
-      .featured-products {
-        font-size: 1.7rem;
-      }
-      .grid-item img {
-        max-height: 120px;
-        margin-bottom: 20px;
-      }
-      .grid-item button {
-        font-size: 0.8rem;
-        padding: 5px 10px;
-      }
-    }
-
-  .tabs-slider {
+    .footer {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    background-color: black;
-    border-radius: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-  .tab-btn {
-    padding: 10px 20px;
-    border: none;
-    background: #ffffff;
-    cursor: pointer;
-    font-weight: 600;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  .tab-btn.active,
-  .tab-btn:hover {
-    background: #333;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 50px;
+    background: #111;
     color: white;
-  }
-  .tabs-content {
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    padding: 0 10px;
-  }
-  .tab-content {
-    display: none;
-    font-size: 1rem;
-    line-height: 1.5;
-  }
-  .tab-content.active {
-    display: block;
-    
+    flex-wrap: wrap;
   }
 
-  .foot{
-    color: black;
-    text-align: center;
+  .footer-left, .footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
   }
 
-  .divfoot{
-    background-color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
+
+  .logo-img img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border-radius: 50%;
+  }
+
+  .social a {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+    text-decoration: none;
+    color: #ddd;
+    transition: color 0.3s;
+    margin-left: 20px;
+    vertical-align: middle;
+  }
+
+  .social a:hover {
+    color: #fff;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    filter: invert(1); /* make icons white */
+  }
+
+  .yyanguiyo a{
+    text-decoration: none;
+    color: blue;
+  }
+  
+
+  .scsoc a{
+    text-decoration: none;
+    color: blue;
+  }
+
+  .kaysoc a{
+    text-decoration: none;
+    color: blue;
+  }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.grid-item img {
+  max-height: 150px;
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    gap: 10px;
+    padding: 10px;
+  }
+  .grid-item img {
+    max-height: 120px;
+  }
+  .grid-item button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+
+.featured-products {
+  font-size: 2rem;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .featured-products {
+    font-size: 1.5rem;
+  }
+}
+
+body:before {
+  background-position: center center; /* better for mobile */
+}
+
+
+@media (max-width: 768px) {
+  .nav-left span, .nav-right span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-left span, .nav-right span {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-item img {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-item img {
+    max-height: 120px;
+  }
+}
+
+
+  .kaysoc, .scsoc {
+    display: block !important; /* override inline styles */
+    margin: 5px auto;
+  }
+
+
+@media (max-width: 480px) {
+  body:before {
+    background-position: center center;
+  }
+}
+
+/* Ensure slider container stays in view on small screens */
+.slideshow-container {
+  max-width: 100%;
+  width: 100%;       /* keeps full width */
+  height: 500px;     /* keep original height */
+  overflow: hidden;  /* prevents scrollbars */
+  position: relative;
+}
+
+/* Slider images */
+.slide img {
+  width: 100%;       /* keeps full width */
+  height: 470px;     /* keep original height */
+  object-fit: cover; /* scales and crops image nicely */
+}
+
+/* Adjust prev/next buttons on small screens */
+@media (max-width: 768px) {
+  .prev, .next {
+    font-size: 20px;
+    padding: 8px;
+  }
+}
+
+/* Adjust dots on small screens */
+@media (max-width: 480px) {
+  .dots {
+    padding: 5px 0;
+  }
+  .dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 3px;
+  }
+}
+
+
+
   </style>
 </head>
 <body>
-  <nav>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <div class="links">
-      <a href="kayy.html">Kayy</a>
-      <a href="scoop.html">The Scoop</a>
-    </div>
-  </nav>
 
-  <div class="slideshow-container">
+  <div class="navbar">
+    <!-- Left side -->
+    <div class="nav-left">
+      <span class="hamburger" onclick="toggleDropdown('left-menu')">&#9776;</span>
+      <span style="font-family: 'abril fatface';
+      font-size: 2rem;">kayy.</span>
+      <div class="dropdown" id="left-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
+      </div>
+    </div>
+
+    <!-- Right side -->
+    <div class="nav-right">
+      <span style="font-family: 'abril fatface';
+      font-size: 2rem;">The Scoop</span>
+      <span class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
+      <div class="dropdown" id="right-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
+      </div>
+    </div>
+  </div>
+
+   <div class="slideshow-container">
     <div class="slide active">
-      <img src="thumbnails/the scoop dp.jpg" alt="Product 1" />
+      <img src="thumbnails/choma platters.jpeg" alt="Product 1" />
     </div>
     <div class="slide">
-      <img src="thumbnails/black forest cake.webp" alt="Product 2" />
+      <img src="thumbnails/platters.jpg" alt="Product 2" />
     </div>
     <div class="slide">
       <img src="thumbnails/pistachio brownie.jpg" alt="Product 3" />
@@ -367,70 +456,86 @@
     </div>
   </div>
 
-  <p class="featured-products">Featured Products</p>
+    <p class="featured-products">Featured Products</p>
 
   <div class="grid-container">
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Achari" />
+      <img src="thumbnails/achari.webp" alt="Kayy Achari" />
       <button>Kayy. Achari</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Mabuyu" />
+      <img src="thumbnails/mabuyu.jpg" alt="Kayy Mabuyu" />
       <button>Kayy. Mabuyu</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Keyholders" />
+      <img src="thumbnails/keyholders.webp" alt="Kayy Keyholders" />
       <button>Kayy. Keyholders</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Korosho" />
+      <img src="thumbnails/korosho.png" alt="Kayy Korosho" />
       <button>Kayy. Korosho</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Achari" />
+      <img src="thumbnails/achari.webp" alt="Kayy Achari" />
       <button>Kayy. Achari</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Mabuyu" />
+      <img src="thumbnails/mabuyu.jpg" alt="Kayy Mabuyu" />
       <button>Kayy. Mabuyu</button>
     </div>
     <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Keyholders" />
+      <img src="thumbnails/keyholders.webp" alt="Kayy Keyholders" />
       <button>Kayy. Keyholders</button>
     </div>
      <div class="grid-item">
-      <img src="thumbnails/the scoop dp.jpg" alt="Kayy Korosho" />
+      <img src="thumbnails/korosho.png" alt="Kayy Korosho" />
       <button>Kayy. Korosho</button>
     </div>
 </div>
 
-
-
-<div class="divfoot">
-    <footer class="foot">Kayy. | The Scoop. Copyright 2025.</footer>
-    <p style="text-align: center;
-    color: grey;" class="designer"> 
-  Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">CEETECH</a>
+<footer id="contact" style="background-color: white;
+padding: 10px;">
+<div style="display: grid;
+grid-template-columns: 1fr 1fr;">
+<div style="display: flex;">
+<p class="kaysoc" style="text-align: center;">
+  <span style="font-family: 'abril fatface';
+  font-size: 1.4rem;">kayy.</span><br>
+  
+  <a href="https://instagram.com/kayykafengrill" target="_blank" >Instagram</a> | <a href="https://wa.me/255788296274" >WhatsApp</a>
 </p>
-    </div>
-  <div id="toggleMenu" class="toggle-menu">
-    <a href="homepage">Home</a>
-    <a href="kayy.html">Kayy</a>
-    <a href="scoop.html">The Scoop</a>
-  </div>
+</div>
+<div style="display: flex;">
+<p class="scsoc" style="display: inline;
+text-align: center;
+">
+  <span style="font-family: 'abril fatface';
+  font-size: 1.4rem;">The Scoop</span><br>
+    <a href="https://instagram.com/thescoop.tz" >Instagram</a> | <a href="https://wa.me/255788296274" target="_blank">WhatsApp</a>
+</p>
+</div>
+</div>
+  <p class="yyanguiyo" style="text-align: center;
+  color: gray">
+    Designed And Developed By <a href="https://wa.me/255788296274" target="_blank" >TechPulse</a>
+  </p>
+  
+</footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('toggleMenu').classList.toggle('show');
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle('show');
     }
-    // Close toggle menu on clicking outside
-    window.addEventListener('click', function(e) {
-      const menu = document.getElementById('toggleMenu');
-      const hamburger = document.querySelector('.hamburger');
-      if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-        menu.classList.remove('show');
+
+    // Close dropdowns when clicking outside
+    window.onclick = function(event) {
+      if (!event.target.matches('.hamburger')) {
+        document.querySelectorAll('.dropdown').forEach(drop => {
+          drop.classList.remove('show');
+        });
       }
-    });
+    }
 
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
@@ -481,7 +586,7 @@
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
     });
-
   </script>
+
 </body>
 </html>
