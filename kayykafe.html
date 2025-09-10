@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'montserrat classic', sans-serif;
+     background-color:  rgb(11, 11, 46);
+     font-size: 2rem;
+    }
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+     body:before {
+       content: "";
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+   url('thumbnails/kayyback.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  z-index: -1; 
+    }
+
+    @media (max-width: 480px) {
+  body:before {
+    background-size: contain;  /* keeps full image visible */
+  }
+}
+
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background: white;
+      color:black;
+      height: 70px;
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 999;
+
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    .nav-center a{
+        text-decoration: none;
+        color: inherit;
+
+
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      margin-right: 10px;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 9999;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
+      
+    }
+
+    .dropdownright {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 30px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 9999;
+    }
+
+
+    .dropdownright a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
+      
+    }
+
+    .explore-dishes {
+  padding: 40px 20px; /* optional */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+.explore-dishes a{
+    text-decoration: none;
+
+}
+
+.explore-dishes h2 {
+  font-size: 2rem;
+  font-family: 'libre franklin';
+  margin-bottom: 15px;
+  text-align: left;
+  text-align: center;
+}
+
+.explore-dishes .slider {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.explore-dishes .slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.explore-dishes .slider::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 5px;
+}
+
+.explore-dishes .category {
+  flex: 0 0 auto;
+  background: transparent;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 120px;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.explore-dishes .category:hover {
+  background: #ff7043;
+  color: white;
+  transform: scale(1.05);
+}
+
+.book-reserve{
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.book-reserve button {
+  padding: 35px 45px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 40px;
+  background: #e85c2f;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.book-reserve button:hover {
+  background: #e85c2f;
+  transform: scale(1.05);
+}
+
+.main-menu {
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+
+
+.main-menu h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 10px auto 0;
+  border-radius: 3px;
+}
+
+ .menu-item {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 20px;
+        align-items: center;
+        border-bottom: 1px solid #444;
+        padding: 15px 0;
+    }
+
+    .menu-item img {
+        width: 160px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .menu-details {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .menu-title {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #ff5733;
+    }
+
+    .menu-desc {
+        display: inline-block;
+        font-size: 0.9em;
+        margin: 5px 0;
+        color: #ccc;
+    }
+
+    .menu-price {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    .heading{
+        color:#ff5733;
+        
+        text-decoration-color: white;
+    }
+
+    .menu-price{
+      color: white;
+    }
+
+    .category{
+        text-decoration: none;
+        color: #e85c2f;
+    }
+
+     @media (max-width: 480px) {
+  body:before {
+    background-size: contain;  /* keeps full image visible */
+  }
+}
+
+@keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+}
+
+@media (max-width: 768px) {
+  .nav-left span, .nav-right span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-left span, .nav-right span {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-item img {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-item img {
+    max-height: 120px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  body:before {
+    background-position: center center;
+  }
+}
+
+
+
+
+
+    </style>
+
+
+  </head>
+  <body>
+    <div style="vertical-align: middle;" class="navbar">
+    <!-- Left side -->
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+      <img style="height: 40px;
+      align-items: center;
+      width: auto;" src="thumbnails/house.png"><p style="display: inline-block;
+      font-size: 3rem;
+      font-family:'abril fatface'; 
+      text-align: center;">Home</p>
+      </a>
+      <div class="dropdown" id="left-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
+      </div>
+    </div>
+
+     <!-- Center -->
+  <div class="nav-center">
+    <a href="kayykafe.html">
+      <span style="font-family: 'abril fatface';
+      font-size: 48px;
+      padding: 10px;
+      width: 50px;
+      height: 90px;
+      font-weight: bold;
+      text-align: center;" >k.</span>
+    </a>
+  </div>
+      
+      <!--right nav-->
+   <div class="nav-right">
+      <a href="index.html">
+    <img style="border-color: black;
+   border-style: solid;
+   border-radius: 30px;
+   height: 75px;
+   width: 82.7px;
+   border: none;" src="thumbnails/Screenshot 2025-09-09 183717.png" alt="The Scoop Logo">
+    </a>
+      <span style="font-size: 2rem;
+      margin-left: 0px;" class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
+      <div class="dropdownright" id="right-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="explore-dishes">
+  <h2 style="font-size: 5rem;
+  margin-bottom: 70px; " >Explore Dishes</h2>
+  <div class="slider">
+    <a href="#youaresouper"><div class="category">YOU-ARE-SOUPER</div></a>
+    <a href="#appetizers">
+    <div class="category">APPETIZERS</div>
+  </a>
+  <a href="#betweentheslices">
+    <div class="category">BETWEEN THE SLICES</div>
+    </a>
+    <a href="#burgerful">
+    <div class="category">BURGER-FUL</div>
+    </a>
+    <a href="#staycheezey">
+    <div class="category">STAY CHEEZEY</div>
+    </a>
+    <a href="#captainsfavourite">
+    <div class="category">CAPTAINS FAVOURITE</div>
+    </a>
+    <a href="#ohpastabilities">
+    <div class="category">OH PASTA-BILITIES</div>
+    </a>
+    <a href="#justwingit">
+    <div class="category">JUST WING IT</div>
+    </a>
+    <a href="#explorethemain">
+    <div class="category">EXPLORE THE MAIN</div>
+    </a>
+  <a href="#chomachoma">
+  <div class="category">CHOMACHOMA</div></a>
+  <a href="#chomaplatters">
+  <div class="category">CHOMA PLATTERS</div>
+  </a>
+  <a href="#platters">
+  <div class="category">PLATTERS</div></a>
+  <a href="#sides">
+  <div class="category">SIDES</div>
+  </a>
+  <a href="#kidsmeal">
+  <div class="category">KIDS MEAL</div></a>
+  <a href="#freshjuice">
+  <div class="category">FRESH JUICE</div></a>
+  <a href="#mojitos">
+  <div class="category">MOJITOS</div>
+  </a>
+  <a href="#extras">
+  <div class="category">EXTRAS</div>
+  </a>
+  <a href="#fruitfusion">
+  <div class="category">FRUIT FUSION</div></a>
+  
+</section>
+
+<section class="book-reserve">
+  <button>Book a Reservation</button>
+</section>
+
+<section class="main-menu">
+  <h2 style="color: white;
+  font-family: 'libre franklin';
+  font-size: 5rem;" >Main Menu</h2>
+</section>
+
+<section id="youaresouper">
+ <h1 class="heading"> YOU-ARE-SOUPER</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Creamy Mushroom Soup</div>
+            <div class="menu-desc">A blend of earthly mushrooms, chopped onions, and a touch of creamy goodness.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Seafood Chowder Soup</div>
+            <div class="menu-desc">A tantalizing combination of red snapper, prawns, calamari and squid. finely chopped onions and a touch of creamy goodness.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Chicken Corn Soup</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Mchemsho Wa samaki</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Creamy Vegetable Soup</div>
+            <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+  </section>
+
+<section id="appetizers">
+  <h1 style="margin-top: 150px;" Class="heading"> APPETIZERS </h1>
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Lollipop</div>
+            <div class="menu-desc">Tender chicken drumettes 5 pieces, expertly marinated and coated in a flavorful blend of herbs and spices.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mayo Steak Bites</div>
+            <div class="menu-desc">150g Tender steak bites coated in flour and smothered in creamy mayo.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Shrimp Dynamite</div>
+            <div class="menu-desc">100g Shrimp marinated in a blend of spices, lightly battered and fried. Served with dipping sauce</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Vegetable Pakoras</div>
+            <div class="menu-desc">Crispy and flavourful mixed vegetables fritters. Served with a dipping sauce.</div>
+            <div class="menu-price">6,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Crispy Calamari</div>
+            <div class="menu-desc">5 Rings delightfully crispy and tender calamari rings. Served with dipping sauce.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Prawns</div>
+            <div class="menu-desc">5 Pieces crispy and succulent prawns coated in a golden, crunchy batter. Served with a dipping sauce.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <section id="betweentheslices">
+      <h1 style="margin-top:150px;" class="heading">BETWEEN THE SLICES </h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Egg Sandwich</div>
+            <div class="menu-desc">Fluffy folded eggs with tomato, lettuce, cucumber and onion in between slices of bread.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken & Mayo</div>
+            <div class="menu-desc">Grilled chicken breast with mayo, lettuce, onion, tomato and cucumber between slices of bread.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Tuna Corn Mayo</div>
+            <div class="menu-desc">Tasty tuna with onion, tomato, lettuce and mayo in between slices of bread.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Club Sandwich</div>
+            <div class="menu-desc">A delicious combination of chicken breast, beef, bacon, turnover egg, tomato, lettuce, onion and cucumber in between slices of bread.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+<p style="color: white;" class="para">Served with fries and colesaw salad.</p>
+    </section>
+
+    <section id="burgerful">
+       <h1 style="margin-top: 150px;" class="heading">BURGER-FUL </h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Spicy Crispy Chicken</div>
+            <div class="menu-desc">Crispy chicken breast coated in bread crumbs, lettuce, cucumber, onion and tomato and cheese.</div>
+            <div class="menu-price">17,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Honey Mustard Chicken</div>
+            <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Beef Burger</div>
+            <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Veggie Burger</div>
+            <div class="menu-desc">Patty consists of carrot, onion, potato and zucchini coated in bread crumbs with lettuce and tomato.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Classic Burger</div>
+            <div class="menu-desc">A delicious combination of chicken and beef patties, lettuce, tomato, cucumber, caramelized onions and cheese.</div>
+            <div class="menu-price">20,000/=</div>
+        </div>
+    </div>
+
+    <P style="color: white;" class="para">Served with fries and colesaw salad</P>
+    </section>
+
+    <section id="staycheezey">
+      <h1 style="margin-top: 150px;" class="heading"> STAY CHEEEZZY</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Margarita Pizza</div>
+            <div class="menu-desc">Classic italian pizza with fresh tomato, cheese, olives and basil on a thin crust.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tikka Pizza</div>
+            <div class="menu-desc">Tender chicken tikka cubes with green pepper, tomato, onion, oregano and cheese on a thin crust.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">veggie Pizza</div>
+            <div class="menu-desc">Seasoned vegetables and cheese on a thin crust.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Beef Twist Pizza</div>
+            <div class="menu-desc">Sauteed beef strips with onion, pepper and oregano on a thin crust.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Special Pizza</div>
+            <div class="menu-desc">A delightful mix of seafood, chicken, beef, mushrooms and oregano on a thin crust.</div>
+            <div class="menu-price">20,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="captainsfavourite">
+<h1 style="margin-top:150px; " class="heading">CAPTAIN'S FAVOURITE</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Squid Nazi</div>
+            <div class="menu-desc">Cubed squid in coconut sauce, garnished with coriander leaves.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Pweza Nazi</div>
+            <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Prawns Nazi</div>
+            <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Thai Fish Curry</div>
+            <div class="menu-desc">Simmered fish fillet in a flavorful coconut sauce, thai curry paste, aromatic herbs and spices.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chilli Pepper Fish</div>
+            <div class="menu-desc">Cubed fish fillet with mixed bell peppers and sauteed vegetables.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="ohpastabilities">
+      <h1 style="margin-top:150px;" class="heading">OH PASTA-BILITIES</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Spaghetti Bolognese</div>
+            <div class="menu-desc">Spaghetti with minced meat in a tomato gravy, onion, carrot, parsley, topped with parmesan cheese.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Penne Arabiata</div>
+            <div class="menu-desc">Penne pasta in a zesty tomato sauce with chili flakes, topped with parmesan cheese.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Creamy Chicken Pasta</div>
+            <div class="menu-desc">Fusilli pasta, tender chicken breast, cajun spice, in creamy sauce, topped with parmesan cheese.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chef Style Shrimp Pasta</div>
+            <div class="menu-desc">Choice of pasta, shrimp, mushroom in white sauce, black olives, topped with parmesan cheese.</div>
+            <div class="menu-price">20,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="justwingit">
+      <h1 style="margin-top:150px;" class="heading">JUST WING IT</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Crispy Chicken Wings</div>
+            <div class="menu-desc">Chicken wings seasoned to perfection, crunchy exterior and fried to a golden perfection. served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Hot Garlic</div>
+            <div class="menu-desc">Coated in a blend of garlic, onion, fresh chili and sauce, creating a fiery taste. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Honey BBQ</div>
+            <div class="menu-desc">Blend of honey and smoky barbecue sauce, creating a perfect harmony of flavors. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Sticky Thai</div>
+            <div class="menu-desc">Glazed with a sticky blend of sesame seeds, tangy BBQ sauce, and savory sauce. Served with fries, coleslaw and dipping sauce. </div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Sweet Chilli</div>
+            <div class="menu-desc">Coated in a tantalizing sweet chilli sauce that perfec sweetness and spiceness. Served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">13,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Chilli</div>
+            <div class="menu-desc">Seasoned with a blend of garlic, onion, fresh chili, and fragrant coriander. Garnished with a sprinkle of chili flakes, served with fries, coleslaw salad and dipping sauce.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="explorethemain">
+       <h1 style="margin-top: 150px;" class="heading">EXPLORE THE MAIN</h1> 
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Asian Steak and Potatoes </div>
+            <div class="menu-desc">Tender grilled steak marinated in a flavorful blend of Asian spices and fried cubed potatoes seasoned with aromatic herbs.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with tender chicken pieces, aromatic spices and garnished with herbs.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg"> 
+        <div class="menu-details">
+            <div class="menu-title">Lamb Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with succulent pieces of lamb, aromatic spices and garnished with herbs.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Fish Biryani</div>
+            <div class="menu-desc">Fragrant basmati rice cooked with flavorful fish pieces, aromatic spices, and garnished with herbs.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Fried Rice</div>
+            <div class="menu-desc">Savory stir-fried rice with tender pieces of chicken, mixed vegetables and aromatic seasoning.</div>
+            <div class="menu-price">13,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Shrimp Fried Rice</div>
+            <div class="menu-desc">Flavoful stir-fried rice with succulent shrimp, mixed vegetables, and savory seasonings.</div>
+            <div class="menu-price">16,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Veg Fried Rice</div>
+            <div class="menu-desc">Stir-fried rice with a colorful assortment of vegetables and flavorful seasoning.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Butter Chicken</div>
+            <div class="menu-desc">Chicken pieces marinated in aromatic spices, velvety tomato and butter-based sauce , blend of indian spices with a touch of cream.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Makange</div>
+            <div class="menu-desc">Tender chicken cooked in a spicy and flavorsome tomato-based sauce with aromatic spices, served with a side of your choice.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Fish Makange</div>
+            <div class="menu-desc">Fresh fish cooked in a flavorful and tangy tomato-based sauce with aromatic spices and herbs, served with side of your choice.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Spicy Crispy Chicken</div>
+            <div class="menu-desc">Crispy and succulent chicken pieces, seasoned and fried to golden perfection, served with fries and salad.</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg">
+        <div class="menu-details">
+            <div class="menu-title">Changu Fried</div>
+            <div class="menu-desc">Crispy and seasoned fried changu fish, served with a side of your choice and tangy dipping sauce.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="chomachoma">
+       <h1 style="margin-top: 150px;" class="heading">CHOMA CHOMA</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Sekela</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Lemon</div>
+            <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Gajjar</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Peri-Peri</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
+            <div class="menu-price">12,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mishkaki Plate</div>
+            <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Nundu Plate</div>
+            <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mbuzi Choma</div>
+            <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kuku Choma</div>
+            <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Wings Choma</div>
+            <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Samaki Choma</div>
+            <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="chomaplatters">
+      <h1 style="margin-top: 150px;" class="heading">CHOMA PLATTERS</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Duo Delight</div>
+            <div class="menu-desc">Sekela 1/2, Nundu 5 sticks, Mishkaki 5 sticks served with plain fries x2 & Ndizi Mzuzu x2.</div>
+            <div class="menu-price">25,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Family Fiesta</div>
+            <div class="menu-desc">Whole Sekela, Nundu 10 sticks, Mishkaki 10 sticks served with plain fries x3 & Ndizi Mzuzu </div>
+            <div class="menu-price">45,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Choma Bonanza</div>
+            <div class="menu-desc">Whole Sekela, Nundu 8 Sticks, Mishkaki 8 Sticks, Burger or Small Pizza x2, Beef Sausage x4 served with plain fries x4 & Ndizi Mzuzu x4.</div>
+            <div class="menu-price">70,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Choma Extravaganza</div>
+            <div class="menu-desc">Whole Sekela, Nundu 8 sticks, Mishkaki 8 sticks, Burger or small pizza x2, whole Changu Choma, Firigisi, Beef Sausage x4 served with plain fries x4, Zege x1 & Ndizi Mzuzu x5.</div>
+            <div class="menu-price">90,000/=</div>
+        </div>
+    </div>
+</div>
+
+<div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Choma Wigs Platter</div>
+            <div class="menu-desc">8pcs Mouthwatering char-grilled chicken wings, with a choice of four flavors; Tandori, Lemon, Gajjar or classic choma. Served with a dipping sauce, salad and fries (2 pax).</div>
+            <div class="menu-price">25,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="platters">
+       <h1 style="margin-top: 150px;" class="heading">PLATTERS</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fisherman Platter</div>
+            <div class="menu-desc">Delightful assortment of calamari, prawns, fish fillet and grilled octopus served with sauces, salad and fries (4 pax).</div>
+            <div class="menu-price">55,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mixed Grill Platter</div>
+            <div class="menu-desc">A delicious assortment of grilled beef, chicken and fish served with sauces, salad and fries (3 pax).</div>
+            <div class="menu-price">45,000/=
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Wings Platter</div>
+            <div class="menu-desc">16 pcs Mouthwatering chicken wings, each coated in your choice of four flavors. Served with a dipping sauce, salad and fries (2 pax).</div>
+            <div class="menu-price">25,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kuku Platter</div>
+            <div class="menu-desc">Feast of crispy chicken, chicken wings, juicy chicken tenders, chicken lollipops and chicken sausages. Served with dipping sauces, salad and fries (5 pax).<br> Served with soft drinks.</div>
+            <div class="menu-price">62,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Kayy. Platter</div>
+            <div class="menu-desc">Delicious combination of crispy calamari, golden prawns, grilled octopus, fish fillet, grilled beef, and coated chicken. Served with dipping sauce, salad and fries (6 pax).</div>
+            <div class="menu-price">90,000/=</div>
+        </div>
+    </div>
+    </section>
+
+    <section id="sides">
+      <h1 style="margin-top: 150px;" class="heading">SIDES</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Plain Fries</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
+            <div class="menu-price">55,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Masala Fries</div>
+            <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
+            <div class="menu-price">45,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Cassava Fries</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
+            <div class="menu-price">25,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sweet Potato Fries</div>
+            <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
+            <div class="menu-price">62,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Zege (Chips Mayai)</div>
+            <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
+            <div class="menu-price">90,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Garlic Fries</div>
+            <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Mash Potato</div>
+            <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
+            <div class="menu-price">15,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Ndizi Mzuzu</div>
+            <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Ugali</div>
+            <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
+            <div class="menu-price">14,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chapati</div>
+            <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
+            <div class="menu-price">18,000/=</div>
+        </div>
+
+    </section>
+
+    <section id="kidsmeal">
+      <h1 style="margin-top: 150px;" class="heading">KIDS MEAL</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fish Fingers</div>
+            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tenders</div>
+            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Griled Cheese</div>
+            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sausage & Chips</div>
+            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="freshjuice">
+      <h1 style="margin-top: 150px;" class="heading">FRESH JUICE</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fish Fingers</div>
+            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tenders</div>
+            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Griled Cheese</div>
+            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sausage & Chips</div>
+            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="mojitos">
+      <h1 style="margin-top: 150px;" class="heading">MOJITOS</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fish Fingers</div>
+            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tenders</div>
+            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Griled Cheese</div>
+            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sausage & Chips</div>
+            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="extras">
+      <h1 style="margin-top: 150px;" class="heading">EXTRAS</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fish Fingers</div>
+            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tenders</div>
+            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Griled Cheese</div>
+            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sausage & Chips</div>
+            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="fruitfusion">
+      <h1 style="margin-top: 150px;" class="heading">FRUIT FUSION</h1>
+
+    <div class="menu-item">
+        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <div class="menu-details">
+            <div class="menu-title">Fish Fingers</div>
+            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Chicken Tenders</div>
+            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
+            <div class="menu-price">10,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Griled Cheese</div>
+            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
+            <div class="menu-price">8,000/=</div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div class="menu-title">Sausage & Chips</div>
+            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
+            <div class="menu-price">9,000/=</div>
+        </div>
+    </div>
+</div>
+    </section>
+
+    <section id="reviews" style="padding: 50px; background-color: transparent; text-align: center;">
+  <h2 style="font-size: 2rem; margin-bottom: 20px;
+  color: white;">What Our Customers Say</h2>
+
+  <!-- Reviews Panel -->
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
+      <p style="font-style: italic;">"The food was amazing, and the atmosphere felt so welcoming!"</p>
+      <p><strong>- Sarah M.</strong><br>
+        <span style="color:gray;">Via Google</span></p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
+      <p style="font-style: italic;">"Best restaurant experience I’ve had in a long time. Highly recommend."</p>
+      <p><strong>- James K.</strong><br>
+        <span style="color:gray;">Via Google</span></p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
+      <p style="font-style: italic;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+      <p><strong>- Aisha.</strong><br>
+        <span style="color:gray;">Via TripAdvisor</span>
+    </p>
+    </div>
+
+  </div>
+
+<!-- Leave a Review Section -->
+<section id="leave-review" style="padding: 40px; background-color: transparent; text-align: center;
+color: white;">
+  <h2 style="font-size: 1.8rem; margin-bottom: 20px;">We Value Your Feedback</h2>
+  <p style="margin-bottom: 25px;">Share your experience with us on your favorite platform:</p>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <a href="https://www.tripadvisor.com" target="_blank" 
+       style="background: #006699; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+       ⭐ Review on TripAdvisor
+    </a>
+
+    <a href="https://www.google.com/maps" target="_blank" 
+       style="background: #34A853; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+       ⭐ Review on Google
+    </a>
+
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about-us" style="padding: 60px; background-color: transparent; text-align: center;">
+  <h2 style="font-size: 2rem; margin-bottom: 20px;
+  color: white;">About Us</h2>
+
+  <div style="max-width: 800px; margin: auto; text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333;">
+
+    <h3 style="color: #c0392b; margin-bottom: 10px;">Our Story</h3>
+    <p style="color: white">
+      Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
+      to bring people together around the table. From humble beginnings, we have grown into a place where 
+      delicious meals and unforgettable moments are shared daily.
+    </p>
+
+    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;">Our Vision</h3>
+    <p style="color: white;">
+      To become the most beloved dining destination in the city, known for our exceptional food, 
+      welcoming atmosphere, and commitment to quality. We envision a space where every customer 
+      feels at home while experiencing the richness of diverse cuisines.
+    </p>
+
+    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;">Our Mission</h3>
+    <p style="color: white;">
+      Our mission is to craft flavorful dishes made with love and the finest ingredients, 
+      to serve with a smile, and to create lasting memories for every guest. 
+      We are dedicated to sustainability, community, and excellence in everything we do.
+    </p>
+
+  </div>
+</section>
+
+<section>
+<!-- Footer Section -->
+<footer style="background-color: white; color: white; padding: 30px 20px; text-align: center;
+width: 100%;">
+
+  <!-- Social Links -->
+  <div style="margin-bottom: 15px;">
+    <a href="https://www.instagram.com" target="_blank" 
+       style="color: blue; text-decoration: none; margin: 0 15px; font-weight: bold;">
+       Instagram
+    </a>
+    |
+    <a href="https://wa.me/255788296274" target="_blank" 
+       style="color: blue; text-decoration: none; margin: 0 15px; font-weight: bold;">
+       WhatsApp
+    </a>
+  </div>
+
+  <!-- Copyright -->
+  <p style="font-size: 1rem; margin-top: 10px;
+  color: black;">
+    &copy; 2010-2025 Kayy Kafe and Grill. All Rights Reserved.
+  </p>
+  <p style="color: gray;
+  font-size: 0.8rem">Designed And Developed By <a href="wa.me/255788296274" target="_blank">TechPulse</a></p>
+
+</footer>
+</section>
+
+
+
+
+
+  <script>
+    function toggleDropdown(id) {
+      const dropdown = document.getElementById(id);
+      dropdown.classList.toggle('show');
+    }
+
+    // Close dropdowns when clicking outside
+    window.onclick = function(event) {
+      if (!event.target.matches('.hamburger')) {
+        document.querySelectorAll('.dropdown').forEach(drop => {
+          drop.classList.remove('show');
+        });
+      }
+    }
+
+    
+    </script>
+  </body>
+</html>

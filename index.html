@@ -44,12 +44,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background: #222;
-      color: white;
-      height: 60px;
+      background: white;
+      color:black;
+      height: 70px;
       font-size: 1.5rem;
       position: relative;
       z-index: 999;
+
     }
 
     .nav-left, .nav-right {
@@ -63,14 +64,16 @@
       font-size: 2rem;
       cursor: pointer;
       user-select: none;
+      margin-right: 10px;
     }
 
     .dropdown {
       display: none;
       position: absolute;
       top: 40px;
+      margin-top: 20px;
       background: #333;
-      border-radius: 5px;
+      border-radius: 10px;
       overflow: hidden;
       min-width: 120px;
       color: black;
@@ -82,6 +85,30 @@
       display: block;
       padding: 10px;
       text-decoration: none;
+      color: inherit;
+      
+    }
+
+    .dropdownright {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 30px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 9999;
+    }
+
+
+    .dropdownright a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
       
     }
 
@@ -414,9 +441,17 @@ body:before {
   <div class="navbar">
     <!-- Left side -->
     <div class="nav-left">
-      <span class="hamburger" onclick="toggleDropdown('left-menu')">&#9776;</span>
+      <span style="font-size: 2rem;" class="hamburger" onclick="toggleDropdown('left-menu')">&#9776;</span>
+      <a href="kayykafe.html" style="text-decoration: none; color: inherit;">
       <span style="font-family: 'abril fatface';
-      font-size: 2rem;">kayy.</span>
+      font-size: 3rem;
+      padding: 10px;
+      width: 50px;
+      height: 90px;
+      font-weight: bold;
+      text-align: center;">k.
+      </span>
+      </a>
       <div class="dropdown" id="left-menu">
         <a href="menu">Menu</a>
         <a href="#contact">Contacts</a>
@@ -424,12 +459,24 @@ body:before {
       </div>
     </div>
 
+     <!-- Center (Home Icon) -->
+  <div class="nav-center">
+    <a href="index.html">
+      <img src="thumbnails/house.png" alt="Home" style="height: 40px; width: auto;">
+    </a>
+  </div>
+
     <!-- Right side -->
     <div class="nav-right">
-      <span style="font-family: 'abril fatface';
-      font-size: 2rem;">The Scoop</span>
-      <span class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
-      <div class="dropdown" id="right-menu">
+      <a href="index.html">
+    <img style="border-color: black;
+   
+    height: 75px;" src="thumbnails/Screenshot 2025-09-09 183717.png" alt="The Scoop Logo" 
+         style="height: 40px; width: auto;">
+  </a>
+      <span style="font-size: 2rem;
+      margin-left: 0px;" class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
+      <div class="dropdownright" id="right-menu">
         <a href="menu">Menu</a>
         <a href="#contact">Contacts</a>
         <a href="location">Location</a>
@@ -510,7 +557,7 @@ grid-template-columns: 1fr 1fr;">
 text-align: center;
 ">
   <span style="font-family: 'abril fatface';
-  font-size: 1.4rem;">The Scoop</span><br>
+  font-size: 1.4rem;">THE SCOOP</span><br>
     <a href="https://instagram.com/thescoop.tz" >Instagram</a> | <a href="https://wa.me/255788296274" target="_blank">WhatsApp</a>
 </p>
 </div>
