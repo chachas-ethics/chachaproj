@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    
     <style>
     html{
       scroll-behavior: smooth;
+      
+    }
+
+    html, body {
+        margin: 0;
     }
 
     body {
@@ -11,6 +17,9 @@
       font-family: 'montserrat classic', sans-serif;
      background-color:  rgb(11, 11, 46);
      font-size: 2rem;
+     width: 100%;
+     height: 100%;
+     
     }
 
     *, *::before, *::after {
@@ -20,8 +29,8 @@
      body:before {
        content: "";
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
    url('thumbnails/kayyback.jpg');
   background-position: center;
@@ -49,6 +58,7 @@
       font-size: 1.5rem;
       position: relative;
       z-index: 999;
+      width: 100%;
 
     }
 
@@ -234,15 +244,17 @@
     }
 
     .menu-item img {
-        width: 160px;
-        height: 150px;
+        width: 200px;
+        height: 190px;
         object-fit: cover;
         border-radius: 8px;
+        margin-right: 50px;
     }
 
     .menu-details {
         flex-direction: column;
         margin-bottom: 20px;
+        margin-left: 50px;
     }
 
     .menu-title {
@@ -320,11 +332,45 @@
   }
 }
 
+.map-embed {
+  width: 100%;
+  height: 450px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
 
+.map-embed iframe {
+  margin-left: 20px;
+  display: block;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 70px;
+}
 
+.reviews-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;       /* enables horizontal scroll */
+  scroll-snap-type: x mandatory; /* snap effect */
+  padding: 20px;
+}
 
+.review-card {
+  flex: 0 0 300px;        /* fixed card width */
+  background: white;
+  padding: 20px;
+  margin-right: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none;      
+}
 
-    </style>
+</style>
 
 
   </head>
@@ -1402,7 +1448,7 @@
 </div>
     </section>
 
-    <section id="fruitfusion">
+    <section style="margin-bottom: 50px;" id="fruitfusion">
       <h1 style="margin-top: 150px;" class="heading">FRUIT FUSION</h1>
 
     <div class="menu-item">
@@ -1443,57 +1489,73 @@
 </div>
     </section>
 
-    <section id="reviews" style="padding: 50px; background-color: transparent; text-align: center;">
-  <h2 style="font-size: 2rem; margin-bottom: 20px;
+    <section id="reviews" style="background-color: transparent; text-align: center;
+    margin-top: 50px;">
+  <h2 style="font-size: 4rem; margin-bottom: 50px;
+  margin-top: 90px;
   color: white;">What Our Customers Say</h2>
 
   <!-- Reviews Panel -->
-  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
-      <p style="font-style: italic;">"The food was amazing, and the atmosphere felt so welcoming!"</p>
-      <p><strong>- Sarah M.</strong><br>
-        <span style="color:gray;">Via Google</span></p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
-      <p style="font-style: italic;">"Best restaurant experience I’ve had in a long time. Highly recommend."</p>
-      <p><strong>- James K.</strong><br>
-        <span style="color:gray;">Via Google</span></p>
-    </div>
-
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 300px;">
-      <p style="font-style: italic;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
-      <p><strong>- Aisha.</strong><br>
-        <span style="color:gray;">Via TripAdvisor</span>
-    </p>
-    </div>
-
+  <div class="reviews-slider">
+  <div class="review-card">
+    <p>"The food was amazing, and the atmosphere felt so welcoming!"</p>
+    <p><strong>- Sarah M.</strong><br><span>Via Google</span></p>
   </div>
 
+  <div class="review-card">
+    <p>"Best restaurant experience I’ve had in a long time. Highly recommend."</p>
+    <p><strong>- James K.</strong><br><span>Via Google</span></p>
+  </div>
+
+  <div class="review-card">
+    <p>"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p><strong>- Aisha</strong><br><span>Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p>"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p><strong>- Aisha</strong><br><span>Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p>"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p><strong>- Aisha</strong><br><span>Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p>"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p><strong>- Aisha</strong><br><span>Via TripAdvisor</span></p>
+  </div>
+</div>
+  </section>
+  </section>
+<section>
 <!-- Leave a Review Section -->
 <section id="leave-review" style="padding: 40px; background-color: transparent; text-align: center;
 color: white;">
-  <h2 style="font-size: 1.8rem; margin-bottom: 20px;">We Value Your Feedback</h2>
+  <h2 style="font-size: 4rem; margin-bottom: 20px;
+  margin-top: 50px;">We Value Your Feedback</h2>
   <p style="margin-bottom: 25px;">Share your experience with us on your favorite platform:</p>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <a href="https://www.tripadvisor.com" target="_blank" 
-       style="background: #006699; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+       style="background: #006699; color: white; padding: 50px 25px; border-radius: 30px;
+        text-decoration: none; font-weight: bold;">
        ⭐ Review on TripAdvisor
     </a>
 
     <a href="https://www.google.com/maps" target="_blank" 
-       style="background: #34A853; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+       style="background: #34A853; color: white; padding: 50px 25px; border-radius: 30px; text-decoration: none; font-weight: bold;">
        ⭐ Review on Google
     </a>
 
   </div>
 </section>
-
+<section>
 <!-- About Us Section -->
-<section id="about-us" style="padding: 60px; background-color: transparent; text-align: center;">
+<section id="about-us" style=" background-color: transparent; text-align: center;
+margin-bottom: 50px;">
   <h2 style="font-size: 2rem; margin-bottom: 20px;
   color: white;">About Us</h2>
 
@@ -1523,6 +1585,27 @@ color: white;">
   </div>
 </section>
 
+
+<section style="width: 100%;" >
+    <!-- Responsive Google Maps iframe -->
+     <p style="color: white;
+     text-align: center;
+     margin-top: 80px;
+     font-size: 4rem;
+     font-weight: bold;
+     margin-bottom: 10px;">Come Dine With Us</p>
+     
+<div id="location" class="map-embed">
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.3829003729966!2d39.2820387!3d-6.771766399999988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4d73c0348f51%3A0xc9c045987730e0f3!2sKayy%20Kafe%20%26%20Grill%20-%20Coco%20Beach!5e1!3m2!1sen!2stz!4v1757552159386!5m2!1sen!2stz"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+</section>
+
+
+
 <section>
 <!-- Footer Section -->
 <footer style="background-color: white; color: white; padding: 30px 20px; text-align: center;
@@ -1551,9 +1634,6 @@ width: 100%;">
 
 </footer>
 </section>
-
-
-
 
 
   <script>
