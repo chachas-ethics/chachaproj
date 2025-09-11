@@ -146,11 +146,13 @@
   text-align: center;
   text-decoration: none;
     position: sticky;
+    background: black;
     top: 30px;
     width: 100%;
     z-index: 999;
-    background: black;
+   
 }
+
 
 
 .explore-dishes a{
@@ -201,6 +203,10 @@
   background: #ff7043;
   color: white;
   transform: scale(1.05);
+}
+
+.slider{
+    width: 100%;
 }
 
 
@@ -297,6 +303,7 @@
     .category{
         text-decoration: none;
         color: #e85c2f;
+        width: 100%;
     }
 
      @media (max-width: 480px) {
@@ -437,8 +444,9 @@
 
   <section class="explore-dishes">
   <h2 style="font-size: 5rem;
-  margin-bottom: 70px; " >Explore Dishes</h2>
-  <div class="slider">
+  margin-bottom: 70px;
+  width: 100%; " >Explore Dishes</h2>
+  <div style="width: 100%;" class="slider">
     <a href="#youaresouper"><div class="category">YOU-ARE-SOUPER</div></a>
     <a href="#appetizers">
     <div class="category">APPETIZERS</div>
@@ -1199,7 +1207,7 @@
     </div>
     </section>
 
-    <section id="sides">
+    <section style="scroll-margin-top: 480px;" id="sides">
       <h1 style="margin-top: 150px;" class="heading">SIDES</h1>
 
     <div class="menu-item">
