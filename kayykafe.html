@@ -56,8 +56,9 @@
       color:black;
       height: 70px;
       font-size: 1.5rem;
-      position: relative;
-      z-index: 999;
+      top: 0;
+      position: sticky;
+      z-index: 1000;
       width: 100%;
 
     }
@@ -144,7 +145,13 @@
   color: white;
   text-align: center;
   text-decoration: none;
+    position: sticky;
+    top: 30px;
+    width: 100%;
+    z-index: 999;
+    background: black;
 }
+
 
 .explore-dishes a{
     text-decoration: none;
@@ -195,6 +202,8 @@
   color: white;
   transform: scale(1.05);
 }
+
+
 
 .book-reserve{
   padding: 60px 20px;
