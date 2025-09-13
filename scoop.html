@@ -1,522 +1,1097 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE SCOOP COCO</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    @media screen and (max-width: 480px) {
-      body {
-        font-size: 14px;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-  body {
-    background-attachment: scroll;
-  }
-}
-
-    
-    @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-    :root {
-      --mint: #cfe8dc;
-      --cream: #fffdf5;
-      --text-dark: #2e2e2e;
-      --accent: #88bfa6;
-      --border: #e3e3e3;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    
-
-    body {
-      background: var(--cream);
-      color: var(--text-dark);
-      font-family: 'Inter', sans-serif;
-    }
-
-    nav {
-  background-color: rgba(255, 253, 245, 0.7);
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem 0;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    header {
-      background: rgba(207, 232, 220, 0.7);
-      padding: 4rem 2rem 2rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: white;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: white;
-    ;
-    }
-
-    .hero {
-      padding: 3rem 2rem;
-      text-align: center;
-      color: white;
-    }
-
-    .hero h2 {
-      font-size: 2.75rem;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 1rem;
-      color: white;
-    }
-
-    .hero p {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      color: white;
-
-    }
-
-    .hero a {
-      background: var(--accent);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .hero a:hover {
-      background: #6cae94;
-    }
-
-    .flavors {
-      padding: 4rem 2rem;
-      background: rgba(207, 232, 220, 0.7) ;
-      text-align: center;
+<html>
+  <head>
+    <style>
+         html{
+      scroll-behavior: smooth;
       
     }
 
-    .flavors h3 {
-      font-size: 2.25rem;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 2rem;
-    }
-
-    .flavor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-    }
-
-    .flavor-item {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-      margin-top: 30px;
+    body {
+     margin: 0px;
+      font-family: 'montserrat classic', sans-serif;
+     background-color:  rgb(11, 11, 46);
+     width: 100%;
+     height: 100%;
      
     }
 
-    .flavor-item:hover {
-      transform: translateY(-5px);
+    *, *::before, *::after {
+      box-sizing: inherit;
     }
 
-    .flavor-item h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .flavor-item p {
-      font-size: 0.95rem;
-      color: #555;
-
-
-    }
-
-    footer {
-      background: rgba(255, 255, 255, 0.8);
-      padding: 2rem;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid var(--border);
-    }
-    
-    .logo{
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .icepara{
-      display: block;
-      text-align: center;
-      font-weight: bold;
-      font-size: 30px;
-      color: white;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color:#fffdf5; ;
-      font-family: sans-serif;
-    }
-    footer .socials a{
-      color:#333;
-      text-decoration: none;
-      margin: 0 8px;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    footer .socials a:hover{
-      color: #ff6b6b;
-    }
-
-    .flavor-ite {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 14px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease;
-      align-items: center;
-      margin-top: 30px;
-    }
-
-    .flavor-ite:hover {
-      transform: translateY(-5px);
-    }
-
-
-  #floating-cart {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: black;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    z-index: 999;
-    transition: transform 0.3s;
-  }
-
-  #floating-cart.highlight {
-    transform: scale(1.1);
-    background-color: darkred;
-  }
-
-  body { 
-    background-size: cover;
-  background-position:  center;
-  background-attachment: fixed;
-  color: var(--text-dark);
-  font-family: 'Inter', sans-serif;
-  animation: fadeIn 0.6s ease-in forwards;
-  object-position: top;
-  animation: fadeIn 0.6s ease-in forwards;
-}
-
-body:before {
-  content: "";
+     body:before {
+       content: "";
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.5)),
-   url('thumbnails/the scoop dp.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)),
+   url('thumbnails/the\ scoop\ dp.jpg');
+  background-position: center;
   background-size: cover;
-  background-position: center center;
   background-repeat: no-repeat;
-  filter: blur(5px);
+  filter: blur(4px);
   z-index: -1; 
+  margin: 0px;
+  margin-right: 0px;
+    }
+
+    @media (max-width: 480px) {
+  body:before {
+    background-size: contain;  /* keeps full image visible */
+  }
 }
 
 
+.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 85px 30px;
+      background: white;
+      color:black;
+      height: 70px;
+      font-size: 1.5rem;
+      top: 0;
+      position: sticky;
+      z-index: 1000;
+      width: 100%;
 
-  #cart-panel {
-    position: fixed;
-    bottom: 70px;
-    right: 20px;
-    width: 300px;
-    max-height: 400px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 10px;
-    display: none;
-    z-index: 999;
-  }
+    }
 
-  #cart-panel h3 {
-    margin-top: 0;
-  }
+    .navbar a{
+        background: transparent;
+        color: inherit;
+        text-decoration: none;
+    }
 
-  .cart-item {
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
 
-  .cart-item button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
+    
 
-  #cart-panel button {
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    width: 100%;
-    margin-top: 10px;
-  }
-  
+    .nav-center a{
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
 
-.inblock{
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-  border-radius: 12px;
 
-}
+    }
 
-.inside{
-  width: 100%;
-  
-}
-</style>
+    
 
-</style>
-</head>
-<body>
- <nav>
-    <a href="#">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#contact">Contact</a>
-  </nav>
+    .hamburger {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      margin-right: 10px;
+    }
 
-  <section>
-    <img class="logo" src="thumbnails/the scoop logo.jpg">
-    <p class="icepara">Ice Cream & Desserts Café</p>
-</section>
-  
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 1000;
+    }
 
-  <section class="hero">
-    <h2>Welcome to The Scoop!</h2>
-    <p>Indulge in Sweet Bliss at The Scoop!
-Discover over 12 irresistible ice cream flavors, handcrafted to perfection, alongside freshly brewed teas and a full range of hot and cold coffee beverages. Whether you're craving creamy waffles, crispy churros, or just a cozy cup of cappuccino, we’ve got the perfect treat for every mood. Step in, cool down, warm up, and treat yourself — dessert has never been this good.</p>
-    <a href="#menu">Explore Menu</a>
-  </section>
-
-  <section class="flavors" id="menu">
-    <h3 >Our Menu</h3>
-
-    <a href="icecream.html" style="text-decoration: none; color: inherit;">
-  <div class="flavor-item">
-    <img class="inside" src="thumbnails/ICECREAM.jpg">
-    <h4>Icecream</h4>
-    <p>Explore Over 12 Homemade Icecream Flavors</p>
-  </div>
-</a>
-     <a href="coffee.html" style="text-decoration: none; color: inherit;">
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
       
-      <div class="flavor-item">
-         <img class="inside" src="thumbnails/coffee.jpg">
-        <h4>Coffee</h4>
-        <p>Try Our Unmatched Coffee Products Served In Both Hot And Cold</p>
-      </div>
-    </a>
-      <a href="cakesbrownies.html" style="text-decoration: none; color: inherit;">
-      <div class="flavor-item">
-         <img class="inside" src="thumbnails/cakeback.jpg">
-        <h4>Cake Slices And Brownies</h4>
-        <p>Get To Taste Our Cakes, Or Quench Your Thirst With Our Cupcakes Or Brownies</p>
-      </div>
-    </a>
-    <a href="desserts.html" style="text-decoration: none; color: inherit;">
-      <div class="flavor-item">
-         <img class="inside" src="thumbnails/affogato.webp">
-        <h4>Desserts</h4>
-        <p>Buttery caramel with a hint of sea salt for balance.</p>
-      </div>
-    </a>
-    <a href="tea.html" style="text-decoration: none; color: inherit;">
-      <div class="flavor-item">
-         <img class="inside" src="thumbnails/tea.jpg">
-        <h4>Tea</h4>
-        <p>Taste Our Delicious Tea Varieties Served In Cold And Hot</p>
-      </div>
-    </a>
+    }
 
-    <a href="shakes.html" style="text-decoration: none; color: inherit;">
-      <div class="flavor-item">
-         <img class="inside" src="thumbnails/milkshakes.jpg">
-        <h4>Milkshakes</h4>
-        <p>Sip Our Thick, Creamy And Blended To Perfection Milkshakes</p>
+    .dropdownright {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 30px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+
+    }
+
+
+    .dropdownright a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
+      
+    }
+
+    .explore-dishes {
+  background: #96ecb0; /* optional */
+  width: 100%;
+  padding-top: 20px;
+  padding-right: 40px;
+  padding-left: 20px;
+  position: sticky;
+  z-index: 999;
+  text-decoration: none;
+}
+
+.explore-dishes a{
+  text-decoration: none;
+}
+
+.explore-dishes h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-align: left;
+  text-align: center;
+  color: white;
+}
+
+.explore-dishes .slider {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scroll-behavior: smooth;
+  padding-bottom: 40px;
+  
+}
+
+.explore-dishes .slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.explore-dishes .slider::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 5px;
+}
+
+.explore-dishes .category {
+  flex: 0 0 auto;
+  background: transparent;
+  color: white;
+  margin: 20px;
+  font-size: 2rem;
+  border: none;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  min-width: 120px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.explore-dishes .category:hover {
+  background: #ff7043;
+  color: white;
+  transform: scale(1.05);
+
+}
+
+
+    </style>
+
+  </head>
+  <body>
+<div style="vertical-align: middle;" class="navbar">
+    <!-- Left side -->
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+      <img style="height: 90px;
+      align-items: center;
+      width: auto;" src="thumbnails/house.png"><p style="display: inline-block;
+      font-size: 5rem;
+      font-family:'abril fatface'; 
+      text-align: center;">Home</p>
+      </a>
+      <div class="dropdown" id="left-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
       </div>
+    </div>
+
+     <!-- Center -->
+      <div class="nav-right">
+      <a href="index.html">
+    <img style="border-color: black;
+   border-style: solid;
+   border-radius: 30px;
+   height: 170px;
+   width: 170px;
+   border: none;" src="thumbnails/Screenshot 2025-09-09 183717.png" alt="The Scoop Logo">
     </a>
     </div>
-    </section>
-  </section>
-  <footer id="contact">
-  <div class="socials">
-   <a href="https://www.instagram.com/thescoop.tz" target="_blank">Instagram</a>
-    |
-  <a href="https://wa.me/255788801010" target="_blank">WhatsApp</a> </div>
-    <p>
-      &copy; 2025. THE SCOOP COCO. 
-    </p>
-    <p style="margin-top: 20px;" class="designer"> 
-  Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">CEETECH</a>
-</p>
-  </footer>
+ 
+      
+      <!--right nav-->
+   <div class="nav-right">
+      <a href="kayykafe.html">
+    <span style="font-family: 'abril fatface';
+      font-size: 9rem;
+      padding: 10px;
+      width: 50px;
+      height: 90px;
+      font-weight: bold;
+      text-align: center;">k.</span>
+    </a>
+      <span style="font-size: 5rem;
+      margin-left: 0px;" class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
+      <div class="dropdownright" id="right-menu">
+        <a href="menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="location">Location</a>
+      </div>
+    </div>
+  </div>
 
-  <!-- Floating Cart -->
-<div id="floating-cart" onclick="toggleCart()">
-  🛒 <span id="cart-count">0</span>
-</div>
+  <section class="explore-dishes">
+  <h2>Explore Menu</h2>
+  <div class="slider">
+    <a href="#ifyoulikeithot">
+    <div class="category">IF YOU LIKE IT HOT</div></a>
+    <a href="#kahawabaridi">
+    <div class="category">KAHAWA BARIDI</div></a>
+    <a href="#icedtea">
+    <div class="category">ICED TEA</div></a>
+    <a href="#classicpots">
+    <div class="category">CLASSIC POTS</div></a>
+    <a href="#icecreamflavors">
+    <div class="category">ICE CREAM FLAVOURS</div></a>
+    <a href="#chocolateshakes">
+    <div class="category">CHOCOLATE SHAKES</div></a>
+    <a href="#specialtyshakes">
+    <div class="category">SPECIALTY SHAKES</div></a>
+    <a href="#thesweetspot">
+    <div class="category">THE SWEET SPOT</div></a>
+    <a href="#bakedslices">
+    <div class="category">BAKED SLICES</div></a>
+  </div>
+</section>
 
-<!-- Hidden Cart Panel -->
-<div id="cart-panel">
-  <h3>Your Cart</h3>
-  <div id="cart-items"></div>
-  <button onclick="placeOrder()">Place Order</button>
-</div>
-<script>
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+<section id="ifyoulikeithot" style="scroll-margin-top: 190px;
+padding: 40px; background: transparent;
+width: 98%;
+font-size: 1.7rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
 
-  function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    updateCartCount();
-    renderCartPanel();
-  }
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
-  function updateCartCount() {
-    document.getElementById('cart-count').innerText = cart.length;
-  }
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/green tea.jpg" alt="green Tea" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Green Tea</h3>
+      <p style="color: #555;">3,000/=</p>
+    </div>
 
-  function highlightCart() {
-    const cartIcon = document.getElementById('floating-cart');
-    cartIcon.classList.add('highlight');
-    setTimeout(() => {
-      cartIcon.classList.remove('highlight');
-    }, 500);
-  }
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/black tea.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Black Tea</h3>
+      <p style="color: #555;">3,000/=</p>
+    </div>
 
-  function toggleCart() {
-  const panel = document.getElementById('cart-panel');
-  const isHidden = window.getComputedStyle(panel).display === 'none';
-  panel.style.display = isHidden ? 'block' : 'none';
-}
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/lemongrass tea.webp" alt="Lemongrass Tea" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Lemongrass</h3>
+      <p style="color: #555;">4,000/=</p>
+    </div>
 
-  function renderCartPanel() {
-    const container = document.getElementById('cart-items');
-    container.innerHTML = '';
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Ginger</h3>
+      <p style="color: #555;">4,000/=</p>
+    </div>
 
-    if (cart.length === 0) {
-      container.innerHTML = '<p>Your cart is empty.</p>';
-      return;
-    }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/americano.jpg" alt="Americano" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Americano</h3>
+      <p style="color: #555;">4,000/=</p>
+    </div>
 
-    cart.forEach((item, index) => {
-      const div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = `
-        <strong>${item.name}</strong> - $${item.price}<br>
-        <button onclick="removeItem(${index})">Remove</button>
-      `;
-      container.appendChild(div);
-    });
-  }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/cappuccino.jpg" alt="cappuccino" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Cappuccino</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
 
-  function removeItem(index) {
-    cart.splice(index, 1);
-    saveCart();
-  }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/flat white.avif" alt="flat white" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Flat White</h3>
+      <p style="color: #555;">5,000/=</p>
+    </div>
 
-  function placeOrder() {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/cafe latte.webp" alt="cafe latte" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Cafe Latte</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
 
-    const message = cart.map((item, i) => `${i + 1}. ${item.name} - $${item.price}`).join('\n');
-    const phone = '255788801010'; // replace with your WhatsApp number
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent("Order:\n" + message)}`;
-    window.location.href = url;
-  }
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/mocha.jpg" alt="Mocha" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Mocha</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
 
-  // Handle order-now buttons (this part connects to buttons)
-  document.querySelectorAll('.order-now').forEach(button => {
-    button.addEventListener('click', () => {
-      const item = {
-        id: button.dataset.id,
-        name: button.dataset.name,
-        price: button.dataset.price,
-        image: button.dataset.image || ''
-      };
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/single espresso.jpg" alt="Espresso" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Single Espresso</h3>
+      <p style="color: #555;">4,000/=</p>
+    </div>
 
-      cart.push(item);
-      saveCart();
-      highlightCart();
-      alert(`${item.name} added to your cart!`);
-    });
-  });
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/double espresso.jpg" alt="espresso" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Double Espresso</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
 
-  // On page load
-  updateCartCount();
-  renderCartPanel();
-</script>
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/hot chocolate.webp" alt="hot chocolate" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Hot Chocolate</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
 
-</body>
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/milk tea.jpg" alt="milk tea" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Milk Tea <br> (Karak, Masala, English)</h3>
+      <p style="color: #555;">4,000/=</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="kahawabaridi" style="scroll-margin-top: 200px;padding: 40px; background: transparent;
+width: 98%;
+font-size: 1.7rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">KAHAWA BARIDI</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/Iced mocha.jpg" alt="iced mocha" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Iced Mocha</h3>
+      <p style="color: #555;">9,000/=</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/iced americano.png" alt="iced americano" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Iced Americano</h3>
+      <p style="color: #555;">6,000/=</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/iced latte.jpg" alt="iced latte" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Iced Latte <br> (Spanish, Caramel, Vanilla) + 1,000/=</h3>
+      <p style="color: #555;">8,000/=</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/iced macchiato.jpg" alt="iced macchiato" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Iced Macchiato</h3>
+      <p style="color: #555;">9,000/=</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/frappe.avif" alt="frapuccino" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Frapuccino</h3>
+      <p style="color: #555;">10,000/=</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="thumbnails/affogato.webp" alt="affogato" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Affogato <br> (Flavoured Ice Cream) + 2,000/=</h3>
+      <p style="color: #555;">10,000/=</p>
+    </div>
+
+   
+
+  </div>
+</section>
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+<section style="padding: 40px; background: transparent;
+width: 98%;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  color: white;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Grilled Chicken</h3>
+      <p style="color: #555;">Juicy grilled chicken served with veggies.</p>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Pasta Alfredo</h3>
+      <p style="color: #555;">Creamy Alfredo pasta topped with cheese.</p>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+      <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
+      <h3 style="margin: 10px 0;">Burger Special</h3>
+      <p style="color: #555;">Beef burger with fries and sauce.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+  </body>
 </html>
+
+
+
+
+
+
+
 
