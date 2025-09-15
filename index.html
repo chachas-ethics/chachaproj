@@ -58,7 +58,7 @@
 
   <script>
     // Duration of loader in milliseconds
-    const LOADER_DURATION = 1800; // change this value to control how long the dots show
+    const LOADER_DURATION = 1690; // change this value to control how long the dots show
 
     const stage = document.getElementById('stage');
     const loader = document.getElementById('loader');
@@ -71,13 +71,7 @@
 });
 
 
-    // Optional: allow users to skip the loader by clicking anywhere
-    stage.addEventListener('click', () => {
-      if (!stage.classList.contains('loaded')) {
-        stage.classList.add('loaded');
-        loader.setAttribute('aria-hidden', 'true');
-      }
-    });
+    
   </script>
 </body>
 </html>
