@@ -25,7 +25,7 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)),
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
    url('thumbnails/the\ scoop\ dp.jpg');
   background-position: center;
   background-size: cover;
@@ -116,12 +116,16 @@
     .dropdownright {
       display: none;
       position: absolute;
-      top: 40px;
+      right: 0;
+      top: 100px;
+      width: 240px;
+      font-size: 3rem;
       margin-top: 30px;
-      background: #333;
+      padding: 13px;
+      margin-top: 30px;
+      background: white;
       border-radius: 10px;
       overflow: hidden;
-      min-width: 120px;
       color: black;
       background-color: white;
 
@@ -132,31 +136,43 @@
       display: block;
       padding: 10px;
       text-decoration: none;
+      margin-bottom: 20px;
       color: inherit;
       
     }
 
+    
+
     .explore-dishes {
-  background: #96ecb0; /* optional */
+  padding-top: 40px; /* optional */
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 40px;
   width: 100%;
-  padding-top: 20px;
-  padding-right: 40px;
-  padding-left: 20px;
-  position: sticky;
-  z-index: 999;
+  color: white;
+  text-align: center;
   text-decoration: none;
+    position: sticky;
+    background: rgb(101, 205, 160);
+    top: 30px;
+    z-index: 999;
+   
 }
 
+
+
 .explore-dishes a{
-  text-decoration: none;
+    text-decoration: none;
+
 }
 
 .explore-dishes h2 {
-  font-size: 3rem;
-  margin-bottom: 50px;
+  font-size: 5rem;
+  font-family: 'libre franklin';
+  margin-bottom: 30px;
+  margin-top: 15px;
   text-align: left;
   text-align: center;
-  color: white;
 }
 
 .explore-dishes .slider {
@@ -165,8 +181,7 @@
   overflow-x: auto;
   scrollbar-width: thin; /* Firefox */
   scroll-behavior: smooth;
-  padding-bottom: 40px;
-  
+  padding-bottom: 10px;
 }
 
 .explore-dishes .slider::-webkit-scrollbar {
@@ -174,32 +189,76 @@
 }
 
 .explore-dishes .slider::-webkit-scrollbar-thumb {
-  background: #bbb;
+  background: transparent;
   border-radius: 5px;
 }
 
 .explore-dishes .category {
   flex: 0 0 auto;
   background: transparent;
-  color: white;
-  margin: 20px;
-  font-size: 2rem;
-  border: none;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  border-radius: 12px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 50px;
   min-width: 120px;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  margin-right: 100px;
+    color: white;
+    border: none;
+    font-size: 2rem;
 }
 
 .explore-dishes .category:hover {
-  background: #ff7043;
   color: white;
-  transform: scale(1.05);
-
+  
 }
+
+.slider{
+    width: 100%;
+}
+
+
+.reviews-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;       /* enables horizontal scroll */
+  scroll-snap-type: x mandatory; /* snap effect */
+  padding: 20px;
+}
+
+.review-card {
+  flex: 0 0 300px;        /* fixed card width */
+  background: white;
+  padding: 20px;
+  margin-right: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none;      
+}
+
+.brand{
+    text-decoration: none;
+}
+
+.brand a{
+    text-decoration: none;
+    color: blue;
+}
+
+
+.image-grid img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover; /* keeps quality */
+  border-radius: 10px;
+}
+
 
 
     </style>
@@ -218,9 +277,9 @@
       text-align: center;">Home</p>
       </a>
       <div class="dropdown" id="left-menu">
-        <a href="menu">Menu</a>
+        <a href="#menu">Menu</a>
         <a href="#contact">Contacts</a>
-        <a href="location">Location</a>
+        <a href="#location">Location</a>
       </div>
     </div>
 
@@ -251,15 +310,15 @@
       <span style="font-size: 5rem;
       margin-left: 0px;" class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
       <div class="dropdownright" id="right-menu">
-        <a href="menu">Menu</a>
-        <a href="#contact">Contacts</a>
-        <a href="location">Location</a>
+        <a href="kayykafe.html#menu">Menu</a>
+        <a href="kayykafe.html#contacts">Contacts</a>
+        <a href="kayykafe.html#location">Location</a>
       </div>
     </div>
   </div>
 
   <section id="menu" class="explore-dishes">
-  <h2>Explore Menu</h2>
+  <h2 id="menu">Explore Menu</h2>
   <div class="slider">
     <a href="#ifyoulikeithot">
     <div class="category">IF YOU LIKE IT HOT</div></a>
@@ -282,92 +341,93 @@
   </div>
 </section>
 
-<section id="ifyoulikeithot" style="scroll-margin-top: 190px;
+<section class="image-grid" id="ifyoulikeithot" style="scroll-margin-top: 500px;
 padding: 40px; background: transparent;
 width: 98%;
 font-size: 2rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">IF YOU LIKE IT HOT</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/green tea.jpg" alt="green Tea" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Green Tea</h3>
       <p style="color: #555;">3,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/black tea.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Black Tea</h3>
       <p style="color: #555;">3,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lemongrass tea.webp" alt="Lemongrass Tea" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Lemongrass</h3>
       <p style="color: #555;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Ginger</h3>
       <p style="color: #555;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/americano.jpg" alt="Americano" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Americano</h3>
       <p style="color: #555;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/cappuccino.jpg" alt="cappuccino" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Cappuccino</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/flat white.avif" alt="flat white" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Flat White</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/cafe latte.webp" alt="cafe latte" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Cafe Latte</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/mocha.jpg" alt="Mocha" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mocha</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/single espresso.jpg" alt="Espresso" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Single Espresso</h3>
       <p style="color: #555;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/double espresso.jpg" alt="espresso" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Double Espresso</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/hot chocolate.webp" alt="hot chocolate" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Hot Chocolate</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/milk tea.jpg" alt="milk tea" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Milk Tea <br> (Karak, Masala, English)</h3>
       <p style="color: #555;">4,000/=</p>
@@ -376,49 +436,50 @@ margin-top: 100px;">
   </div>
 </section>
 
-<section id="kahawabaridi" style="scroll-margin-top: 200px;padding: 40px; background: transparent;
+<section class="image-grid" id="kahawabaridi" style="scroll-margin-top: 500px;padding: 40px; background: transparent;
 width: 98%;
 font-size: 2rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">KAHAWA BARIDI</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/Iced mocha.jpg" alt="iced mocha" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Mocha</h3>
       <p style="color: #555;">9,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/iced americano.png" alt="iced americano" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Americano</h3>
       <p style="color: #555;">6,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/iced latte.jpg" alt="iced latte" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Latte <br> (Spanish, Caramel, Vanilla) + 1,000/=</h3>
       <p style="color: #555;">8,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/iced macchiato.jpg" alt="iced macchiato" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Macchiato</h3>
       <p style="color: #555;">9,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/frappe.avif" alt="frapuccino" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Frapuccino</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/affogato.webp" alt="affogato" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Affogato <br> (Flavoured Ice Cream) + 2,000/=</h3>
       <p style="color: #555;">10,000/=</p>
@@ -430,68 +491,69 @@ margin-top: 100px;">
 </section>
 
 
-<section id="icedtea" style="padding: 40px; background: transparent;
+<section class="image-grid" id="icedtea" style="padding: 40px; background: transparent;
 width: 98%;
 font-size: 2rem;
 margin-top: 100px;
-scroll-margin-top: 200px;">
+scroll-margin-top: 500px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">ICED TEA</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Classic Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lemon iced tea.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Lemon Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Watermelon Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/snickers shak.jpg" alt="snickers shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Peach Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Strawberry Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Kiwi Iced Tea </h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/espresso choc shak.jpg" alt="espresso shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mango Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Blueberry Iced Tea</h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Milk Iced Tea </h3>
       <p style="color: #555;">9,000/=</p>
@@ -501,76 +563,77 @@ scroll-margin-top: 200px;">
 </section>
 
 
-<section id="classicpots" style="padding: 40px; background: transparent;
-scroll-margin-top: 200px;
+<section class="image-grid" id="classicpots" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
 width: 98%;
 font-size: 2rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">CLASSIC POTS</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Black Tea</h3>
       <p style="color: #555;">9,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lemon iced tea.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mint</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Green Tea</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/snickers shak.jpg" alt="snickers shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Morrocan Tea</h3>
       <p style="color: #555;">11,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Lemongrass</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Americano</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/espresso choc shak.jpg" alt="espresso shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Americano</h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Milk Tea<br>(Karak, Masala, English)
       </h3>
       <p style="color: #555;">7,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Tea <br> (Flavoured +2,000/=<br> Milk +3,000/=)</span></h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
     
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Iced Latte <br> (Spanish, Caramel, Chocolate, Vanilla) +1000/= </h3>
       <p style="color: #555;">10,000/=</p>
@@ -579,122 +642,123 @@ margin-top: 100px;">
   </div>
 </section>
 
-<section id="icecreamflavors" style="padding: 40px; background: transparent;
-scroll-margin-top: 200px;
+<section class="image-grid" class="image-grid" id="icecreamflavors" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
 width: 98%;
 margin-top: 100px;
-font-size: 2rem;">
+font-size: 2.5rem;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">ICE CREAM FLAVOURS</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Vanilla</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Chocolate</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Strawberry</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Pistachio Dream</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Peanut Butter Brownie</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Toffee</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mocha</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Espresso-Choco-Chip</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Pina Colada</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Hibiscus And Tamarind</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Oreo Delight</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Verry Berry</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mango Passion</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Honey And Dates</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lotus icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Just Lotus</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Lemongrass</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Saffron And Almond</h3>
       <p style="color: #555;">5,000/=</p>
     </div>
 
-     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for icecream.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Toppings <br> (Nuts, Lotus Crumbs, Oreo Crumbs, Chocolate, Rainbow Vermicelli, Choco Rizzo)</h3>
       <p style="color: #555;">+1,000/=</p>
@@ -703,62 +767,63 @@ font-size: 2rem;">
   </div>
 </section>
 
-<section id="chocolateshakes" style="padding: 40px; background: transparent;
-scroll-margin-top: 200px;
+<section class="image-grid" id="chocolateshakes" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
 width: 98%;
-font-size: 2rem;
+font-size: 2.5rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">CHOCOLATE SHAKES</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Kitkat Shake</h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish2.jpg" alt="Dish 2" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Nutella Shake</h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Ferrero Shake</h3>
       <p style="color: #555;">13,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/snickers shake.jpg" alt="snickers shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Snickers Shake</h3>
       <p style="color: #555;">11,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Chocolate Shake</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Kinder Bueno Shake</h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/espresso choc shake.jpg" alt="espresso shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Espresso-Choc Shake</h3>
       <p style="color: #555;">11,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Mocha Shake</h3>
       <p style="color: #555;">10,000/=</p>
@@ -767,68 +832,69 @@ margin-top: 100px;">
   </div>
 </section>
 
-<section id="specialtyshakes" style="padding: 40px; background: transparent;
+<section class="image-grid" id="specialtyshakes" style="padding: 40px; background: transparent;
 width: 98%;
-scroll-margin-top: 200px;
+scroll-margin-top: 500px;
 margin-top: 100px;
-font-size: 2rem;">
+font-size: 2.5rem;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">SPECIALTY SHAKES</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Sweet Mango Shake</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lotus shake.jpg" alt="lotus shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Lotus Shake</h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Vanilla Shake</h3>
       <p style="color: #555;">9,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Caramel Shake</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/oreoshakenew.jpg" alt="oreo shake" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Oreo Shake</h3>
       <p style="color: #555;">11,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Strawberry Shake</h3>
       <p style="color: #555;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish3.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Kayy. Mix Shake<br> (Hibiscus, Tamarind & Baobab) </h3>
       <p style="color: #555;">12,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/the scoops shake.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">The Scoops Shake <br> (Avocado, Dates, & Cashew Nuts)</h3>
       <p style="color: #555;">13,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/pistachioshakenew.jpg" alt="Dish 3" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;">Pistachio Shakes</h3>
       <p style="color: #555;">13,000/=</p>
@@ -839,50 +905,51 @@ font-size: 2rem;">
 
 
 
-<section id="thesweetspot" style="padding: 40px; background: transparent;
-scroll-margin-top: 200px;
+<section class="image-grid" id="thesweetspot" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
 width: 98%;
-font-size: 2rem;
+font-size: 2.5rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
   color: white;">THE SWEET SPOT</h2>
 
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Classic Waffle <br></h3> <span style="color: #555;
-      font-weight: regular;">Fluffy, Golden and utterly irresistable. Our classic waffle is a favorite. served with maple syrup and a scoop of whipped cream.</span>
+      ">Classic Waffle <br></h3> <span style="color: #555;
+      ">Fluffy, Golden and utterly irresistable. Our classic waffle is a favorite. served with maple syrup and a scoop of whipped cream.</span>
       <p style="color: #555;
       font-size: 30px;">10,000/=</p>
     </div>
 
     <!-- Item 2 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Waffwich <br></h3> <span style="color: #555;
+      ">Waffwich <br></h3> <span style="color: #555;
       font-weight: regular;">A Waffle sandwich inserted with a season fruit of your choice topped with sauce of your choice.</span>
       <p style="color: #555;
       font-size: 30px;">12,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Classic Churro Plate <br></h3> <span style="color: #555;
+      ">Classic Churro Plate <br></h3> <span style="color: #555;
       font-weight: regular;">8 perfectly fried churros, each delicately dusted with a touch of cinnamon sugar.</span>
       <p style="color: #555;
       font-size: 30px;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Churro Tray <br></h3> <span style="color: #555;
+      ">Churro Tray <br></h3> <span style="color: #555;
       font-weight: regular;">14 pieces of golden and crispy churros, served with 2 dipping sauces, fresh fruit toppings and sprinkles.</span>
       <p style="color: #555;
       font-size: 30px;">14,000/=</p>
@@ -890,28 +957,28 @@ margin-top: 100px;">
 
     
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">The Scoop Special <br></h3> <span style="color: #555;
+      ">The Scoop Special <br></h3> <span style="color: #555;
       font-weight: regular;">Mini churros, bite-sized delights served with your choice of dipping sauce, fresh fruit and a scoop of ice cream.</span>
       <p style="color: #555;
       font-size: 30px;">12,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Flavours <br></h3> <span style="color: #555;
+      ">Flavours <br></h3> <span style="color: #555;
       font-weight: regular;">Nutella, Lotus, Oreo, Peanut, Butter.</span>
       <p style="color: #555;
       font-size: 30px;">+2,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/waffle.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Fruit Choice <br></h3> <span style="color: #555;
+      ">Fruit Choice <br></h3> <span style="color: #555;
       font-weight: regular;">Strawberry, Banana, Pineapple.</span>
       <p style="color: #555;
       font-size: 30px;">+1,000/=</p>
@@ -921,9 +988,10 @@ margin-top: 100px;">
 </section>
 
 
-<section id="bakedbliss" style="padding: 40px; background: transparent;
-scroll-margin-top: 200px;
+<section class="image-grid" id="bakedbliss" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
 width: 98%;
+font-size: 2rem;
 margin-top: 100px;">
   <h2 style="text-align: center; margin-bottom: 30px;
   font-size: 4rem;
@@ -932,130 +1000,129 @@ margin-top: 100px;">
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
 
     <!-- Item 1 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;
     font-size: 2rem;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
-      <h3 style="margin: 10px 0;
-      font-size:30px;">Black Forest Slice <br></h3> <span style="color: #555;
-      font-weight: regular;">Black Forest.</span>
+      <h3 style="margin: 10px 0">Black Forest Slice <br></h3> <span style="color: #555;
+      ">Black Forest.</span>
       <p style="color: #555;
       font-size: 30px;">10,000/=</p>
     </div>
 
     <!-- Item 2 -->
-   <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+   <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/lotus cake.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Lotus Biscoff Slice <br></h3> <span style="color: #555;
+      ">Lotus Biscoff Slice <br></h3> <span style="color: #555;
       font-weight: regular;">Lotus Biscoff.</span>
       <p style="color: #555;
       font-size: 30px;">10,000/=</p>
     </div>
 
     <!-- Item 3 -->
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/red velvet cake.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Red Velvet Slice <br></h3> <span style="color: #555;
+      ">Red Velvet Slice <br></h3> <span style="color: #555;
       font-weight: regular;">Red Velvet.</span>
       <p style="color: #555;
       font-size: 30px;">10,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/pistachio cake.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Pistachio Cake Slice <br></h3> <span style="color: #555;
+      ">Pistachio Cake Slice <br></h3> <span style="color: #555;
       font-weight: regular;">Pistachio Slice.</span>
       <p style="color: #555;
       font-size: 30px;">12,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/vanilla cupcake.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Vanilla Cupcake<br></h3> <span style="color: #555;
+      ">Vanilla Cupcake<br></h3> <span style="color: #555;
       font-weight: regular;">Vanilla Flavoured Cupcake</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/oreo cupcake.webp" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Oreo Cupcake<br></h3> <span style="color: #555;
+      ">Oreo Cupcake<br></h3> <span style="color: #555;
       font-weight: regular;">Oreo Flavoured Cupcake</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/strawberry cupcake.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Strawberry Cupcake<br></h3> <span style="color: #555;
+      ">Strawberry Cupcake<br></h3> <span style="color: #555;
       font-weight: regular;">Strawberry Flavoured Cupcake</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Cookie Cupcake<br></h3> <span style="color: #555;
+      ">Cookie Cupcake<br></h3> <span style="color: #555;
       font-weight: regular;">Cookie Flavoured Cupcake</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="dish1.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Croissant<br></h3> <span style="color: #555;
+      ">Croissant<br></h3> <span style="color: #555;
       font-weight: regular;">Croissant</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for brownies.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Brownies<br></h3> <span style="color: #555;
+      ">Brownies<br></h3> <span style="color: #555;
       font-weight: regular;">Regular Brownies</span>
       <p style="color: #555;
       font-size: 30px;">5,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for brownies.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Lotus Brownie<br></h3> <span style="color: #555;
+      ">Lotus Brownie<br></h3> <span style="color: #555;
       font-weight: regular;">Lotus Flavoured Brownie</span>
       <p style="color: #555;
       font-size: 30px;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for brownies.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Peanut Butter Brownie<br></h3> <span style="color: #555;
+      ">Peanut Butter Brownie<br></h3> <span style="color: #555;
       font-weight: regular;">Peanut Butter Flavored Brownies</span>
       <p style="color: #555;
       font-size: 30px;">6,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for brownies.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Nutella Brownie<br></h3> <span style="color: #555;
+      ">Nutella Brownie<br></h3> <span style="color: #555;
       font-weight: regular;">Nutella Flavoured Brownies</span>
       <p style="color: #555;
       font-size: 30px;">4,000/=</p>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 220px; text-align: center;">
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 265px; text-align: center;">
       <img src="thumbnails/for brownies.jpg" alt="Dish 1" style="width: 100%; border-radius: 10px;">
       <h3 style="margin: 10px 0;
-      font-size:30px;">Pistachio Brownie<br></h3> <span style="color: #555;
+      ">Pistachio Brownie<br></h3> <span style="color: #555;
       font-weight: regular;">Pistachio Flavored Brownie</span>
       <p style="color: #555;
       font-size: 30px;">7,000/=</p>
@@ -1063,6 +1130,188 @@ margin-top: 100px;">
   </div>
 </section>
 
+<section id="reviews" style="background-color: transparent; text-align: center;
+    margin-top: 50px;
+    margin-left: 60px;">
+  <h2 style="font-size: 4rem; margin-bottom: 50px;
+  margin-top: 90px;
+  color: white;">What Our Customers Say</h2>
+
+  <!-- Reviews Panel -->
+  <div class="reviews-slider">
+  <div class="review-card">
+    <p style="font-size: 2rem;">"The Latte Was Out Of This World"</p>
+    <p style="font-size: 2rem;"><strong>- Chacha C.</strong><br><span style="color: gray" >Via Google</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Best restaurant experience I’ve had in a long time. Highly recommend."</p>
+    <p style="font-size: 2rem;"><strong>- James K.</strong><br><span style="color: gray"  >Via Google</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray;" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+</div>
+  </section>
+  </section>
+
+
+<section>
+<!-- Leave a Review Section -->
+<section id="leave-review" style="padding: 40px; background-color: transparent; text-align: center;
+color: white;
+width: 80%;
+margin: 0 auto;
+display: block;">
+  <h2 style="font-size: 4rem; margin-bottom: 20px;
+  margin-top: 50px;">We Value Your Feedback</h2>
+  <p style="margin-bottom: 50px;
+  font-size: 2rem;">Share your experience with us on your favorite platform:</p>
+
+  <div >
+
+    <a href="https://www.tripadvisor.com" target="_blank" 
+       style="background: #006699; color: white; padding: 50px 25px;
+       border-radius: 30px;
+        text-decoration: none;
+        margin: auto;
+        display: block; font-weight: bold;
+        margin-bottom: 40px;">
+       ⭐ Review on TripAdvisor
+    </a>
+    </div>
+    
+    <div>
+    <a href="https://www.google.com/maps" target="_blank" 
+       style="background: #34A853; color: white;
+        padding: 50px 25px; border-radius: 30px; text-decoration: none; font-weight: bold;
+       margin: auto;
+       display: block;">
+       
+       ⭐ Review on Google
+    </a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+<!-- About Us Section -->
+<section id="about-us" style=" background-color: transparent; text-align: center;
+margin-bottom: 50px;">
+  <h2 style="font-size: 5rem; margin-bottom: 20px;
+  color: white;">About Us</h2>
+
+  <div style="max-width: 800px; margin: auto; text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333;">
+
+    <h3 style="color: #c0392b; margin-bottom: 10px;
+    font-size: 4rem;">Our Story</h3>
+    <p style="color: white;
+    font-size: 2rem;">
+      Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
+      to bring people together around the table. From humble beginnings, we have grown into a place where 
+      delicious meals and unforgettable moments are shared daily.
+    </p>
+
+    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
+    font-size: 4rem;">Our Vision</h3>
+    <p style="color: white;
+    font-size: 2rem;">
+      To become the most beloved dining destination in the city, known for our exceptional food, 
+      welcoming atmosphere, and commitment to quality. We envision a space where every customer 
+      feels at home while experiencing the richness of diverse cuisines.
+    </p>
+
+    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
+    font-size: 4rem;">Our Mission</h3>
+    <p style="color: white;
+    font-size: 2rem;">
+      Our mission is to craft flavorful dishes made with love and the finest ingredients, 
+      to serve with a smile, and to create lasting memories for every guest. 
+      We are dedicated to sustainability, community, and excellence in everything we do.
+    </p>
+
+  </div>
+</section>
+
+
+<p style="text-align: center;
+color: white;
+font-size: 2rem;">Come Dine With Us</p>
+
+
+<!-- Responsive map using aspect-ratio -->
+<section  aria-label="Restaurant location map" style="width:100%;
+margin-bottom: 20px;">
+  <div style="width:100%;aspect-ratio:16/9;
+  overflow:hidden;
+  margin-left: 30px;">
+    <iframe id="location"
+      title="Our Restaurant Location"
+      loading="lazy"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3989.818320343149!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4d005a36b993%3A0x57bcea44e01a0439!2sThe%20Scoop!5e0!3m2!1sen!2stz!4v1757968380495!5m2!1sen!2stz"
+      style="width:100%;height:100%;border:0;display:block;"
+      allowfullscreen=""
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<section id="contact">
+<!-- Footer Section -->
+<footer style="background-color: white;  padding: 30px 20px; text-align: center;
+padding-right: 40px;
+width: 100%;">
+
+  <!-- Social Links -->
+  <div style="margin-bottom: 15px;">
+    <a href="https://www.instagram.com/thescoop.tz" target="_blank" 
+       style="color: blue; text-decoration: none; margin: 0 15px; font-weight: bold;">
+       Instagram
+    </a>
+    |
+    <a href="https://wa.me/255788296274" target="_blank" 
+       style="color: blue; text-decoration: none; margin: 0 15px; font-weight: bold;">
+       WhatsApp
+    </a>
+  </div>
+
+  <!-- Copyright -->
+  <p style="font-size: 1.5rem; margin-top: 10px;
+  color: black;">
+    &copy; 2010-2025 THE SCOOP. All Rights Reserved.
+  </p>
+  <p class="brand" style="color: gray;
+  font-size: 0.8rem">Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">SynloTech</a></p>
+
+</footer>
+</section>
+
+
+
+<script>
+function toggleDropdown(id) {
+  const menu = document.getElementById(id);
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+</script>
 
   </body>
 </html>
