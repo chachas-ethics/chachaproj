@@ -13,6 +13,12 @@
       margin: 0;
       font-family: Arial, sans-serif;
      background-color:  rgb(11, 11, 46);
+     opacity: 0;
+     transition: opacity 0.8s ease-in-out;
+    }
+
+    body.loaded{
+      opacity: 1;
     }
 
     *, *::before, *::after {
@@ -218,7 +224,7 @@
       box-sizing: border-box;
     }
     .grid-item {
-      background: rgb(214, 210, 210);
+      background: rgb(255, 255, 255);
       padding: 15px;
       text-align: center;
       border: 1px solid #ffffff;
@@ -557,6 +563,9 @@ grid-template-columns: 1fr 1fr;">
   font-weight: bold;">kayy.</span><br>
   
   <a href="https://instagram.com/kayykafengrill" target="_blank" >Instagram</a> | <a href="https://wa.me/255788296274" >WhatsApp</a>
+  <br>
+  <br>
+  <a href="https://facebook.com">Tel: +255 788 296 274</a>
 </p>
 </div>
 <div style="display: flex;">
@@ -565,13 +574,17 @@ text-align: center;
 ">
   <span style="font-family: 'abril fatface';
   font-size: 1.4rem;
-  font-weight: bold;">THE SCOOP</span><br>
-    <a href="https://instagram.com/thescoop.tz" >Instagram</a> | <a href="https://wa.me/255788296274" target="_blank">WhatsApp</a>
+  font-weight: bold;">THE SCOOP</span>
+  <br>
+    <a href="https://instagram.com/thescoop.tz" targe="_blank" >Instagram</a> | <a href="https://wa.me/255788296274" target="_blank" >WhatsApp</a>
+    <br>
+    <br>
+    <a href="https://facebook.com" target="_blank"> Tel: +255 788 296 274</a>
 </p>
 </div>
 </div>
   <p class="yyanguiyo" style="text-align: center;
-  color: gray">
+  color: gray;">
     Designed And Developed By <a href="https://wa.me/255788296274" target="_blank" >SynloTech</a>
   </p>
   
@@ -641,6 +654,10 @@ text-align: center;
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
     });
+
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
   </script>
 
 </body>

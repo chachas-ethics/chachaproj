@@ -13,8 +13,13 @@
      background-color:  rgb(11, 11, 46);
      width: 100%;
      height: 100%;
-     
+     opacity: 0;
+  transition: opacity 0.8s ease-in-out;
     }
+
+    body.loaded {
+  opacity: 1;
+}
 
     *, *::before, *::after {
       box-sizing: inherit;
@@ -145,7 +150,7 @@
 
     .explore-dishes {
   padding-top: 40px; /* optional */
-  padding-right: 30px;
+  padding-right: 29px;
   padding-left: 30px;
   padding-bottom: 40px;
   width: 100%;
@@ -159,12 +164,13 @@
    
 }
 
-
-
 .explore-dishes a{
     text-decoration: none;
+    
 
 }
+
+
 
 .explore-dishes h2 {
   font-size: 5rem;
@@ -197,15 +203,14 @@
   flex: 0 0 auto;
   background: transparent;
   border-radius: 12px;
-  padding-top: 30px;
+  padding-top: 80px;
   padding-bottom: 30px;
-  margin-top: 50px;
+  padding-right: 50px;
   min-width: 120px;
   text-align: center;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-  margin-right: 100px;
     color: white;
     border: none;
     font-size: 2rem;
@@ -269,8 +274,9 @@
     <!-- Left side -->
     <div class="nav-left">
       <a href="index.html" style="text-decoration: none; color: inherit;">
-      <img style="height: 90px;
+      <img style="height: 100px;
       align-items: center;
+      margin-top: 100px;
       width: auto;" src="thumbnails/house.png"><p style="display: inline-block;
       font-size: 5rem;
       font-family:'abril fatface'; 
@@ -285,14 +291,15 @@
 
      <!-- Center -->
       <div class="nav-right">
-      <a href="index.html">
+      
     <img style="border-color: black;
    border-style: solid;
    border-radius: 30px;
+   margin-top: 30px;
    height: 170px;
    width: 170px;
    border: none;" src="thumbnails/Screenshot 2025-09-09 183717.png" alt="The Scoop Logo">
-    </a>
+  
     </div>
  
       
@@ -1191,9 +1198,11 @@ display: block;">
        style="background: #006699; color: white; padding: 50px 25px;
        border-radius: 30px;
         text-decoration: none;
-        margin: auto;
-        display: block; font-weight: bold;
-        margin-bottom: 40px;">
+         font-weight: bold;
+         font-size: 2rem;
+        margin-bottom: 40px;
+        display: block;
+        margin-left: 50px;">
        ⭐ Review on TripAdvisor
     </a>
     </div>
@@ -1202,8 +1211,10 @@ display: block;">
     <a href="https://www.google.com/maps" target="_blank" 
        style="background: #34A853; color: white;
         padding: 50px 25px; border-radius: 30px; text-decoration: none; font-weight: bold;
-       margin: auto;
-       display: block;">
+        font-size: 2rem;
+        display: block;
+        margin-left: 50px;
+        ">
        
        ⭐ Review on Google
     </a>
@@ -1221,8 +1232,8 @@ margin-bottom: 50px;">
 
   <div style="max-width: 800px; margin: auto; text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333;">
 
-    <h3 style="color: #c0392b; margin-bottom: 10px;
-    font-size: 4rem;">Our Story</h3>
+    <h3 style="color: white; margin-bottom: 10px;
+    font-size: 5rem;">Our Story</h3>
     <p style="color: white;
     font-size: 2rem;">
       Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
@@ -1230,8 +1241,8 @@ margin-bottom: 50px;">
       delicious meals and unforgettable moments are shared daily.
     </p>
 
-    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
-    font-size: 4rem;">Our Vision</h3>
+    <h3 style="color: white; margin-top: 25px; margin-bottom: 10px;
+    font-size: 5rem;">Our Vision</h3>
     <p style="color: white;
     font-size: 2rem;">
       To become the most beloved dining destination in the city, known for our exceptional food, 
@@ -1239,8 +1250,8 @@ margin-bottom: 50px;">
       feels at home while experiencing the richness of diverse cuisines.
     </p>
 
-    <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
-    font-size: 4rem;">Our Mission</h3>
+    <h3 style="color: white; margin-top: 25px; margin-bottom: 10px;
+    font-size: 5rem;">Our Mission</h3>
     <p style="color: white;
     font-size: 2rem;">
       Our mission is to craft flavorful dishes made with love and the finest ingredients, 
@@ -1291,6 +1302,11 @@ width: 100%;">
        style="color: blue; text-decoration: none; margin: 0 15px; font-weight: bold;">
        WhatsApp
     </a>
+    <br>
+    <a href="https://facebook.com" target="_blank" style="text-decoration: none;
+    color: blue;
+    
+    font-weight: bold;">Tel: +255 788 296 274</a>
   </div>
 
   <!-- Copyright -->
@@ -1311,6 +1327,12 @@ function toggleDropdown(id) {
   const menu = document.getElementById(id);
   menu.style.display = (menu.style.display === "block") ? "none" : "block";
 }
+
+
+  window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+
 </script>
 
   </body>
