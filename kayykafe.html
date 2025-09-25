@@ -278,11 +278,11 @@
     }
 
     .menu-item img {
-        width: 200px;
-        height: 190px;
+        width: 230px;
+        height: 350px;
         object-fit: cover;
         border-radius: 8px;
-        margin-right: 50px;
+        
     }
 
     .menu-details {
@@ -292,26 +292,30 @@
     }
 
     .menu-title {
-        font-size: 1.2em;
+        font-size: 4rem;
         font-weight: bold;
         color: #ff5733;
+        padding: 20px;
     }
 
     .menu-desc {
         display: inline-block;
-        font-size: 0.9em;
+        font-size: 3rem;
         margin: 5px 0;
         color: #ccc;
+        padding: 20px;
     }
 
     .menu-price {
         font-weight: bold;
+        font-size: 2rem;
         margin-top: 5px;
+        padding: 20px;
     }
 
     .heading{
         color:#ff5733;
-        
+        font-size: 5rem;
         text-decoration-color: white;
     }
 
@@ -415,6 +419,106 @@
     color: #ff7043;
 }
 
+.menu-button {
+    text-align: cente;   /* centers the button horizontally */
+    margin-top: 10px;     /* adds spacing above the button */
+}
+
+.menu-button button {
+    padding: 40px 70px 40px 70px;
+    background-color: #333;
+    color: #ffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 40px;
+    border-radius: 30px;
+    margin: auto;
+    display: block;
+}
+
+.menu-button button:hover {
+    background-color: #555;
+}
+
+
+.cart-panel {
+    position: fixed;
+    display: none;
+    right: -320px;
+    width: 300px;
+    height: 50%;
+    background: white;
+    border-left: 2px solid #ddd;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    padding: 50px 20px 50px 20px;
+    transition: right 0.3s ease;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-panel.active { 
+    right: 0;}
+
+
+
+    
+  .cart-header {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: white;
+  }
+  .close-cart {
+    background: none;
+    border: none;
+    font-size: 5rem;
+    cursor: pointer;
+    color: red;
+  }
+  #cart-items { flex: 1; overflow-y: auto; margin-bottom: 10px; }
+  #cart-items li { margin-bottom: 5px; }
+  #cart-toggle {
+    position: fixed;
+    right: 90px;
+    padding-top: 60px;
+    font-size: 20px;
+    background: transparent;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10000;
+    font-size: 5rem;
+  }
+
+  .add-to-cart{
+    padding: 40px 70px;
+    font-size: 2.4rem;
+    border-radius: 30px;
+    color: white;
+    background-color:#333333;
+    margin-top: 70px;
+    margin: auto;
+    display: block;
+}
+
+.cart-items{
+    color: black;
+    font-size: 2.3rem;
+}
+
+.order-now{
+    padding: 30px;
+    border-radius: 30px;
+    background-color: #e85c2f;
+    font-size: 2rem;
+    color: white;
+    border: none;
+}
+
 </style>
 
 
@@ -476,7 +580,23 @@
   <section id="menu" class="explore-dishes">
   <h2 style="font-size: 5rem;
   margin-bottom: 70px;
-  width: 100%; " >Explore Dishes</h2>
+  width: 100%; " >Explore Menu</h2>
+
+  <button style="color: white;" class="cart-toggle" id="cart-toggle">🛒</button>
+
+<!-- 🛒 Cart Panel -->
+<div  id="cart" class="cart-panel">
+  <div class="cart-header">
+    <h3 style="color: black;
+    font-size: 3rem;"></h3>
+    <button class="close-cart">✖</button>
+  </div>
+  <ul class="cart-items" id="cart-items"></ul>
+  <p id="subtotal">Subtotal: 0 /=</p>
+  <button class="order-now" id="order-now">Order Now</button>
+</div>
+
+   
   <div style="width: 100%;" class="slider">
     <a href="#youaresouper"><div class="category">YOU-ARE-SOUPER</div></a>
     <a href="#appetizers">
@@ -530,6 +650,9 @@
 
 <section class="book-reserve">
   <a href="https://wa.me/255786786111" ><button>Book a Reservation</button></a>
+ 
+</div>
+
 </section>
 
 <section class="main-menu">
@@ -548,6 +671,10 @@ id="youaresouper">
             <div class="menu-title">Creamy Mushroom Soup</div>
             <div class="menu-desc">A blend of earthly mushrooms, chopped onions, and a touch of creamy goodness.</div>
             <div class="menu-price">8,000/=</div>
+
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -557,6 +684,10 @@ id="youaresouper">
             <div class="menu-title">Seafood Chowder Soup</div>
             <div class="menu-desc">A tantalizing combination of red snapper, prawns, calamari and squid. finely chopped onions and a touch of creamy goodness.</div>
             <div class="menu-price">14,000/=</div>
+
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -566,6 +697,10 @@ id="youaresouper">
             <div class="menu-title">Chicken Corn Soup</div>
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -575,6 +710,10 @@ id="youaresouper">
             <div class="menu-title">Mchemsho Wa samaki</div>
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">15,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -584,6 +723,10 @@ id="youaresouper">
             <div class="menu-title">Creamy Vegetable Soup</div>
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
   </section>
@@ -597,7 +740,10 @@ id="appetizers">
             <div class="menu-title">Chicken Lollipop</div>
             <div class="menu-desc">Tender chicken drumettes 5 pieces, expertly marinated and coated in a flavorful blend of herbs and spices.</div>
             <div class="menu-price">10,000/=</div>
-        </div>
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+            </div>        
     </div>
 
     <div class="menu-item">
@@ -606,6 +752,10 @@ id="appetizers">
             <div class="menu-title">Mayo Steak Bites</div>
             <div class="menu-desc">150g Tender steak bites coated in flour and smothered in creamy mayo.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -615,6 +765,10 @@ id="appetizers">
             <div class="menu-title">Shrimp Dynamite</div>
             <div class="menu-desc">100g Shrimp marinated in a blend of spices, lightly battered and fried. Served with dipping sauce</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -624,6 +778,10 @@ id="appetizers">
             <div class="menu-title">Vegetable Pakoras</div>
             <div class="menu-desc">Crispy and flavourful mixed vegetables fritters. Served with a dipping sauce.</div>
             <div class="menu-price">6,000/=</div>
+
+           <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -633,6 +791,10 @@ id="appetizers">
             <div class="menu-title">Crispy Calamari</div>
             <div class="menu-desc">5 Rings delightfully crispy and tender calamari rings. Served with dipping sauce.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -642,6 +804,10 @@ id="appetizers">
             <div class="menu-title">Kayy. Prawns</div>
             <div class="menu-desc">5 Pieces crispy and succulent prawns coated in a golden, crunchy batter. Served with a dipping sauce.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -655,6 +821,10 @@ id="appetizers">
             <div class="menu-title">Egg Sandwich</div>
             <div class="menu-desc">Fluffy folded eggs with tomato, lettuce, cucumber and onion in between slices of bread.</div>
             <div class="menu-price">10,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -664,6 +834,10 @@ id="appetizers">
             <div class="menu-title">Chicken & Mayo</div>
             <div class="menu-desc">Grilled chicken breast with mayo, lettuce, onion, tomato and cucumber between slices of bread.</div>
             <div class="menu-price">14,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -673,6 +847,10 @@ id="appetizers">
             <div class="menu-title">Tuna Corn Mayo</div>
             <div class="menu-desc">Tasty tuna with onion, tomato, lettuce and mayo in between slices of bread.</div>
             <div class="menu-price">12,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -682,6 +860,10 @@ id="appetizers">
             <div class="menu-title">Club Sandwich</div>
             <div class="menu-desc">A delicious combination of chicken breast, beef, bacon, turnover egg, tomato, lettuce, onion and cucumber in between slices of bread.</div>
             <div class="menu-price">18,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -698,6 +880,10 @@ id="appetizers">
             <div class="menu-title">Spicy Crispy Chicken</div>
             <div class="menu-desc">Crispy chicken breast coated in bread crumbs, lettuce, cucumber, onion and tomato and cheese.</div>
             <div class="menu-price">17,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -707,6 +893,10 @@ id="appetizers">
             <div class="menu-title">Honey Mustard Chicken</div>
             <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
             <div class="menu-price">15,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -716,6 +906,10 @@ id="appetizers">
             <div class="menu-title">Beef Burger</div>
             <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
             <div class="menu-price">12,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -725,6 +919,10 @@ id="appetizers">
             <div class="menu-title">Veggie Burger</div>
             <div class="menu-desc">Patty consists of carrot, onion, potato and zucchini coated in bread crumbs with lettuce and tomato.</div>
             <div class="menu-price">9,000/=</div>
+
+              <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -734,6 +932,10 @@ id="appetizers">
             <div class="menu-title">Kayy. Classic Burger</div>
             <div class="menu-desc">A delicious combination of chicken and beef patties, lettuce, tomato, cucumber, caramelized onions and cheese.</div>
             <div class="menu-price">20,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -750,6 +952,10 @@ id="appetizers">
             <div class="menu-title">Margarita Pizza</div>
             <div class="menu-desc">Classic italian pizza with fresh tomato, cheese, olives and basil on a thin crust.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -759,6 +965,10 @@ id="appetizers">
             <div class="menu-title">Chicken Tikka Pizza</div>
             <div class="menu-desc">Tender chicken tikka cubes with green pepper, tomato, onion, oregano and cheese on a thin crust.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -768,6 +978,10 @@ id="appetizers">
             <div class="menu-title">veggie Pizza</div>
             <div class="menu-desc">Seasoned vegetables and cheese on a thin crust.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -777,6 +991,10 @@ id="appetizers">
             <div class="menu-title">Beef Twist Pizza</div>
             <div class="menu-desc">Sauteed beef strips with onion, pepper and oregano on a thin crust.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -786,6 +1004,10 @@ id="appetizers">
             <div class="menu-title">Kayy. Special Pizza</div>
             <div class="menu-desc">A delightful mix of seafood, chicken, beef, mushrooms and oregano on a thin crust.</div>
             <div class="menu-price">20,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -800,6 +1022,10 @@ id="appetizers">
             <div class="menu-title">Squid Nazi</div>
             <div class="menu-desc">Cubed squid in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -809,6 +1035,10 @@ id="appetizers">
             <div class="menu-title">Pweza Nazi</div>
             <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -818,6 +1048,10 @@ id="appetizers">
             <div class="menu-title">Prawns Nazi</div>
             <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -827,6 +1061,10 @@ id="appetizers">
             <div class="menu-title">Thai Fish Curry</div>
             <div class="menu-desc">Simmered fish fillet in a flavorful coconut sauce, thai curry paste, aromatic herbs and spices.</div>
             <div class="menu-price">16,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -836,6 +1074,10 @@ id="appetizers">
             <div class="menu-title">Chilli Pepper Fish</div>
             <div class="menu-desc">Cubed fish fillet with mixed bell peppers and sauteed vegetables.</div>
             <div class="menu-price">16,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -850,6 +1092,10 @@ id="appetizers">
             <div class="menu-title">Spaghetti Bolognese</div>
             <div class="menu-desc">Spaghetti with minced meat in a tomato gravy, onion, carrot, parsley, topped with parmesan cheese.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -859,6 +1105,10 @@ id="appetizers">
             <div class="menu-title">Penne Arabiata</div>
             <div class="menu-desc">Penne pasta in a zesty tomato sauce with chili flakes, topped with parmesan cheese.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -868,6 +1118,10 @@ id="appetizers">
             <div class="menu-title">Creamy Chicken Pasta</div>
             <div class="menu-desc">Fusilli pasta, tender chicken breast, cajun spice, in creamy sauce, topped with parmesan cheese.</div>
             <div class="menu-price">16,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -877,6 +1131,10 @@ id="appetizers">
             <div class="menu-title">Chef Style Shrimp Pasta</div>
             <div class="menu-desc">Choice of pasta, shrimp, mushroom in white sauce, black olives, topped with parmesan cheese.</div>
             <div class="menu-price">20,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -892,6 +1150,10 @@ id="appetizers">
             <div class="menu-title">Crispy Chicken Wings</div>
             <div class="menu-desc">Chicken wings seasoned to perfection, crunchy exterior and fried to a golden perfection. served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -901,6 +1163,10 @@ id="appetizers">
             <div class="menu-title">Hot Garlic</div>
             <div class="menu-desc">Coated in a blend of garlic, onion, fresh chili and sauce, creating a fiery taste. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">15,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -910,6 +1176,10 @@ id="appetizers">
             <div class="menu-title">Honey BBQ</div>
             <div class="menu-desc">Blend of honey and smoky barbecue sauce, creating a perfect harmony of flavors. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -919,6 +1189,10 @@ id="appetizers">
             <div class="menu-title">Sticky Thai</div>
             <div class="menu-desc">Glazed with a sticky blend of sesame seeds, tangy BBQ sauce, and savory sauce. Served with fries, coleslaw and dipping sauce. </div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -928,6 +1202,10 @@ id="appetizers">
             <div class="menu-title">Sweet Chilli</div>
             <div class="menu-desc">Coated in a tantalizing sweet chilli sauce that perfec sweetness and spiceness. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">13,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -937,6 +1215,10 @@ id="appetizers">
             <div class="menu-title">Kayy. Chilli</div>
             <div class="menu-desc">Seasoned with a blend of garlic, onion, fresh chili, and fragrant coriander. Garnished with a sprinkle of chili flakes, served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">16,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -953,6 +1235,10 @@ id="appetizers">
             <div class="menu-title">Asian Steak and Potatoes </div>
             <div class="menu-desc">Tender grilled steak marinated in a flavorful blend of Asian spices and fried cubed potatoes seasoned with aromatic herbs.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -962,6 +1248,10 @@ id="appetizers">
             <div class="menu-title">Chicken Biryani</div>
             <div class="menu-desc">Fragrant basmati rice cooked with tender chicken pieces, aromatic spices and garnished with herbs.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -971,6 +1261,10 @@ id="appetizers">
             <div class="menu-title">Lamb Biryani</div>
             <div class="menu-desc">Fragrant basmati rice cooked with succulent pieces of lamb, aromatic spices and garnished with herbs.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -980,6 +1274,10 @@ id="appetizers">
             <div class="menu-title">Fish Biryani</div>
             <div class="menu-desc">Fragrant basmati rice cooked with flavorful fish pieces, aromatic spices, and garnished with herbs.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -989,6 +1287,10 @@ id="appetizers">
             <div class="menu-title">Chicken Fried Rice</div>
             <div class="menu-desc">Savory stir-fried rice with tender pieces of chicken, mixed vegetables and aromatic seasoning.</div>
             <div class="menu-price">13,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -998,6 +1300,10 @@ id="appetizers">
             <div class="menu-title">Shrimp Fried Rice</div>
             <div class="menu-desc">Flavoful stir-fried rice with succulent shrimp, mixed vegetables, and savory seasonings.</div>
             <div class="menu-price">16,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1007,6 +1313,10 @@ id="appetizers">
             <div class="menu-title">Veg Fried Rice</div>
             <div class="menu-desc">Stir-fried rice with a colorful assortment of vegetables and flavorful seasoning.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1016,6 +1326,10 @@ id="appetizers">
             <div class="menu-title">Butter Chicken</div>
             <div class="menu-desc">Chicken pieces marinated in aromatic spices, velvety tomato and butter-based sauce , blend of indian spices with a touch of cream.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1025,6 +1339,10 @@ id="appetizers">
             <div class="menu-title">Chicken Makange</div>
             <div class="menu-desc">Tender chicken cooked in a spicy and flavorsome tomato-based sauce with aromatic spices, served with a side of your choice.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1034,6 +1352,10 @@ id="appetizers">
             <div class="menu-title">Fish Makange</div>
             <div class="menu-desc">Fresh fish cooked in a flavorful and tangy tomato-based sauce with aromatic spices and herbs, served with side of your choice.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1043,6 +1365,10 @@ id="appetizers">
             <div class="menu-title">Spicy Crispy Chicken</div>
             <div class="menu-desc">Crispy and succulent chicken pieces, seasoned and fried to golden perfection, served with fries and salad.</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1052,6 +1378,10 @@ id="appetizers">
             <div class="menu-title">Changu Fried</div>
             <div class="menu-desc">Crispy and seasoned fried changu fish, served with a side of your choice and tangy dipping sauce.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -1067,6 +1397,10 @@ id="appetizers">
             <div class="menu-title">Chicken Sekela</div>
             <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1076,6 +1410,10 @@ id="appetizers">
             <div class="menu-title">Chicken Lemon</div>
             <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1085,6 +1423,10 @@ id="appetizers">
             <div class="menu-title">Chicken Gajjar</div>
             <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1094,6 +1436,10 @@ id="appetizers">
             <div class="menu-title">Chicken Peri-Peri</div>
             <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
             <div class="menu-price">12,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1103,6 +1449,10 @@ id="appetizers">
             <div class="menu-title">Mishkaki Plate</div>
             <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1112,6 +1462,10 @@ id="appetizers">
             <div class="menu-title">Nundu Plate</div>
             <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1121,6 +1475,10 @@ id="appetizers">
             <div class="menu-title">Mbuzi Choma</div>
             <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
             <div class="menu-price">15,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1130,6 +1488,10 @@ id="appetizers">
             <div class="menu-title">Kuku Choma</div>
             <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1139,6 +1501,10 @@ id="appetizers">
             <div class="menu-title">Wings Choma</div>
             <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1148,6 +1514,10 @@ id="appetizers">
             <div class="menu-title">Samaki Choma</div>
             <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -1163,6 +1533,10 @@ id="appetizers">
             <div class="menu-title">Duo Delight</div>
             <div class="menu-desc">Sekela 1/2, Nundu 5 sticks, Mishkaki 5 sticks served with plain fries x2 & Ndizi Mzuzu x2.</div>
             <div class="menu-price">25,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1172,6 +1546,10 @@ id="appetizers">
             <div class="menu-title">Family Fiesta</div>
             <div class="menu-desc">Whole Sekela, Nundu 10 sticks, Mishkaki 10 sticks served with plain fries x3 & Ndizi Mzuzu </div>
             <div class="menu-price">45,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1181,6 +1559,10 @@ id="appetizers">
             <div class="menu-title">Choma Bonanza</div>
             <div class="menu-desc">Whole Sekela, Nundu 8 Sticks, Mishkaki 8 Sticks, Burger or Small Pizza x2, Beef Sausage x4 served with plain fries x4 & Ndizi Mzuzu x4.</div>
             <div class="menu-price">70,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1190,6 +1572,10 @@ id="appetizers">
             <div class="menu-title">Choma Extravaganza</div>
             <div class="menu-desc">Whole Sekela, Nundu 8 sticks, Mishkaki 8 sticks, Burger or small pizza x2, whole Changu Choma, Firigisi, Beef Sausage x4 served with plain fries x4, Zege x1 & Ndizi Mzuzu x5.</div>
             <div class="menu-price">90,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 </div>
@@ -1200,6 +1586,10 @@ id="appetizers">
             <div class="menu-title">Choma Wigs Platter</div>
             <div class="menu-desc">8pcs Mouthwatering char-grilled chicken wings, with a choice of four flavors; Tandori, Lemon, Gajjar or classic choma. Served with a dipping sauce, salad and fries (2 pax).</div>
             <div class="menu-price">25,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -1213,6 +1603,10 @@ id="appetizers">
             <div class="menu-title">Fisherman Platter</div>
             <div class="menu-desc">Delightful assortment of calamari, prawns, fish fillet and grilled octopus served with sauces, salad and fries (4 pax).</div>
             <div class="menu-price">55,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1223,6 +1617,10 @@ id="appetizers">
             <div class="menu-desc">A delicious assortment of grilled beef, chicken and fish served with sauces, salad and fries (3 pax).</div>
             <div class="menu-price">45,000/=
             </div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1232,6 +1630,10 @@ id="appetizers">
             <div class="menu-title">Chicken Wings Platter</div>
             <div class="menu-desc">16 pcs Mouthwatering chicken wings, each coated in your choice of four flavors. Served with a dipping sauce, salad and fries (2 pax).</div>
             <div class="menu-price">25,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1241,6 +1643,10 @@ id="appetizers">
             <div class="menu-title">Kuku Platter</div>
             <div class="menu-desc">Feast of crispy chicken, chicken wings, juicy chicken tenders, chicken lollipops and chicken sausages. Served with dipping sauces, salad and fries (5 pax).<br> Served with soft drinks.</div>
             <div class="menu-price">62,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1250,6 +1656,10 @@ id="appetizers">
             <div class="menu-title">Kayy. Platter</div>
             <div class="menu-desc">Delicious combination of crispy calamari, golden prawns, grilled octopus, fish fillet, grilled beef, and coated chicken. Served with dipping sauce, salad and fries (6 pax).</div>
             <div class="menu-price">90,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
     </section>
@@ -1263,6 +1673,10 @@ id="appetizers">
             <div class="menu-title">Plain Fries</div>
             <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
             <div class="menu-price">55,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1272,6 +1686,10 @@ id="appetizers">
             <div class="menu-title">Masala Fries</div>
             <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
             <div class="menu-price">45,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1281,6 +1699,10 @@ id="appetizers">
             <div class="menu-title">Cassava Fries</div>
             <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
             <div class="menu-price">25,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1290,6 +1712,10 @@ id="appetizers">
             <div class="menu-title">Sweet Potato Fries</div>
             <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
             <div class="menu-price">62,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1299,6 +1725,10 @@ id="appetizers">
             <div class="menu-title">Zege (Chips Mayai)</div>
             <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
             <div class="menu-price">90,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1308,6 +1738,10 @@ id="appetizers">
             <div class="menu-title">Garlic Fries</div>
             <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1317,6 +1751,10 @@ id="appetizers">
             <div class="menu-title">Mash Potato</div>
             <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
             <div class="menu-price">15,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1326,6 +1764,10 @@ id="appetizers">
             <div class="menu-title">Ndizi Mzuzu</div>
             <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1335,6 +1777,10 @@ id="appetizers">
             <div class="menu-title">Ugali</div>
             <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
             <div class="menu-price">14,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1344,6 +1790,10 @@ id="appetizers">
             <div class="menu-title">Chapati</div>
             <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
             <div class="menu-price">18,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
 
     </section>
@@ -1357,6 +1807,10 @@ id="appetizers">
             <div class="menu-title">Fish Fingers</div>
             <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1366,6 +1820,10 @@ id="appetizers">
             <div class="menu-title">Chicken Tenders</div>
             <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
             <div class="menu-price">10,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1375,6 +1833,10 @@ id="appetizers">
             <div class="menu-title">Griled Cheese</div>
             <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
             <div class="menu-price">8,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
@@ -1384,173 +1846,728 @@ id="appetizers">
             <div class="menu-title">Sausage & Chips</div>
             <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
             <div class="menu-price">9,000/=</div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="freshjuice">
-      <h1 style="margin-top: 150px;" class="heading">FRESH JUICE</h1>
+    <section style="scroll-margin-top: 480px;
+    background-color: rgba(65, 152, 65, 0.4);
+    width: 100%;
+    padding-right: 60px;" id="freshjuice">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      text-align: center;
+      color: white;" class="heading">FRESH JUICE</h1>
 
     <div class="menu-item">
-        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Fish Fingers</div>
-            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 270px;
+            color: white;"class="menu-title">Pineapple</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;
+            " class="menu-price">5,000/=</div>
+            <div class="menu-desc"></div>
+
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Chicken Tenders</div>
-            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 350px;
+            color: white;
+            "class="menu-title">Mango</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">5,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Griled Cheese</div>
-            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
-            <div class="menu-price">8,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 320px;
+            color: white;"class="menu-title">Passion</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">5,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Sausage & Chips</div>
-            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
-            <div class="menu-price">9,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 220px;
+            color: white;"class="menu-title">Watermelon</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">5,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
-</div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 330px;
+            color: white;"class="menu-title">Orange</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">5,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 370px;
+            color: white;"class="menu-title">Stafeli</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Bungo Special</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 310px;
+            color: white;"class="menu-title">Tropical</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="mojitos">
-      <h1 style="margin-top: 150px;" class="heading">MOJITOS</h1>
+    <section style="scroll-margin-top: 480px;
+     background-color:  rgba(65, 152, 65, 0.4);
+     width: 100%;
+     padding-right:60px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      color: white;
+      padding-top: 50px;
+      text-align: center;" class="heading">MOJITOS</h1>
 
     <div class="menu-item">
-        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Fish Fingers</div>
-            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 250px;
+            color: white;"class="menu-title">Virgin Mary</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Chicken Tenders</div>
-            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 250px;
+            color: white;"class="menu-title">Strawberry</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">8,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Griled Cheese</div>
-            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
-            <div class="menu-price">8,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 290px;
+            color: white;"class="menu-title">Berry Mix</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">9,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Sausage & Chips</div>
-            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
-            <div class="menu-price">9,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 330px;
+            color: white;"class="menu-title">Passion</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">8,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
-</div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 290px;
+            color: white;"class="menu-title">Pineapple</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 370px;
+            color: white;"class="menu-title">Mango</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 230px;
+            color: white;"class="menu-title">Blue Lagoon</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">8,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 280px;
+            color: white;"class="menu-title">Lemonade</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Fruit Lemonade</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 240px;
+            color: white;"class="menu-title">Pina Colada</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 360px;
+            color: white"class="menu-title">JEMBE</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 220px;
+            color: white;"class="menu-title">kayy. Special</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">9,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="extras">
-      <h1 style="margin-top: 150px;" class="heading">EXTRAS</h1>
-
-    <div class="menu-item">
-        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+    <section style="scroll-margin-top: 480px;
+    width: 100%;
+    padding-right: 60px;
+     background-color:rgba(65, 152, 65, 0.4); " id="extras">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: white;
+      text-align: center;" class="heading">EXTRAS</h1>
+      
+      <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Fish Fingers</div>
-            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Small Water</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">1,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Chicken Tenders</div>
-            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Large Water</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">2,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Griled Cheese</div>
-            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
-            <div class="menu-price">8,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 100px;
+            color: white;"class="menu-title">Coconut Water</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">2,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Sausage & Chips</div>
-            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
-            <div class="menu-price">9,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 200px;
+            color: white;"class="menu-title">Soft Drink</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color:white" class="menu-price">1,000/=</div>
+            <div class="menu-desc"></div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
-</div>
+    
     </section>
 
-    <section style="margin-bottom: 50px;
-    scroll-margin-top: 480px;"id="fruitfusion">
-      <h1 style="margin-top: 150px;" class="heading">FRUIT FUSION</h1>
+    <section style="margin-bottom:
+    200px;
+    
+    scroll-margin-top: 480px;
+    background-color: rgba(238, 203, 27, 0.7);
+    Padding-right: 60px;
+    width: 100%;
+    "id="fruitfusion">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      text-align: center;" class="headin">FRUIT FUSION</h1>
 
     <div class="menu-item">
-        <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Fish Fingers</div>
-            <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Celebrity Crush</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Apple, Orange, Pineapple, Banana, Lime & Coconut Water</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Big Bad Wolf</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Mango, Apple, Lime.</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Golden Hour</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Coconut Water, Cucumber, Pineapple & Lime</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Very Berry</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">8,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Strawberry, Blue Berry, Black Berry, & Raspberry</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Chicken Tenders</div>
-            <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
-            <div class="menu-price">10,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Tropical Twist</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Pineapple, Mango & Passion.</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Mango Madness</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Mango, Banana, & Strawberry</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Refresher</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Apple, watermelon, Pineapple & Mint</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Griled Cheese</div>
-            <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
-            <div class="menu-price">8,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Sunshine</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">6,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
 
-    <div class="menu-item">
+     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Sausage & Chips</div>
-            <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
-            <div class="menu-price">9,000/=</div>
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Hawaii Trio</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">6,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Pineapple, Apple, & Orange</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
         </div>
     </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">Detoxify</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Cucumber, Pineapple, Mint & Lemon</div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
+     <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: black;"class="menu-title">kayy. Mix</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: black;" class="menu-price">7,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Tamarind, Hibiscus & Baobab </div>
+           
+            <div>
+        <button class="add-to-cart">Add to Cart</button>
+    </div>
+        </div>
+    </div>
+
 </div>
     </section>
 
@@ -1638,7 +2655,7 @@ margin-bottom: 50px;">
   <div style="max-width: 800px; margin: auto; text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333;">
 
     <h3 style="color: #c0392b; margin-bottom: 10px;
-    font-size: 4rem;">Our Story</h3>
+    font-size: 5rem;">Our Story</h3>
     <p style="color: white;
     font-size: 2rem;">
       Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
@@ -1647,7 +2664,7 @@ margin-bottom: 50px;">
     </p>
 
     <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
-    font-size: 4rem;">Our Vision</h3>
+    font-size: 5rem;">Our Vision</h3>
     <p style="color: white;
     font-size: 2rem;">
       To become the most beloved dining destination in the city, known for our exceptional food, 
@@ -1656,7 +2673,7 @@ margin-bottom: 50px;">
     </p>
 
     <h3 style="color: #c0392b; margin-top: 25px; margin-bottom: 10px;
-    font-size: 4rem;">Our Mission</h3>
+    font-size: 5rem;">Our Mission</h3>
     <p style="color: white;
     font-size: 2rem;">
       Our mission is to craft flavorful dishes made with love and the finest ingredients, 
@@ -1697,17 +2714,20 @@ width: 100%;">
   <!-- Social Links -->
   <div style="margin-bottom: 15px;">
     <a href="https://www.instagram.com" target="_blank" 
-       style="color:#ff7043; ; text-decoration: none; margin: 0 15px; ">
+       style="color:#ff7043; ; text-decoration: none; margin: 0 15px;
+       font-size: 3rem; ">
        Instagram
   </a>
   |
     <a href="https://wa.me/255788296274" target="_blank" 
-       style="color: #ff7043;; text-decoration: none; margin: 0 15px;">
+       style="color: #ff7043;; text-decoration: none; margin: 0 15px;
+       font-size: 3rem;">
        WhatsApp
     </a>
     <br>
-    <a href="https://facebook.com" target="_blank" style="text-decoration: none;
+    <a href="tel:+255788296274" style="text-decoration: none;
     color: #ff7043;
+    font-size: 3rem;
     ;">Tel: +255 788 296 274</a>
   </div>
 
@@ -1750,7 +2770,102 @@ function toggleDropdown(id) {
   });
 
 
+  
+   const cart = [];
+  const cartPanel = document.getElementById("cart");
+  const cartToggle = document.getElementById("cart-toggle");
+  const closeCartBtn = document.querySelector(".close-cart");
+  const cartItemsList = document.getElementById("cart-items");
+  const subtotalEl = document.getElementById("subtotal");
+  const orderBtn = document.getElementById("order-now");
+
+  // Toggle cart
+  cartToggle.addEventListener("click", () => {
+    cartPanel.classList.toggle("active");
+  });
+  closeCartBtn.addEventListener("click", () => {
+    cartPanel.classList.remove("active");
+  });
+
+  // Update cart
+  function updateCart() {
+    cartItemsList.innerHTML = "";
+    let subtotal = 0;
+    cart.forEach((item, index) => {
+  const li = document.createElement("li");
+
+  // Item text
+  const span = document.createElement("span");
+  span.textContent = `${item.name} - ${item.price}/=`;
+
+  // Remove button
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+  removeBtn.style.marginLeft = "10px";
+  removeBtn.style.background = "#e85c2f";
+   removeBtn.style.margin = "auto";
+    removeBtn.style.display = " block";
+  removeBtn.style.color = "#fff";
+  removeBtn.style.border = "none";
+  removeBtn.style.borderRadius = "20px";
+   removeBtn.style.fontSize = "2rem"
+   removeBtn.style.paddingTop = "20px";
+   removeBtn.style.paddingBottom = "20px";
+   removeBtn.style.paddingRight = "30px";
+   removeBtn.style.paddingLeft = "30px";
+   removeBtn.style.margiBottom = "50px;";
+  removeBtn.style.cursor = "pointer";
+
+  // Remove item when clicked
+  removeBtn.addEventListener("click", () => {
+    cart.splice(index, 1); // delete item from array
+    updateCart();          // refresh the cart UI
+  });
+
+  li.appendChild(span);
+  li.appendChild(removeBtn);
+  cartItemsList.appendChild(li);
+
+  subtotal += item.price;
+});
+
+    subtotalEl.textContent = `Subtotal: ${subtotal} /=`;
+  }
+
+  // Add to cart buttons
+  document.querySelectorAll(".add-to-cart").forEach((btn) => {
+    btn.addEventListener("click", function() {
+      const itemEl = this.closest(".menu-item");
+      const name = itemEl.querySelector(".menu-title").textContent;
+      const priceText = itemEl.querySelector(".menu-price").textContent.replace(/[^\d]/g, "");
+      const price = parseInt(priceText);
+      cart.push({name, price});
+      updateCart();
+    });
+  });
+
+  // Order via WhatsApp
+  orderBtn.addEventListener("click", function() {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+    let message = "Hello, I’d like to order:\n";
+    let total = 0;
+    cart.forEach(item => {
+      message += `- ${item.name} (${item.price}/=)\n`;
+      total += item.price;
+    });
+    message += `\nSubtotal: ${total} /=`;
+    const phone = "255755828696"; // <-- your WhatsApp number
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  });
+
+
+  
     
+
     </script>
   </body>
 </html>
