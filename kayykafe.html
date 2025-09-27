@@ -13,8 +13,7 @@
       font-family: 'montserrat classic', sans-serif;
      background-color:  rgb(11, 11, 46);
      font-size: 2rem;
-     width: 100%;
-     height: 100%;
+    width: 100%;
      opacity: 0;
      transition: opacity 0.8s ease-in-out;
     }
@@ -279,7 +278,7 @@
 
     .menu-item img {
         width: 230px;
-        height: 350px;
+        height: 270px;
         object-fit: cover;
         border-radius: 8px;
         
@@ -292,7 +291,7 @@
     }
 
     .menu-title {
-        font-size: 4rem;
+        font-size: 3rem;
         font-weight: bold;
         color: #ff5733;
         padding: 20px;
@@ -315,7 +314,7 @@
 
     .heading{
         color:#ff5733;
-        font-size: 5rem;
+        font-size: 4rem;
         text-decoration-color: white;
     }
 
@@ -441,83 +440,108 @@
     background-color: #555;
 }
 
-
-.cart-panel {
-    position: fixed;
-    display: none;
-    right: -320px;
-    width: 300px;
-    height: 100%;
-    background: white;
-    border-left: 2px solid #ddd;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-    padding: 50px 20px 50px 20px;
-    transition: right 0.3s ease;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-  }
-  .cart-panel.active { 
-    right: 0;}
-
-
-
-    
-  .cart-header {
-    display: flex;
-    text-align: left;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    color: white;
-  }
-  .close-cart {
-    background: none;
-    border: none;
-    font-size: 5rem;
-    cursor: pointer;
-    color: red;
-  }
-  #cart-items { flex: 1; overflow-y: auto; margin-bottom: 10px; }
-  #cart-items li { margin-bottom: 5px; }
   #cart-toggle {
     position: fixed;
-    right: 90px;
-    padding-top: 60px;
-    font-size: 20px;
-    background: transparent;
-    color: black;
+    bottom: 80px;
+    right: 80px;
+    background: white;
+    color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 10000;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
     font-size: 5rem;
+    cursor: pointer;
+    z-index: 1000;
   }
 
-  .add-to-cart{
-    padding: 40px 70px;
-    font-size: 2.4rem;
-    border-radius: 30px;
-    color: white;
-    background-color:#333333;
-    margin-top: 70px;
-    margin: auto;
-    display: block;
-}
-
-.cart-items{
+  #cart {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 600px;
+    background: white;
     color: black;
-    font-size: 2.3rem;
-}
+    border-radius: 10px;
+    display: none;
+    max-height: 1500px;
+    font-size: 3rem;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+  }
 
-.order-now{
-    padding: 30px;
-    border-radius: 30px;
-    background-color: #e85c2f;
-    font-size: 2rem;
-    color: white;
+  .cart-header {
+    background: white;
+    color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-header button {
+    background: transparent;
     border: none;
-}
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  #cart-items {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+    
+  }
+
+  #cart-items li {
+    display: block;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    
+  }
+
+  #cart-items li button {
+    background: #e85c2f;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+    font-size: 40px;
+   
+  }
+
+  #cart-footer {
+    padding: 5px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+
+  #order-now {
+    background: #e85c2f;
+    color: white;
+    font-size: 3rem;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: auto;
+    font-weight: bold;
+  }
+
+  #close-cart{
+    font-size: 4rem;
+    color: red;
+  }
+
 
 </style>
 
@@ -582,19 +606,7 @@
   margin-bottom: 70px;
   width: 100%; " >Explore Menu</h2>
 
-  <button style="color: white;" class="cart-toggle" id="cart-toggle">🛒</button>
-
-<!-- 🛒 Cart Panel -->
-<div  id="cart" class="cart-panel">
-  <div class="cart-header">
-    <h3 style="color: black;
-    font-size: 3rem;"></h3>
-    <button class="close-cart">✖</button>
-  </div>
-  <ul class="cart-items" id="cart-items"></ul>
-  <p id="subtotal">Subtotal: 0 /=</p>
-  <button class="order-now" id="order-now">Order Now</button>
-</div>
+ 
 
    
   <div style="width: 100%;" class="slider">
@@ -661,9 +673,15 @@
   font-size: 5rem;" >Main Menu</h2>
 </section>
 
-<section style="scroll-margin-top: 480px;"
-id="youaresouper">
- <h1 class="heading"> YOU-ARE-SOUPER</h1>
+<section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">YOU-ARE-SOUPER</h1>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
@@ -672,9 +690,15 @@ id="youaresouper">
             <div class="menu-desc">A blend of earthly mushrooms, chopped onions, and a touch of creamy goodness.</div>
             <div class="menu-price">8,000/=</div>
 
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Creamy Mushroom Soup', 8000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -685,9 +709,15 @@ id="youaresouper">
             <div class="menu-desc">A tantalizing combination of red snapper, prawns, calamari and squid. finely chopped onions and a touch of creamy goodness.</div>
             <div class="menu-price">14,000/=</div>
 
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Seafood Chowder Soup', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -698,9 +728,15 @@ id="youaresouper">
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Corn Soup', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -711,9 +747,15 @@ id="youaresouper">
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">15,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mchemsho Wa Samaki', 15000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -724,25 +766,43 @@ id="youaresouper">
             <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Creamy Vegetable Soup', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
   </section>
 
-<section style="scroll-margin-top: 480px;"
-id="appetizers">
-  <h1 style="margin-top: 150px;" Class="heading"> APPETIZERS </h1>
+ <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">APPETIZERS</h1>
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
         <div class="menu-details">
             <div class="menu-title">Chicken Lollipop</div>
             <div class="menu-desc">Tender chicken drumettes 5 pieces, expertly marinated and coated in a flavorful blend of herbs and spices.</div>
             <div class="menu-price">10,000/=</div>
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Lollipop', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
             </div>        
     </div>
 
@@ -753,9 +813,15 @@ id="appetizers">
             <div class="menu-desc">150g Tender steak bites coated in flour and smothered in creamy mayo.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mayo Steak Bites', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -766,9 +832,15 @@ id="appetizers">
             <div class="menu-desc">100g Shrimp marinated in a blend of spices, lightly battered and fried. Served with dipping sauce</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Shrimp Dynamite', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -779,9 +851,15 @@ id="appetizers">
             <div class="menu-desc">Crispy and flavourful mixed vegetables fritters. Served with a dipping sauce.</div>
             <div class="menu-price">6,000/=</div>
 
-           <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Vegetable Pakoras', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -792,28 +870,46 @@ id="appetizers">
             <div class="menu-desc">5 Rings delightfully crispy and tender calamari rings. Served with dipping sauce.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Crispy Calamari', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Kayy. Prawns</div>
+            <div class="menu-title">kayy. Prawns</div>
             <div class="menu-desc">5 Pieces crispy and succulent prawns coated in a golden, crunchy batter. Served with a dipping sauce.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Prawns', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
-    <section style="scroll-margin-top: 480px;"
-    id="betweentheslices">
-      <h1 style="margin-top:150px;" class="heading">BETWEEN THE SLICES </h1>
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">BETWEEN THE SLICES</h1>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Chicken Sekela">
@@ -822,9 +918,15 @@ id="appetizers">
             <div class="menu-desc">Fluffy folded eggs with tomato, lettuce, cucumber and onion in between slices of bread.</div>
             <div class="menu-price">10,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Egg Sandwich', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -835,9 +937,15 @@ id="appetizers">
             <div class="menu-desc">Grilled chicken breast with mayo, lettuce, onion, tomato and cucumber between slices of bread.</div>
             <div class="menu-price">14,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken & Mayo', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -848,9 +956,15 @@ id="appetizers">
             <div class="menu-desc">Tasty tuna with onion, tomato, lettuce and mayo in between slices of bread.</div>
             <div class="menu-price">12,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Tuna corn Mayo', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -861,18 +975,30 @@ id="appetizers">
             <div class="menu-desc">A delicious combination of chicken breast, beef, bacon, turnover egg, tomato, lettuce, onion and cucumber in between slices of bread.</div>
             <div class="menu-price">18,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Club sandwich', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
 <p style="color: white;" class="para">Served with fries and colesaw salad.</p>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="burgerful">
-       <h1 style="margin-top: 150px;" class="heading">BURGER-FUL </h1>
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">BURGER-FUL</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -881,9 +1007,15 @@ id="appetizers">
             <div class="menu-desc">Crispy chicken breast coated in bread crumbs, lettuce, cucumber, onion and tomato and cheese.</div>
             <div class="menu-price">17,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Spicy Crispy Chicken', 17000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -894,9 +1026,15 @@ id="appetizers">
             <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
             <div class="menu-price">15,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Honey Mustard Chicken', 15000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -907,9 +1045,15 @@ id="appetizers">
             <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion.</div>
             <div class="menu-price">12,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Beef Burger', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -920,9 +1064,15 @@ id="appetizers">
             <div class="menu-desc">Patty consists of carrot, onion, potato and zucchini coated in bread crumbs with lettuce and tomato.</div>
             <div class="menu-price">9,000/=</div>
 
-              <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+              <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Veggie Burger', 9000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -933,18 +1083,30 @@ id="appetizers">
             <div class="menu-desc">A delicious combination of chicken and beef patties, lettuce, tomato, cucumber, caramelized onions and cheese.</div>
             <div class="menu-price">20,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Classic Burger', 20000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
     <P style="color: white;" class="para">Served with fries and colesaw salad</P>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="staycheezey">
-      <h1 style="margin-top: 150px;" class="heading"> STAY CHEEEZZY</h1> 
+      <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">STAY CHEEEZZY</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -953,9 +1115,15 @@ id="appetizers">
             <div class="menu-desc">Classic italian pizza with fresh tomato, cheese, olives and basil on a thin crust.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Margarita Pizza', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -966,22 +1134,34 @@ id="appetizers">
             <div class="menu-desc">Tender chicken tikka cubes with green pepper, tomato, onion, oregano and cheese on a thin crust.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Tikka Pizza', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg"> 
         <div class="menu-details">
-            <div class="menu-title">veggie Pizza</div>
+            <div class="menu-title">Veggie Pizza</div>
             <div class="menu-desc">Seasoned vegetables and cheese on a thin crust.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Veggie Pizza', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -992,29 +1172,47 @@ id="appetizers">
             <div class="menu-desc">Sauteed beef strips with onion, pepper and oregano on a thin crust.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Beef Twist Pizza', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
      <div class="menu-item">
         <img src="thumbnails/captain fav.jpg">
         <div class="menu-details">
-            <div class="menu-title">Kayy. Special Pizza</div>
+            <div class="menu-title">kayy. Special Pizza</div>
             <div class="menu-desc">A delightful mix of seafood, chicken, beef, mushrooms and oregano on a thin crust.</div>
             <div class="menu-price">20,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Special Pizza', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="captainsfavourite">
-<h1 style="margin-top:150px; " class="heading">CAPTAIN'S FAVOURITE</h1> 
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">CAPTAIN'S FAVOURITE</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1023,9 +1221,15 @@ id="appetizers">
             <div class="menu-desc">Cubed squid in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Squid Nazi', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1036,9 +1240,15 @@ id="appetizers">
             <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pweza Nazi', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1049,9 +1259,15 @@ id="appetizers">
             <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Prawns Nazi', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1062,9 +1278,15 @@ id="appetizers">
             <div class="menu-desc">Simmered fish fillet in a flavorful coconut sauce, thai curry paste, aromatic herbs and spices.</div>
             <div class="menu-price">16,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Thai Fish Curry', 16000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1075,16 +1297,28 @@ id="appetizers">
             <div class="menu-desc">Cubed fish fillet with mixed bell peppers and sauteed vegetables.</div>
             <div class="menu-price">16,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chilli Pepper Fish', 16000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="ohpastabilities">
-      <h1 style="margin-top:150px;" class="heading">OH PASTA-BILITIES</h1> 
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">OH  PASTA-BILITIES</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1093,9 +1327,15 @@ id="appetizers">
             <div class="menu-desc">Spaghetti with minced meat in a tomato gravy, onion, carrot, parsley, topped with parmesan cheese.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Spaghetti Bolognese', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1106,9 +1346,15 @@ id="appetizers">
             <div class="menu-desc">Penne pasta in a zesty tomato sauce with chili flakes, topped with parmesan cheese.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Penne Arabiata', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1119,9 +1365,15 @@ id="appetizers">
             <div class="menu-desc">Fusilli pasta, tender chicken breast, cajun spice, in creamy sauce, topped with parmesan cheese.</div>
             <div class="menu-price">16,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Creamy Chicken Pasta', 16000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1132,17 +1384,28 @@ id="appetizers">
             <div class="menu-desc">Choice of pasta, shrimp, mushroom in white sauce, black olives, topped with parmesan cheese.</div>
             <div class="menu-price">20,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chef Style Shrimp Pasta', 20000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="justwingit">
-      <h1 style="margin-top:150px;
-      scroll-margin-top: 480px;" class="heading">JUST WING IT</h1> 
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">JUST WING IT</h1> 
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1151,9 +1414,15 @@ id="appetizers">
             <div class="menu-desc">Chicken wings seasoned to perfection, crunchy exterior and fried to a golden perfection. served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Crispy Chicken Wings', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1164,9 +1433,15 @@ id="appetizers">
             <div class="menu-desc">Coated in a blend of garlic, onion, fresh chili and sauce, creating a fiery taste. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">15,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Hot Garlic ', 15000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1177,9 +1452,15 @@ id="appetizers">
             <div class="menu-desc">Blend of honey and smoky barbecue sauce, creating a perfect harmony of flavors. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Honey BBQ', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1190,9 +1471,15 @@ id="appetizers">
             <div class="menu-desc">Glazed with a sticky blend of sesame seeds, tangy BBQ sauce, and savory sauce. Served with fries, coleslaw and dipping sauce. </div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sticky Thai', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1203,9 +1490,15 @@ id="appetizers">
             <div class="menu-desc">Coated in a tantalizing sweet chilli sauce that perfec sweetness and spiceness. Served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">13,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sweet Chilli', 13000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1216,18 +1509,28 @@ id="appetizers">
             <div class="menu-desc">Seasoned with a blend of garlic, onion, fresh chili, and fragrant coriander. Garnished with a sprinkle of chili flakes, served with fries, coleslaw salad and dipping sauce.</div>
             <div class="menu-price">16,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Chilli', 16000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="explorethemain">
-       <h1 style="margin-top: 150px;
-       scroll-margin-top: 480px"
-       class="heading">EXPLORE THE MAIN</h1> 
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">EXPLORE THE MAIN</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1236,9 +1539,15 @@ id="appetizers">
             <div class="menu-desc">Tender grilled steak marinated in a flavorful blend of Asian spices and fried cubed potatoes seasoned with aromatic herbs.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Asian Steak and Potatoes', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1249,9 +1558,15 @@ id="appetizers">
             <div class="menu-desc">Fragrant basmati rice cooked with tender chicken pieces, aromatic spices and garnished with herbs.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Biryani', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1262,9 +1577,15 @@ id="appetizers">
             <div class="menu-desc">Fragrant basmati rice cooked with succulent pieces of lamb, aromatic spices and garnished with herbs.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lamb Biryani', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1275,9 +1596,15 @@ id="appetizers">
             <div class="menu-desc">Fragrant basmati rice cooked with flavorful fish pieces, aromatic spices, and garnished with herbs.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Fish Biryani', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1288,9 +1615,15 @@ id="appetizers">
             <div class="menu-desc">Savory stir-fried rice with tender pieces of chicken, mixed vegetables and aromatic seasoning.</div>
             <div class="menu-price">13,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Fried Rice', 13000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1301,9 +1634,15 @@ id="appetizers">
             <div class="menu-desc">Flavoful stir-fried rice with succulent shrimp, mixed vegetables, and savory seasonings.</div>
             <div class="menu-price">16,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Shrimp Fried rice', 16000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1314,9 +1653,15 @@ id="appetizers">
             <div class="menu-desc">Stir-fried rice with a colorful assortment of vegetables and flavorful seasoning.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Veg Fried Rice', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1327,9 +1672,15 @@ id="appetizers">
             <div class="menu-desc">Chicken pieces marinated in aromatic spices, velvety tomato and butter-based sauce , blend of indian spices with a touch of cream.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Butter Chicken', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1340,9 +1691,15 @@ id="appetizers">
             <div class="menu-desc">Tender chicken cooked in a spicy and flavorsome tomato-based sauce with aromatic spices, served with a side of your choice.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Makange', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1353,9 +1710,15 @@ id="appetizers">
             <div class="menu-desc">Fresh fish cooked in a flavorful and tangy tomato-based sauce with aromatic spices and herbs, served with side of your choice.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Fish Makange', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1366,9 +1729,15 @@ id="appetizers">
             <div class="menu-desc">Crispy and succulent chicken pieces, seasoned and fried to golden perfection, served with fries and salad.</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Spicy Crispy Chicken', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1379,17 +1748,28 @@ id="appetizers">
             <div class="menu-desc">Crispy and seasoned fried changu fish, served with a side of your choice and tangy dipping sauce.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Changu Fried', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div> 
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="chomachoma">
-       <h1 style="margin-top: 150px;
-        scroll-margin-top: 480px;" class="heading">CHOMA CHOMA</h1>
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">CHOMACHOMA</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1398,9 +1778,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Sekela', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1411,9 +1797,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Lemon', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1424,9 +1816,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Gajjar', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1437,9 +1835,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
             <div class="menu-price">12,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Peri-Peri', 12000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1450,9 +1854,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mishkaki Plate', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1463,9 +1873,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Nundu Plate', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1476,9 +1892,15 @@ id="appetizers">
             <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
             <div class="menu-price">15,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mbuzi Choma', 15000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1489,9 +1911,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Kuku Choma', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1502,9 +1930,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Wings Choma', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1515,17 +1949,28 @@ id="appetizers">
             <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Samaki Choma', 18000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;"
-    id="chomaplatters">
+     <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
       <h1 style="margin-top: 150px;
-      scroll-margin-top: 480px;" class="heading">CHOMA PLATTERS</h1>
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">CHOMA PLATTERS</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1534,9 +1979,15 @@ id="appetizers">
             <div class="menu-desc">Sekela 1/2, Nundu 5 sticks, Mishkaki 5 sticks served with plain fries x2 & Ndizi Mzuzu x2.</div>
             <div class="menu-price">25,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Duo Delight', 25000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1547,9 +1998,15 @@ id="appetizers">
             <div class="menu-desc">Whole Sekela, Nundu 10 sticks, Mishkaki 10 sticks served with plain fries x3 & Ndizi Mzuzu </div>
             <div class="menu-price">45,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Family Fiesta', 45000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1560,9 +2017,15 @@ id="appetizers">
             <div class="menu-desc">Whole Sekela, Nundu 8 Sticks, Mishkaki 8 Sticks, Burger or Small Pizza x2, Beef Sausage x4 served with plain fries x4 & Ndizi Mzuzu x4.</div>
             <div class="menu-price">70,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Choma Bonanza', 70000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1573,9 +2036,15 @@ id="appetizers">
             <div class="menu-desc">Whole Sekela, Nundu 8 sticks, Mishkaki 8 sticks, Burger or small pizza x2, whole Changu Choma, Firigisi, Beef Sausage x4 served with plain fries x4, Zege x1 & Ndizi Mzuzu x5.</div>
             <div class="menu-price">90,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Choma Extravaganza', 90000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 </div>
@@ -1583,19 +2052,32 @@ id="appetizers">
 <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
-            <div class="menu-title">Choma Wigs Platter</div>
+            <div class="menu-title">Choma Wings Platter</div>
             <div class="menu-desc">8pcs Mouthwatering char-grilled chicken wings, with a choice of four flavors; Tandori, Lemon, Gajjar or classic choma. Served with a dipping sauce, salad and fries (2 pax).</div>
             <div class="menu-price">25,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Choma Wings Platter', 25000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="platters">
-       <h1 style="margin-top: 150px;" class="heading">PLATTERS</h1>
+    <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">PLATTERS</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1604,9 +2086,15 @@ id="appetizers">
             <div class="menu-desc">Delightful assortment of calamari, prawns, fish fillet and grilled octopus served with sauces, salad and fries (4 pax).</div>
             <div class="menu-price">55,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Fisherman Platter', 55000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1618,9 +2106,15 @@ id="appetizers">
             <div class="menu-price">45,000/=
             </div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mixed Grill Platter', 45000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1631,9 +2125,15 @@ id="appetizers">
             <div class="menu-desc">16 pcs Mouthwatering chicken wings, each coated in your choice of four flavors. Served with a dipping sauce, salad and fries (2 pax).</div>
             <div class="menu-price">25,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Wings Platter', 25000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1644,9 +2144,15 @@ id="appetizers">
             <div class="menu-desc">Feast of crispy chicken, chicken wings, juicy chicken tenders, chicken lollipops and chicken sausages. Served with dipping sauces, salad and fries (5 pax).<br> Served with soft drinks.</div>
             <div class="menu-price">62,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Kuku Platter', 62000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1657,15 +2163,28 @@ id="appetizers">
             <div class="menu-desc">Delicious combination of crispy calamari, golden prawns, grilled octopus, fish fillet, grilled beef, and coated chicken. Served with dipping sauce, salad and fries (6 pax).</div>
             <div class="menu-price">90,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Platter', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="sides">
-      <h1 style="margin-top: 150px;" class="heading">SIDES</h1>
+    <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">SIDES</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1674,9 +2193,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
             <div class="menu-price">55,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+           <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Plain Fries', 55000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1687,9 +2212,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled Half Chicken infused with zesty lemon flavor, served with fries and salad</div>
             <div class="menu-price">45,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Masala Fries', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1700,9 +2231,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated with a special blend of gajjar spices, served with fries and salad </div>
             <div class="menu-price">25,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Cassava Fries', 25000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1713,9 +2250,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled half chicken marinated in peri peri sauce, served with fries and salad</div>
             <div class="menu-price">62,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sweet Potato Fries', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1726,9 +2269,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
             <div class="menu-price">90,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Zege (Chipsi Mayai)', 90000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1739,9 +2288,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Garlic Fries', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1752,9 +2307,15 @@ id="appetizers">
             <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices, served with fries and salad.</div>
             <div class="menu-price">15,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mash Potato', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1765,9 +2326,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled chicken mrinated with flavor spices, served with fries and salad</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Ndizi Mzuzu', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1778,9 +2345,15 @@ id="appetizers">
             <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad</div>
             <div class="menu-price">14,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Ugali', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1791,15 +2364,28 @@ id="appetizers">
             <div class="menu-desc">Grilled Changu or sato fish with smoky flavor, mixed with aromatic herbs served with fries and salad.</div>
             <div class="menu-price">18,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chapati', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
 
     </section>
 
-    <section style="scroll-margin-top: 480px;" id="kidsmeal">
-      <h1 style="margin-top: 150px;" class="heading">KIDS MEAL</h1>
+    <section style="scroll-margin-top: 480px;
+     
+     width: 100%;
+     padding-right: 40px;
+     padding-left: 20px; " id="mojitos">
+      <h1 style="margin-top: 150px;
+      padding-top: 50px;
+      color: #ff5733;
+      " class="heading">KIDS MEAL</h1>
 
     <div class="menu-item">
         <img src="thumbnails/chicken makange.jpg" alt="Chicken Sekela">
@@ -1808,9 +2394,15 @@ id="appetizers">
             <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Fish Fingers', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1821,9 +2413,15 @@ id="appetizers">
             <div class="menu-desc">Bite-sized chicken pieces with a crispy coating, served with fries.</div>
             <div class="menu-price">10,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chicken Tenders', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1834,9 +2432,15 @@ id="appetizers">
             <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries.</div>
             <div class="menu-price">8,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Grilled Cheese', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1847,18 +2451,25 @@ id="appetizers">
             <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids.</div>
             <div class="menu-price">9,000/=</div>
 
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sausage & Chips', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 </div>
     </section>
 
     <section style="scroll-margin-top: 480px;
-    background-color: rgba(65, 152, 65, 0.4);
+    background-color:rgba(126, 210, 125, 0.4); 
     width: 100%;
-    padding-right: 60px;" id="freshjuice">
+    padding-right: 22px;
+    padding-left: 20px;" id="freshjuice">
       <h1 style="margin-top: 150px;
       padding-top: 50px;
       text-align: center;
@@ -1870,7 +2481,7 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 270px;
+            margin-right: 150px;
             color: white;"class="menu-title">Pineapple</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
@@ -1879,9 +2490,17 @@ id="appetizers">
             <div class="menu-desc"></div>
 
             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+        <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pineapple Juice', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
+        </div>
+    </div>
     </div>
 
     <div class="menu-item">
@@ -1890,7 +2509,7 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 350px;
+            margin-right: 270px;
             color: white;
             "class="menu-title">Mango</div> <div style="display: inline;
             font-weight: bold;
@@ -1898,9 +2517,15 @@ id="appetizers">
             color: white;" class="menu-price">5,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mango Juice', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1910,16 +2535,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 320px;
+            margin-right: 250px;
             color: white;"class="menu-title">Passion</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">5,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Passion', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1929,16 +2560,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 220px;
+            margin-right: 130px;
             color: white;"class="menu-title">Watermelon</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">5,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Watermelon', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1948,16 +2585,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 330px;
+            margin-right: 250px;
             color: white;"class="menu-title">Orange</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">5,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Orange', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1967,16 +2610,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 370px;
+            margin-right: 270px;
             color: white;"class="menu-title">Stafeli</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">6,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Stafeli', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -1986,16 +2635,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 150px;
+            margin-right: 30px;
             color: white;"class="menu-title">Bungo Special</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">6,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Bungo Special', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2005,16 +2660,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 310px;
+            margin-right: 250px;
             color: white;"class="menu-title">Tropical</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">6,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Tropical', 14000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2022,9 +2683,10 @@ id="appetizers">
     </section>
 
     <section style="scroll-margin-top: 480px;
-     background-color:  rgba(65, 152, 65, 0.4);
+     background-color:  rgba(126, 210, 125, 0.4);
      width: 100%;
-     padding-right:60px; " id="mojitos">
+     padding-right: 22px;
+     padding-left: 20px; " id="mojitos">
       <h1 style="margin-top: 150px;
       color: white;
       padding-top: 50px;
@@ -2036,16 +2698,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 250px;
+            margin-right: 70px;
             color: white;"class="menu-title">Virgin Mary</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">7,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Virgin Mary', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2055,130 +2723,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 250px;
+            margin-right: 90px;
             color: white;"class="menu-title">Strawberry</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">8,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strawberry', 8000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 290px;
-            color: white;"class="menu-title">Berry Mix</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">9,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-        </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 330px;
-            color: white;"class="menu-title">Passion</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">8,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-        </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 290px;
-            color: white;"class="menu-title">Pineapple</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">7,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-        </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 370px;
-            color: white;"class="menu-title">Mango</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">7,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-        </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 230px;
-            color: white;"class="menu-title">Blue Lagoon</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">8,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
-        </div>
-    </div>
-
-    <div class="menu-item">
-        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
-        <div class="menu-details">
-            <div style="font-weight: bold;
-            margin-bottom: 20px;
-            display: inline;
-            margin-right: 280px;
-            color: white;"class="menu-title">Lemonade</div> <div style="display: inline;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;" class="menu-price">6,000/=</div>
-            <div class="menu-desc"></div>
-           
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
         </div>
     </div>
 
@@ -2189,15 +2749,171 @@ id="appetizers">
             margin-bottom: 20px;
             display: inline;
             margin-right: 150px;
+            color: white;"class="menu-title">Berry Mix</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">9,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Berry Mix', 9000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 200px;
+            color: white;"class="menu-title">Passion</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">8,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Passion Mojito', 8000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Pineapple</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pineapple Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 250px;
+            color: white;"class="menu-title">Mango</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">7,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mango Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 80px;
+            color: white;"class="menu-title">Blue Lagoon</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">8,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Blue Lagoon', 8000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 150px;
+            color: white;"class="menu-title">Lemonade</div> <div style="display: inline;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: white;" class="menu-price">6,000/=</div>
+            <div class="menu-desc"></div>
+           
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lemonade', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="menu-item">
+        <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
+        <div class="menu-details">
+            <div style="font-weight: bold;
+            margin-bottom: 20px;
+            display: inline;
+            margin-right: 10px;
             color: white;"class="menu-title">Fruit Lemonade</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">7,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Fruit Lemonade', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2207,16 +2923,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 240px;
+            margin-right: 100px;
             color: white;"class="menu-title">Pina Colada</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">7,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pina Colada Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2226,16 +2948,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 360px;
+            margin-right: 200px;
             color: white"class="menu-title">JEMBE</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">6,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('JEMBE Mojito', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2245,28 +2973,35 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 220px;
+            margin-right: 50px;
             color: white;"class="menu-title">kayy. Special</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: white;" class="menu-price">9,000/=</div>
             <div class="menu-desc"></div>
            
-             <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+             <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Special', 9000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
     </section>
 
     <section style="scroll-margin-top: 480px;
-    width: 100%;
-    padding-right: 60px;
-     background-color:rgba(65, 152, 65, 0.4); " id="extras">
+     background-color:  rgba(126, 210, 125, 0.4);
+     width: 100%;
+     padding-right: 22px;
+     padding-left: 20px; " id="mojitos">
       <h1 style="margin-top: 150px;
-      padding-top: 50px;
       color: white;
+      padding-top: 50px;
       text-align: center;" class="heading">EXTRAS</h1>
       
       <div class="menu-item">
@@ -2282,9 +3017,15 @@ id="appetizers">
             color: white;" class="menu-price">1,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Small Water', 1000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2301,9 +3042,15 @@ id="appetizers">
             color: white;" class="menu-price">2,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Large Water', 2000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2320,9 +3067,15 @@ id="appetizers">
             color: white;" class="menu-price">2,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Coconut Water', 2000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2339,25 +3092,30 @@ id="appetizers">
             color:white" class="menu-price">1,000/=</div>
             <div class="menu-desc"></div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Soft Drink', 1000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
     
     </section>
 
-    <section style="margin-bottom:
-    200px;
-    
-    scroll-margin-top: 480px;
-    background-color: rgba(238, 203, 27, 0.7);
-    Padding-right: 60px;
-    width: 100%;
-    "id="fruitfusion">
+    <section style="scroll-margin-top: 480px;
+     background-color:  rgba(238, 203, 27, 0.7);
+     width: 100%;
+     padding-right: 22px;
+     padding-left: 20px; " id="mojitos">
       <h1 style="margin-top: 150px;
+      color: white;
       padding-top: 50px;
-      text-align: center;" class="headin">FRUIT FUSION</h1>
+      text-align: center;
+      color: black" class="heading">FRUIT FUSION</h1>
 
     <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
@@ -2365,16 +3123,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 150px;
+            margin-right: 20px;
             color: black;"class="menu-title">Celebrity Crush</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: black;" class="menu-price">7,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Apple, Orange, Pineapple, Banana, Lime & Coconut Water</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Celebrity Crush', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2391,9 +3155,15 @@ id="appetizers">
             color: black;" class="menu-price">7,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Mango, Apple, Lime.</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Big Bad Wolf', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2410,9 +3180,15 @@ id="appetizers">
             color: black;" class="menu-price">7,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Coconut Water, Cucumber, Pineapple & Lime</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Golden Hour', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2429,9 +3205,15 @@ id="appetizers">
             color: black;" class="menu-price">8,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Strawberry, Blue Berry, Black Berry, & Raspberry</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Very Berry', 8000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2441,16 +3223,22 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 150px;
+            margin-right: 15px;
             color: black;"class="menu-title">Tropical Twist</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: black;" class="menu-price">7,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Pineapple, Mango & Passion.</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('', 1000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2460,19 +3248,26 @@ id="appetizers">
             <div style="font-weight: bold;
             margin-bottom: 20px;
             display: inline;
-            margin-right: 150px;
+            margin-right: 10px;
             color: black;"class="menu-title">Mango Madness</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: black;" class="menu-price">7,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Mango, Banana, & Strawberry</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mango Madness', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
+     
      <div class="menu-item">
         <img src="thumbnails/captain fav.jpg" alt="Mishkaki Plate">
         <div class="menu-details">
@@ -2480,15 +3275,20 @@ id="appetizers">
             margin-bottom: 20px;
             display: inline;
             margin-right: 150px;
-            color: black;"class="menu-title">Refresher</div> <div style="display: inline;
+            color: black;"class="menu-title">Sunshine</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
-            color: black;" class="menu-price">7,000/=</div>
-            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Apple, watermelon, Pineapple & Mint</div>
-           
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            color: black;" class="menu-price">6,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>       
+            
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Refresher', 7000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+        </div>
         </div>
     </div>
 
@@ -2505,10 +3305,16 @@ id="appetizers">
             color: black;" class="menu-price">6,000/=</div>
             <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sunshine', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
+    </div>
     </div>
 
      <div class="menu-item">
@@ -2518,16 +3324,22 @@ id="appetizers">
             margin-bottom: 20px;
             display: inline;
             margin-right: 150px;
-            color: black;"class="menu-title">Hawaii Trio</div> <div style="display: inline;
+            color: black;"class="menu-title">Sunshine</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
             color: black;" class="menu-price">6,000/=</div>
-            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Pineapple, Apple, & Orange</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sunshine', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
+    </div>
     </div>
 
      <div class="menu-item">
@@ -2537,16 +3349,22 @@ id="appetizers">
             margin-bottom: 20px;
             display: inline;
             margin-right: 150px;
-            color: black;"class="menu-title">Detoxify</div> <div style="display: inline;
+            color: black;"class="menu-title">Sunshine</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
-            color: black;" class="menu-price">7,000/=</div>
-            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Cucumber, Pineapple, Mint & Lemon</div>
+            color: black;" class="menu-price">6,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sunshine', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
+    </div>
     </div>
 
      <div class="menu-item">
@@ -2556,19 +3374,25 @@ id="appetizers">
             margin-bottom: 20px;
             display: inline;
             margin-right: 150px;
-            color: black;"class="menu-title">kayy. Mix</div> <div style="display: inline;
+            color: black;"class="menu-title">Sunshine</div> <div style="display: inline;
             font-weight: bold;
             margin-bottom: 20px;
-            color: black;" class="menu-price">7,000/=</div>
-            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Tamarind, Hibiscus & Baobab </div>
+            color: black;" class="menu-price">6,000/=</div>
+            <div style="color: black;font-size: 2.9rem;" class="menu-desc">Orange, Carrot & Ginger</div>
            
-            <div>
-        <button class="add-to-cart">Add to Cart</button>
-    </div>
+            <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: rgb(63, 60, 60);
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sunshine', 6000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
     </div>
+    </div>
 
-</div>
+     
     </section>
 
     <section id="reviews" style="background-color: transparent; text-align: center;
@@ -2742,6 +3566,24 @@ width: 100%;">
 </footer>
 </section>
 
+<button id="cart-toggle">🛒</button>
+
+<div style="height: 100%;" id="cart">
+  <div class="cart-header">
+    <h3 style="font-size: 4rem;">Your Cart</h3>
+    <button style="font-size: 5rem;
+    color: red;" class="close-cart">✖</button>
+  </div>
+  <ul id="cart-items"></ul>
+  <div id="cart-footer">
+    <div id="cart-footer">
+  <p id="cart-subtotal">Subtotal: 0 /=</p>
+ 
+
+    <button id="order-now">Order Now</button>
+  </div>
+</div>
+
 
   <script>
     function toggleDropdown(id) {
@@ -2770,97 +3612,79 @@ function toggleDropdown(id) {
   });
 
 
-  
-   const cart = [];
-  const cartPanel = document.getElementById("cart");
-  const cartToggle = document.getElementById("cart-toggle");
-  const closeCartBtn = document.querySelector(".close-cart");
-  const cartItemsList = document.getElementById("cart-items");
-  const subtotalEl = document.getElementById("subtotal");
-  const orderBtn = document.getElementById("order-now");
+  const cartToggle = document.getElementById('cart-toggle');
+  const cart = document.getElementById('cart');
+  const closeCart = document.querySelector('.close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const orderNow = document.getElementById('order-now');
 
-  // Toggle cart
-  cartToggle.addEventListener("click", () => {
-    cartPanel.classList.toggle("active");
-  });
-  closeCartBtn.addEventListener("click", () => {
-    cartPanel.classList.remove("active");
+  cartToggle.addEventListener('click', () => {
+    cart.style.display = cart.style.display === 'flex' ? 'none' : 'flex';
   });
 
-  // Update cart
-  function updateCart() {
-    cartItemsList.innerHTML = "";
-    let subtotal = 0;
-    cart.forEach((item, index) => {
-  const li = document.createElement("li");
-
-  // Item text
-  const span = document.createElement("span");
-  span.textContent = `${item.name} - ${item.price}/=`;
-
-  // Remove button
-  const removeBtn = document.createElement("button");
-  removeBtn.textContent = "Remove";
-  removeBtn.style.marginLeft = "10px";
-  removeBtn.style.background = "#e85c2f";
-   removeBtn.style.margin = "auto";
-    removeBtn.style.display = " block";
-  removeBtn.style.color = "#fff";
-  removeBtn.style.border = "none";
-  removeBtn.style.borderRadius = "20px";
-   removeBtn.style.fontSize = "2rem"
-   removeBtn.style.paddingTop = "20px";
-   removeBtn.style.paddingBottom = "20px";
-   removeBtn.style.paddingRight = "30px";
-   removeBtn.style.paddingLeft = "30px";
-   removeBtn.style.margiBottom = "50px;";
-  removeBtn.style.cursor = "pointer";
-
-  // Remove item when clicked
-  removeBtn.addEventListener("click", () => {
-    cart.splice(index, 1); // delete item from array
-    updateCart();          // refresh the cart UI
+  closeCart.addEventListener('click', () => {
+    cart.style.display = 'none';
   });
 
-  li.appendChild(span);
-  li.appendChild(removeBtn);
-  cartItemsList.appendChild(li);
+  // Array to store cart items
+  let items = [];
 
-  subtotal += item.price;
-});
-
-    subtotalEl.textContent = `Subtotal: ${subtotal} /=`;
+  // Function to add item to cart
+  function addToCart(name, price) {
+    items.push({name, price});
+    renderCart();
   }
 
-  // Add to cart buttons
-  document.querySelectorAll(".add-to-cart").forEach((btn) => {
-    btn.addEventListener("click", function() {
-      const itemEl = this.closest(".menu-item");
-      const name = itemEl.querySelector(".menu-title").textContent;
-      const priceText = itemEl.querySelector(".menu-price").textContent.replace(/[^\d]/g, "");
-      const price = parseInt(priceText);
-      cart.push({name, price});
-      updateCart();
-    });
+  // Render cart items
+  function renderCart() {
+    cartItems.innerHTML = '';
+    let subtotal = 0;
+    items.forEach((item, index) => {
+      subtotal += item.price;
+      const li = document.createElement('li');
+      li.innerHTML = `${item.name} - ${item.price} /= <button onclick="removeItem(${index})">Remove</button>`;
+    cartItems.appendChild(li);
+    }); 
+
+    document.getElementById('cart-subtotal').textContent = `Subtotal: ${subtotal} /=`;
+    
+
+     // Display subtotal
+  const subtotalElem = document.getElementById('cart-subtotal');
+  subtotalElem.textContent = `Subtotal: ${subtotal} /=`;
+}
+  
+
+  // Remove item
+  function removeItem(index) {
+    items.splice(index, 1);
+    renderCart();
+  }
+
+  // WhatsApp order
+orderNow.addEventListener('click', () => {
+  if(items.length === 0) {
+    alert('Cart is empty!');
+    return;
+  }
+
+  const phone = '255788296274'; // replace with your WhatsApp number
+  let msg = 'Hello, I would like to order:\n';
+
+  let subtotal = 0;
+  items.forEach(item => {
+    msg += `- ${item.name} (${item.price} /=)\n`;
+    subtotal += item.price;
   });
 
-  // Order via WhatsApp
-  orderBtn.addEventListener("click", function() {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-    let message = "Hello, I’d like to order:\n";
-    let total = 0;
-    cart.forEach(item => {
-      message += `- ${item.name} (${item.price}/=)\n`;
-      total += item.price;
-    });
-    message += `\nSubtotal: ${total} /=`;
-    const phone = "255755828696"; // <-- your WhatsApp number
-    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  });
+  msg += `\nSubtotal: ${subtotal} /=`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+});
+
+
+   
 
 
   
