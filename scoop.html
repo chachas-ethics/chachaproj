@@ -3392,6 +3392,15 @@ window.onclick = function(event) {
   });
 }
 
+function closeModalOnOutsideClick(e) {
+  if (e.target.classList.contains('overlay')) {
+    document.querySelector('.modal').style.display = 'none';
+  }
+}
+
+document.addEventListener('click', closeModalOnOutsideClick);
+document.addEventListener('touchstart', closeModalOnOutsideClick);
+
 
  
 
