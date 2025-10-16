@@ -726,7 +726,8 @@ margin-top: 100px;">
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
-  background-color: rgb(63, 60, 60);
+  background-color: #63c89ccc;
+  border: none;
   color: white;
   border-radius: 50px;
   font-size: 3rem;" onclick="addToCart('Karak', 4000)" style="margin:5px;padding:10px 15px;
@@ -738,7 +739,8 @@ margin-top: 100px;">
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
-  background-color: rgb(63, 60, 60);
+  background-color: #63c89ccc;
+  border: none;
   color: white;
   border-radius: 50px;
   font-size: 3rem;" onclick="addToCart('Masala', 4000)" style="margin:5px;padding:10px 15px;
@@ -750,7 +752,8 @@ margin-top: 100px;">
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
-  background-color: rgb(63, 60, 60);
+  background-color: #63c89ccc;
+  border: none;
   color: white;
   border-radius: 50px;
   font-size: 3rem;" onclick="addToCart('English', 4000)" style="margin:5px;padding:10px 15px;
@@ -928,12 +931,62 @@ margin-top: 100px;">
         </div>
     </div>
 
-    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
-      <img src="thumbnails/frappe.avif" alt="frapuccino" style="width: 100%; border-radius: 10px;" loading="lazy">
-      <h3 style="margin: 10px 0;">Frapuccino</h3>
-      <p style="color: #555;">10,000/=</p>
+     <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/frappe.avif" alt="affogato" style="width: 100%; border-radius: 10px;" loading="lazy">
 
-      <div style="padding:20px;">
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Frapuccino</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal30')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+          margin-top: 26px;
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal30" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Frapuccino</h2>
+    
+    <p><strong>Price:</strong> 10,000/=</p>
+
+    <div style="padding:20px;">
+      <p>Frapuccino <br> 10,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Frapuccino', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add To Cart</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Frapuccino +Flavoured Icecream <br> 12,000/=</p>
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
@@ -941,9 +994,11 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Frapuccino', 10000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+  font-size: 3rem;" onclick="addToCart('Frapuccino + Flavoured Icecream', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add To Cart</button>
         </div>
-    </div>
+</div>
+</div>
 
      <!-- Item 1 -->
     <!-- === Card Block === -->
@@ -987,7 +1042,7 @@ margin-top: 100px;">
     <p><strong>Price:</strong> 10,000/=</p>
 
     <div style="padding:20px;">
-      <p>Affogato</p>
+      <p>Affogato <br> 10,000/=</p>
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
@@ -995,12 +1050,12 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Affogat0', 10000)" style="margin:5px;padding:10px 15px;
+  font-size: 3rem;" onclick="addToCart('Affogato', 10000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
 
          <div style="padding:20px;">
-          <p>+Flavoured Icecream</p>
+          <p>Affogato +Flavoured Icecream <br> 12,000/=</p>
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
@@ -1008,7 +1063,7 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('+ Flavoured Icecream', 12000)" style="margin:5px;padding:10px 15px;
+  font-size: 3rem;" onclick="addToCart('Affogato + Flavoured Icecream', 12000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
 </div>
@@ -1331,7 +1386,7 @@ margin-top: 100px;">
             box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
   
   <!-- Image -->
-  <img src="thumbnailss/MT.jpg" alt="milk tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+  <img src="thumbnailss/MilkTP.jpg" alt="milk tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
 
   <!-- Title -->
   <h3 style="margin: 10px 0;">Milk Tea Pot</h3>
@@ -1342,6 +1397,7 @@ margin-top: 100px;">
   <!-- View Item Button -->
   <button onclick="openModal('modal5')" 
           style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+          margin-top: 25px;
                  border-radius: 50px; cursor: pointer;
                   font-size: 3rem;">
     View Item
@@ -1458,7 +1514,7 @@ margin-top: 100px;">
         </div>
 
          <div style="padding:20px;">
-          <p>Flavoured Ice Tea <br> 12,000/=</p>
+          <p>Flavoured Ice Tea Pot <br> 12,000/=</p>
   <button style="padding: 20px 40px;
   display: block;
   margin: auto;
@@ -1560,7 +1616,7 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Chocolate Iced Latte  Pot', 11000)" style="margin:5px;padding:10px 15px;
+  font-size: 3rem;" onclick="addToCart('Chocolate Iced Latte Pot', 11000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
 
@@ -1573,7 +1629,7 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Vanilla Iced Latte  Pot', 11000)" style="margin:5px;padding:10px 15px;
+  font-size: 3rem;" onclick="addToCart('Vanilla Iced Latte Pot', 11000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
 
@@ -1682,7 +1738,7 @@ font-size: 2.5rem;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Peanut Buter Brownie', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
+  font-size: 3rem;" onclick="addToCart('Peanut Butter Brownie', 5000)" style="margin:5px;padding:10px 15px;">Add To Cart</button>
         </div>
     </div>
 
@@ -2384,7 +2440,7 @@ margin-top: 100px;">
     
     <h2>Classic Waffle</h2>
        <p> 
- Fluffy, Golden, and utterly irresistible. Our Classic Waffle is a fovourite. Served with maple syrup and a scoop of whipped cream</p>
+ Fluffy, Golden, and utterly irresistible. Our Classic Waffle is a favorite. Served with maple syrup and a scoop of whipped cream</p>
     <p><strong>Price:</strong> 10,000/=</p>
 
     <div style="padding:20px;">
@@ -2491,7 +2547,7 @@ margin-top: 100px;">
   text-align:center;">
     
     <h2>Classic Churro Plate</h2>
-    <p>8 Perfectly fried churros, served 2 dipping sauces, fresh fruit toppings and sprinkles.</p>
+    <p>8 Perfectly fried churros, each delicately dusted with a touch of cinnamon sugar</p>
     <p><strong>Price:</strong> 12,000/=</p>
 
     <div style="padding:20px;">
@@ -2557,7 +2613,7 @@ margin-top: 100px;">
   border: none;
   color: white;
   border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Churro Tray', 12000)" style="margin:5px;padding:10px 15px;
+  font-size: 3rem;" onclick="addToCart('Churro Tray', 14000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
   </div>
@@ -2653,7 +2709,7 @@ margin-top: 100px;">
     
     <h2>Flavours</h2>
     <p><strong>Price:</strong> +2,000/=</p>
-    <p>Strawberry</p>
+    <p>Nutella</p>
 
     <div style="padding:20px;">
   <button style="padding: 20px 40px;
@@ -2667,7 +2723,7 @@ margin-top: 100px;">
   ">Add To Cart</button>
         </div>
 
-        <p>Nutella</p>
+        <p>Lotus</p>
 
     <div style="padding:20px;">
   <button style="padding: 20px 40px;
@@ -2681,7 +2737,7 @@ margin-top: 100px;">
   ">Add To Cart</button>
         </div>
 
-        <p>Lotus</p>
+        <p>Oreo</p>
 
     <div style="padding:20px;">
   <button style="padding: 20px 40px;
@@ -2695,7 +2751,7 @@ margin-top: 100px;">
   ">Add To Cart</button>
         </div>
 
-        <p>Oreo</p>
+        <p>Peanut Butter</p>
 
     <div style="padding:20px;">
   <button style="padding: 20px 40px;
@@ -2708,24 +2764,8 @@ margin-top: 100px;">
   font-size: 3rem;" onclick="addToCart('Oreo Flavour ', 1000)" style="margin:5px;padding:10px 15px;
   ">Add To Cart</button>
         </div>
-
-        <p>Peanut Butter</p>
-
-    <div style="padding:20px;">
-  <button style="padding: 20px 40px;
-  display: block;
-  margin: auto;
-  background-color: #63c89ccc;
-  border: none;
-  color: white;
-  border-radius: 50px;
-  font-size: 3rem;" onclick="addToCart('Peanut Butter Flavour ', 1000)" style="margin:5px;padding:10px 15px;
-  ">Add To Cart</button>
         </div>
-        </div>
-        
-  
-</div>
+      </div>
 
 <!-- Item 1 -->
     <!-- === Card Block === -->
@@ -3256,21 +3296,21 @@ width: 100%;">
        Instagram
     </a>
     |
-    <a href="https://wa.me/255788296274" target="_blank" 
+    <a href="https://wa.me/255676777611" target="_blank" 
        style="color: white; text-decoration: none; margin: 0 15px; font-size: 3rem;">
        WhatsApp
     </a>
     <br>
-    <a href="tel:+255788296274" style="text-decoration: none;
+    <a href="tel:+255676777611" style="text-decoration: none;
     color: white;
     
-    font-size: 3rem;">Tel: +255 788 296 274</a>
+    font-size: 3rem;">Tel: +255 676 777 611</a>
   </div>
 
   <!-- Copyright -->
   <p style="font-size: 1.5rem; margin-top: 10px;
   color: white;">
-    &copy; 2010-2025 THE SCOOP. All Rights Reserved.
+    &copy; 2025 THE SCOOP. All Rights Reserved.
   </p>
   <p class="brand" style="color: rgb(255, 255, 255);
   font-size: 0.8rem">Designed And Developed By <a href="https://wa.me/255788296274" target="_blank">SynloTech</a></p>
@@ -3361,7 +3401,7 @@ orderNow.addEventListener('click', () => {
     return;
   }
 
-  const phone = '255788296274'; // replace with your WhatsApp number
+  const phone = '+255676777611'; // replace with your WhatsApp number
   let msg = 'Hello, I would like to order:\n';
 
   let subtotal = 0;
