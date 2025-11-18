@@ -1,0 +1,3973 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>kayy. Kafe | The Scoop</title>
+    <style>
+         html{
+      scroll-behavior: smooth;
+      
+    }
+
+    body {
+     margin: 0px;
+      font-family: 'montserrat classic', sans-serif;
+     background-color:  rgb(11, 11, 46);
+     width: 100%;
+     height: 100%;
+     opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+    }
+
+    body.loaded {
+  opacity: 1;
+}
+
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+
+     body:before {
+       content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+   url('thumbnails/the\ scoop\ dp.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(4px);
+  z-index: -1; 
+  margin: 0px;
+  margin-right: 0px;
+    }
+
+    @media (max-width: 480px) {
+  body:before {
+    background-size: contain;  /* keeps full image visible */
+  }
+}
+
+
+.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 85px 30px;
+      background: white;
+      color:black;
+      height: 70px;
+      font-size: 1.5rem;
+      top: 0;
+      position: sticky;
+      z-index: 1000;
+      width: 100%;
+
+    }
+
+    .navbar a{
+        background: transparent;
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+
+    
+
+    .nav-center a{
+        text-decoration: none;
+        color: inherit;
+        align-items: center;
+
+
+    }
+
+    
+
+    .hamburger {
+      font-size: 2rem;
+      cursor: pointer;
+      user-select: none;
+      margin-right: 10px;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 40px;
+      margin-top: 20px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      min-width: 120px;
+      color: black;
+      background-color: white;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: inherit;
+      
+    }
+
+    .dropdownright {
+      display: none;
+      position: absolute;
+      font-family: 'Abril Fatface' sans-serif;
+      right: 320px;
+      top: 10px;
+      width: 200%;
+      height: 870%;
+      padding-left: 90px;
+      padding-right: 80px;
+      background: white;
+      border-radius: 50px;
+      overflow: hidden;
+      color: black;
+      background-color: white;
+       opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  display: block;
+
+    }
+
+
+    .dropdownright a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      margin-bottom: 20px;
+      color: inherit;
+      
+    }
+
+    .dropdownright.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+    
+
+    .explore-dishes {
+  padding-top: 40px; /* optional */
+  padding-right: 29px;
+  padding-left: 30px;
+  padding-bottom: 40px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+    position: sticky;
+    background: rgba(99, 200, 156, 0.8);
+    top: 30px;
+    z-index: 999;
+   
+}
+
+.explore-dishes a{
+    text-decoration: none;
+    
+
+}
+
+.category{
+  padding:50px 50px 50px 50px;
+}
+
+
+.explore-dishes h2 {
+  font-size: 5rem;
+  font-family: 'libre franklin';
+  margin-bottom: 30px;
+  margin-top: 15px;
+  text-align: left;
+  text-align: center;
+}
+
+.explore-dishes .slider {
+  display: flex;
+  gap: 15px; 
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.explore-dishes .slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.explore-dishes .slider::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 5px;
+  
+}
+
+.explore-dishes .category {
+  flex: 0 0 auto;
+  background: transparent;
+  border-radius: 12px;
+  padding-top: 80px;
+  padding-right: 50px;
+  padding-bottom: 40px;
+  margin-left: 30px;
+  min-width: 120px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+    color: white;
+    border: none;
+    max-height: 2.4em;
+    font-size: 2rem;
+     white-space: normal;   /* allow wrapping */
+  line-height: 1.2;    /* spacing between lines */
+  height: 2.4em;         /* reserve space for 2 lines */
+  overflow: hidden;      /* hide extra text if too long */
+}
+
+.explore-dishes .category:hover {
+  color: white;
+  
+}
+
+.slider{
+    width: 100%;   
+}
+
+.category{
+  padding: 0px;
+  text-align: left;
+}
+
+.reviews-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;       /* enables horizontal scroll */
+  scroll-snap-type: x mandatory; /* snap effect */
+  padding: 20px;
+}
+
+.review-card {
+  flex: 0 0 300px;        /* fixed card width */
+  background: white;
+  padding: 20px;
+  margin-right: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none;      
+}
+
+.brand{
+    text-decoration: none;
+}
+
+.brand a{
+    text-decoration: none;
+    color: black;
+}
+
+
+.image-grid img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover; /* keeps quality */
+  border-radius: 10px;
+}
+
+#cart-toggle {
+    position: fixed;
+    bottom: 80px;
+    background: rgba(64, 180, 131, 0.9);
+    color: white;
+    border: none;
+    width: 100%;
+    height: 170px;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  #cart {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 600px;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    display: none;
+    max-height: 1500px;
+    font-size: 3rem;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+  }
+
+  .cart-header {
+    background: white;
+    color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  #cart-items {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+    
+  }
+
+  #cart-items li {
+    display: block;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    
+  }
+
+  #cart-items li button {
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+    font-size: 40px;
+   
+  }
+
+  #cart-footer {
+    padding: 5px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+
+  #order-now {
+    background: #e85c2f;
+    color: white;
+    font-size: 3rem;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: auto;
+    font-weight: bold;
+  }
+
+  #close-cart{
+    font-size: 4rem;
+    color: red;
+  }
+
+  .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #E4405F; /* Instagram color */
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.social-link:hover {
+  color: #b63152;
+}
+
+.phone-contact {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.phone-contact a {
+  text-decoration: none;
+  color: #007bff; /* Main blue tone */
+  font-size: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.phone-contact i {
+  font-size: 1.4em;
+}
+
+
+
+.contact-section {
+  display: grid;
+  
+  grid-template-columns: 1fr 1fr;
+  margin-left: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  font-family: 'Poppins', sans-serif;
+  width: fit-content;
+  margin-bottom: 100px;
+}
+
+/* Shared style for all links */
+.contact-link {
+  text-decoration: none;
+  color: white;
+  font-size: 3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 50px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+/* Icon size */
+.contact-link i {
+  font-size: 1.3em;
+
+}
+
+/* Hover effect */
+.contact-link:hover {
+  color: #0056b3;
+  transform: translateX(5px);
+}
+
+/* Center on smaller screens */
+@media (max-width: 600px) {
+  .contact-section {
+    align-items: center;
+  }
+}
+
+  #toast {
+  transition: opacity 0.5s;
+  opacity: 0;
+  padding: 20px;
+}
+
+#toast.show {
+  opacity: 0.9;
+}
+</style>
+
+  </head>
+  <body>
+<div style="vertical-align: middle;" class="navbar">
+    <!-- Left side -->
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+      <img style="height: 100px;
+      align-items: center;
+      width: auto;" src="thumbnails/house.png">
+      </a>
+      <div class="dropdown" id="left-menu">
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contacts</a>
+        <a href="#location">Location</a>
+      </div>
+    </div>
+
+     <!-- Center -->
+      <div class="nav-right">
+      
+    <img style="border-color: black;
+   border-style: solid;
+   border-radius: 30px;
+   margin-top: 30px;
+   height: 100px;
+   margin-left: 100px;
+   width: 270px;
+   border: none;" src="thumbnailss/tsmiddle.PNG" alt="The Scoop Logo">
+  
+    </div>
+ 
+      
+      <!--right nav-->
+   <div class="nav-right">
+      <a href="kayykafe.html">
+    <img style="border-color: black;
+   border-style: solid;
+   border-radius: 30px;
+   margin-left: 25px;
+   margin-top: 30px;
+   height: 200px;
+   width: 200px;
+   border: none;" src="thumbnailss/kayydot.PNG" alt="The Scoop Logo" loading="lazy">
+    </a>
+      <span 
+  style="font-size: 6rem; margin-left: 0px;" 
+  class="hamburger" 
+  id="hamburger"
+  onclick="toggleDropdown('right-menu')">
+  &#9776;
+</span>
+<div class="dropdownright" id="right-menu">
+  <!-- your menu content here -->
+
+
+
+        <a href="kayyKafe.html">
+          <img style="height: 300px;;
+          width: 800px;
+          margin: auto;
+          margin-top: 200px;
+          margin-bottom: 150px;
+          display: block;
+          " src="thumbnailss/kayylog.PNG">
+        </a>
+        <a
+          style="font-size: 3rem;
+        font-family: 'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="kayyKafe.html">MENU
+        </a>
+        <a
+          style="font-size: 3rem;
+        font-family: 'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="https://wa.me/255788296274" target="_blank">RESERVE A TABLE
+        </a>
+        <a style="font-size: 3rem;
+        font-family:'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="kayyKafe.html#location">LOCATION</a>
+        <a style="font-size: 3rem;
+        font-family:'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="kayyKafe.html#contacts">LET'S CONNECT</a>
+        <a style="font-size: 3rem;
+        font-family:'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="kayyKafe.html#reviews">REVIEWS</a>
+        <a style="font-size: 3rem;
+        font-family:'Abril Fatface';
+        font-weight: bold;
+        margin-bottom: 100px;
+        margin-left: 50px;" href="homepage.html#About">ABOUT US</a>
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <section style="font-family: abril fatface;" id="menu" class="explore-dishes">
+  <h2 id="menu">EXPLORE MENU</h2>
+  <div class="slider">
+    <a href="#ifyoulikeithot">
+    <div class="category">IF YOU LIKE IT HOT</div></a>
+    <a href="#kahawabaridi">
+    <div class="category">KAHAWA BARIDI</div></a>
+    <a href="#icedtea">
+    <div class="category">ICED TEA</div></a>
+    <a href="#classicpots">
+    <div class="category">CLASSIC POTS</div></a>
+    <a href="#icecreamflavors">
+    <div class="category">ICE CREAM FLAVOURS</div></a>
+    <a href="#chocolateshakes">
+    <div class="category">CHOCOLATE SHAKES</div></a>
+    <a href="#specialtyshakes">
+    <div class="category">SPECIALTY SHAKES</div></a>
+    <a href="#thesweetspot">
+    <div class="category">THE SWEET SPOT</div></a>
+    <a href="#bakedbliss">
+    <div class="category">BAKED BLISS</div></a>
+    <a href="#merch">
+    <div class="category">THE SCOOP MERCHENDISE</div></a>
+    
+  </div>
+</section>
+
+<section class="image-grid" id="ifyoulikeithot" style="scroll-margin-top: 500px;
+padding: 40px; background: transparent;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white;
+  font-family: abril fatface;">IF YOU LIKE IT HOT</h2>
+
+  <div style="display: grid; 
+  grid-template-columns: 1fr 1fr;
+   row-gap: 20px;
+   column-gap: 20px;">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    margin-right: 20px; width: 90%; text-align: center;">
+      <img src="thumbnails/green tea.jpg" alt="green Tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Green Tea</h3>
+      <p style="color: #555;">3,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Green Tea', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/black tea.jpg" alt="black tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Black Tea</h3>
+      <p style="color: #555;">3,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Black Tea', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lemongrass tea.webp" alt="Lemongrass Tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lemongrass</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lemongrass', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/GT.webp" alt="ginger tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Ginger</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Ginger', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/americano.jpg" alt="Americano" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Americano</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Americano', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/cappuccino.jpg" alt="cappuccino" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Cappuccino</h3>
+      <p style="color: #555;">6,000/=</p>
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Cappuccino', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/flat white.avif" alt="flat white" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Flat White</h3>
+      <p style="color: #555;">5,000/=</p>
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Flat White', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/cafe latte.webp" alt="cafe latte" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Cafe Latte</h3>
+      <p style="color: #555;">6,000/=</p>
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Cafe Latte', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/mochahot.jpg" alt="Mocha" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mocha</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mocha', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/single espresso.jpg" alt="Espresso" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Single Espresso</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Single Espresso', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/double espresso.jpg" alt="espresso" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Double Espresso</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Double Espresso', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/hotchocolate.jpg" alt="hot chocolate" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Hot Chocolate</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Hot Chocolate', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/milktea.jpg" alt="milk tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Milk Tea</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">4,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal1')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal1" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto;
+  font-size: 2.5rem;  
+  text-align:center;">
+    
+    <h2>Milk Tea</h2>
+    
+    <p><strong>Price:</strong> 4,000/=</p>
+
+    <div style="padding:20px;">
+      <p>Karak <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Karak', 4000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Masala <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Masala', 4000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>English <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('English', 4000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="image-grid" id="kahawabaridi" style="scroll-margin-top: 500px;padding: 40px; background: transparent;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white;
+  font-family: abril fatface;">KAHAWA BARIDI</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/Iced mocha.jpg" alt="iced mocha" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Iced Mocha</h3>
+      <p style="color: #555;">9,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Mocha', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/iced americano.png" alt="iced americano" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Iced Americano</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Americano', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/iced latte.jpg" alt="iced latte" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Iced Latte</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">8,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal3')" 
+          style="background: #63c89ccc;
+          margin-top: 25px;
+           color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal3" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto;
+  font-size: 2.5rem;  
+  text-align:center;">
+    
+    <h2>Iced Latte</h2>
+    
+    <p><strong>Price:</strong> 8,000/=</p>
+
+    <div style="padding:20px;">
+      <p>Iced Latte</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Latte', 8000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Iced Spanish Latte <br> 9,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Spanish Latte', 9000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Iced Caramel Latte <br> 9,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Caramel Latte', 9000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Iced Vanilla Latte <br> 9,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Vanilla Latte', 9000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+   
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/iced macchiato.jpg" alt="iced macchiato" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Iced Macchiato</h3>
+      <p style="color: #555;">9,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Macchiato', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+     <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/frappe.avif" alt="affogato" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Frapuccino</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal30')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+          margin-top: 26px;
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal30" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Frapuccino</h2>
+    
+    <p><strong>Price:</strong> 10,000/=</p>
+
+    <div style="padding:20px;">
+      <p>Frapuccino <br> 10,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Frapuccino', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Frapuccino +Flavoured Icecream <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Frapuccino + Flavoured Icecream', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+</div>
+</div>
+
+     <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/affogato.jpg" alt="affogato" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Affogato</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal4')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+          margin-top: 26px;
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal4" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Affogato</h2>
+    
+    <p><strong>Price:</strong> 10,000/=</p>
+
+    <div style="padding:20px;">
+      <p>Affogato <br> 10,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Affogato', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Affogato +Flavoured Icecream <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Affogato + Flavoured Icecream', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+</div>
+</section>
+
+
+<section class="image-grid" id="icedtea" style="padding: 40px; background: transparent;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;
+scroll-margin-top: 500px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">ICED TEA</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/CIT.jpg" alt="iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Classic Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Classic Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lemon iced tea.jpg" alt="lemon iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lemon Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lemon Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/WIT.jpg" alt="watermelon iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Watermelon Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Watermelon Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/PIT.jpg" alt="peach iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Peach Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Peach Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/SIT.jpg" alt="strawberry iced tea"  style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Strawberry Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strawberry Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/KIT.jpg" alt="kiwi iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Kiwi Iced Tea </h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Kiwi Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/MIT.jpg" alt="mango iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mango Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mango Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/BIT.jpeg" alt="blueberry iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Blueberry Iced Tea</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Blueberry Iced Tea', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/MITea.jpg" alt="milk Iced tea" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Milk Iced Tea </h3>
+      <p style="color: #555;">9,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Milk Iced Tea', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="image-grid" id="classicpots" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white;font-family: abril fatface; ">CLASSIC POTS</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/BTP.jpg" alt="Black tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Black Tea Pot </h3>
+      <p style="color: #555;">9,000/=</p>
+
+<div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Black Tea Pot', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/MTP.jpg" alt="Mint tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mint Tea Pot</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mint Tea Pot', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/GTP.webp" alt="green tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Green Tea Pot</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Green Tea Pot', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/MTPot.jpg" alt="Morrocan tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Morrocan Tea Pot</h3>
+      <p style="color: #555;">11,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Morrocan Tea Pot', 11000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/LTP.webp" alt="Lemongrass Tea Pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lemongrass Tea Pot</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lemongrass Tea Pot', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width:90%; text-align: center;">
+      <img src="thumbnailss/AP.webp" alt="Americano Pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Americano</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Americano Pot', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/IAP.webp" alt="Iced Americano pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Iced Americano</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Americano Pot', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+   <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/MilkTP.jpg" alt="milk tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Milk Tea Pot</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">12,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal5')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+          margin-top: 25px;
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal5" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Milk Tea</h2>
+
+    <div style="padding:20px;">
+      <p>Karak Tea Pot <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Karak Tea Pot', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Masala Tea Pot <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Masala Tea Pot', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>English Tea Pot <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('English Tea Pot', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/ITP.webp" alt="iced tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Iced Tea Pot</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal6')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal6" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Iced Tea</h2>
+
+    <div style="padding:20px;">
+      <p>Iced Tea <br> 10,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Iced Tea Pot', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Flavoured Ice Tea Pot <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Flavoured Iced Tea', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Milk Ice Tea <br> 13,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Milk Iced Tea', 13000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/ILP.webp" alt="Iced latte pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Iced Latte Pot</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal7')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal7" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Iced Latte</h2>
+
+    <div style="padding:20px;">
+      <p>Spanish Iced Latte Pot <br> 11,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Spanish Iced Latte Pot', 11000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Caramel Iced Latte Pot <br> 12,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Caramel Iced Pot', 11000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Chocolate Iced Latte Pot<br> 11,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chocolate Iced Latte Pot', 11000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Vanilla Iced Latte Pot<br> 11,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Vanilla Iced Latte Pot', 11000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         
+  </div>
+</div>
+
+  </div>
+</section>
+
+<section class="image-grid" class="image-grid" id="icecreamflavors" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+margin-top: 100px;
+font-size: 2.5rem;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">ICE CREAM FLAVOURS</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; width: 90%; text-align: center;">
+      <img src="thumbnails/vanilla.jpg" alt="Vanilla icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Vanilla</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Vanilla', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/chocolate.jpg" alt="chocolate icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Chocolate</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chocolate', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/strawberry.jpg" alt="strawberry icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Strawberry</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strawberry', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/for icecream.jpg" alt="pistachio icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Pistachio Dream</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pistachio Dream', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/peanutbutterbrownie.jpg" alt="peanut butter icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Peanut Butter Brownie</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Peanut Butter Brownie', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/for icecream.jpg" alt="toffee icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Toffee</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  margin-top: 55px;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Toffee', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/mocha.jpg" alt="mocha icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mocha</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  margin-top: 55px;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mocha', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/for icecream.jpg" alt="espresso icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Espresso-Choco-Chip</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Espresso-Choco-Chip', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/for icecream.jpg" alt="pina colada icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Pina Colada</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  margin-top: 54px;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pina Colada', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/kayymixx.jpg" alt="hibiscus tamarind icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Hibiscus And Tamarind</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Hibiscus and Tamarind', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/oreodelight.jpg" alt="Oreo icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Oreo Delight</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Oreo Delight', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/veryberry.jpg" alt="very berry icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Very Berry</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Very Berry', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/mangopassion.jpg" alt="Mango passion Icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mango Passion</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mango Passion', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/honeyanddates.jpg" alt="honey and dates icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Honey And Dates</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Honey And Dates', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/justlotus.jpg" alt="Lotus Icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Just Lotus</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Just Lotus', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lemongrass.jpg" alt="Lemongrass icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lemongrass</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lemongrass Icecream', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/for icecream.jpg" alt="Saffron Icecream" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Saffron And Almond</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Saffron And Almond', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/for icecream.jpg" alt="Icecream Toppings" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Toppings</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">1,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal8')" 
+          style=" background: #63c89ccc; color: white; border: none;
+          margin-top: 105px; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal8" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>Toppings</h2>
+
+    <div style="padding:20px;">
+      <p>Nuts <br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Nuts Topping', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Lotus Crumbs<br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Crumbs', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Oreo Crumbs<br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Oreo Crumbs', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Chocolate Syrup<br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chocolate Syrup', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Rainbow Vermicelli<br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Rainbow Vermicelli', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Choco Rizzo<br> 1,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Choco Rizzo', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+  </div>
+</section>
+
+<section class="image-grid" id="chocolateshakes" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+font-size: 2.5rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">CHOCOLATE SHAKES</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/kitkatshake.jpg" alt="KitKat shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Kitkat Shake</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('KitKat Shake ', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/nutellashake.jpg" alt="Nutella Shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Nutella Shake</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Nutella Shake', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/FS.webp" alt="Ferrero shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Ferrero Shake</h3>
+      <p style="color: #555;">13,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Ferrero Shake', 13000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/snickers shake.jpg" alt="snickers shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Snickers Shake</h3>
+      <p style="color: #555;">11,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Snickers Shake', 11000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/CS.jpg" alt="chocolate shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Chocolate Shake</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  margin-top: 55px;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chocolate Shake', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/KBS.jpg" alt="kinder bueno shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Kinder Bueno Shake</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Kinder Bueno Shake', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/espresso choc shake.jpg" alt="espresso shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Espresso-Choc Shake</h3>
+      <p style="color: #555;">11,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Esspresso-Choc Shake', 11000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/MS.webp" alt="mocha shake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Mocha Shake</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #63c89ccc;
+  bordeR: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mocha Shake', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="image-grid" id="specialtyshakes" style="padding: 40px; background: transparent;
+width: 98%;
+scroll-margin-top: 500px;
+margin-top: 100px;
+font-size: 2.5rem;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">SPECIALTY SHAKES</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/sweetmangoshake.jpg" alt="sweet mango milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Sweet Mango Shake</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Sweet Mango Shake', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lotus shake.jpg" alt="lotus milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lotus Shake</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Shake', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/vs.jpg" alt="vanilla milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Vanilla Shake</h3>
+      <p style="color: #555;">9,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Vanilla Shake', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/csha.jpg" alt="caramel milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Caramel Shake</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Caramel Shake', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/oreoshakenew.jpg" alt="oreo milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Oreo Shake</h3>
+      <p style="color: #555;">11,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Oreo Shake', 11000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnailss/SS.jpg" alt="Strawberry milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Strawberry Shake</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strawberry Shake', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/the scoops shake.jpg" alt="the scoops milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">The Scoops Shake <br> (Avocado, Dates, & Cashew Nuts)</h3>
+      <p style="color: #555;">13,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('The Scoops Shake', 13000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/pistachioshakenew.jpg" alt="pistachio milkshake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Pistachio Shake</h3>
+      <p style="color: #555;">13,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  margin-top: 110px; 
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pistachio Shake', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="image-grid" id="thesweetspot" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+font-size: 2.5rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">THE SWEET SPOT</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+    <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/waffle.jpg" alt="classic wafle" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Classic Waffle</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal9')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal9" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 50%;  
+  text-align:center;">
+    
+    <h2>Classic Waffle</h2>
+       <p> 
+ Fluffy, Golden, and utterly irresistible. Our Classic Waffle is a favorite. Served with maple syrup and a scoop of whipped cream</p>
+    <p><strong>Price:</strong> 10,000/=</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Classic Waffle', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/waffwich.webp" alt="Waffle Sandwich" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Waffwich</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">12,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal10')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal10" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 50%;  
+  text-align:center;">
+    
+    <h2>Waffwich</h2>
+    <p>A Waffle Sandwich inserted with a seasonal fruit of your choice topped with sauce of your choice.</p>
+    <p><strong>Price:</strong> 12,000/=</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Waffwich', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/CCPla.jpg" alt="Churro Plate" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Classic Churro Plate</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">10,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal11')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal11" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 50%;  
+  text-align:center;">
+    
+    <h2>Classic Churro Plate</h2>
+    <p>8 Perfectly fried churros, each delicately dusted with a touch of cinnamon sugar</p>
+    <p><strong>Price:</strong> 12,000/=</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Classic Churro Plate', 10000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnailss/CTra.avif" alt="Churro Tray" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Churro Tray</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">14,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal12')" 
+          style="background: #63c89ccc; color: white; border: none; 
+          margin-top: 55px; 
+          padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal12" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 50%;  
+  text-align:center;">
+    
+    <h2>Churro Tray</h2>
+    <p>14 pieces of golden and crispy churros, served with 2 dipping sauces, fresh fruit toppings and sprinkles</p>
+    <p><strong>Price:</strong> 14,000/=</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Churro Tray', 14000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/waffle.jpg" alt="scoop special" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">The Scoop Special</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">12,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal13')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal13" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 50%;  
+  text-align:center;">
+    
+    <h2>The Scoop Special</h2>
+    <p>Mini churros, bite-sized delights served with your choice of dipping sauce, fresh fruit and a scoop of ice cream</p>
+    <p><strong>Price:</strong> 12,000/=</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('The Scoop Special', 12000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/waffle.jpg" alt="flavours" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Flavours</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">+2,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal15')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal15" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 70%;  
+  text-align:center;">
+    
+    <h2>Flavours</h2>
+    <p><strong>Price:</strong> +2,000/=</p>
+    <p>Nutella</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strwaberry Fruit', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <p>Lotus</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Nutella Flavour', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <p>Oreo</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Flavour ', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <p>Peanut Butter</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Oreo Flavour ', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+        </div>
+      </div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/waffle.jpg" alt="Fruit choice" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">Fruit Choice</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">+1,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal16')" 
+          style="background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal16" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: 70%;  
+  text-align:center;">
+    
+    <h2>Fruit Choice</h2>
+    <p><strong>Price:</strong> +1,000/=</p>
+    <p>Strawberry</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strwaberry Fruit', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <p>Banana</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Banana Fruit', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <p>Pineapple</p>
+
+    <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pineapple Fruit ', 1000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+        
+</div>
+</section>
+
+
+<section class="image-grid" id="bakedbliss" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;">
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white; font-family: abril fatface;">BAKED BLISS</h2>
+
+  <div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+
+   <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/blackforest.jpg" alt="Black forest cake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Black Forest Slice</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Black Forest Slice', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lotuscake.jpg" alt="lotus cake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lotus Cake Slice</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Cake Slice', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+     
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/redvelvet.jpg" alt="Red Velvet cake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Red Velvet</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Red Velvet Slice', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/pistachio cake.jpg" alt="pistachio cake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Pistachio Cake Slice</h3>
+      <p style="color: #555;">12,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  bordeR: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pistachio Cake Slice', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/chocolate cake.jpg" alt="chocolate cake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Chocolate Cake Slice</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Chocolate Cake Slice', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/strawberry cupcake.jpg" alt="strawberry cupcake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Strawberry Cupcake</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Strawberry Cupcake', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/vanilla cupcake.jpg" alt="vanilla cupcake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Vanilla Cupcake</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Vanilla Cupcake', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/oreo cupcake.webp" alt="oreo cupcake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Oreo Cupcake</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  bordeR: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Oreo Cupcake', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+    <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/lotus cupcake.webp" alt="lotus cupcake" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lotus Cupcake</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  bordeR: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Cupcake', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/croissant.jpg" alt="croissant" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Croissant</h3>
+      <p style="color: #555;">4,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Croissant', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/classicbrownie.jpg" alt="brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Classic Brownie</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Classic Brownie', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+        
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/nolbrownie.jpg" alt="lotus brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Lotus Brownie</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Lotus Brownie', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+        
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/nolbrownie.jpg" alt="peanut butter brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Peanut Butter Brownie</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Peanut Butter Brownie', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+        
+     <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img src="thumbnails/nolbrownie.jpg" alt="nutella brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">Nutella Brownie</h3>
+      <p style="color: #555;">6,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Nutella Brownie', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+        
+     <div  style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img  src="thumbnails/pistachio brownie.jpg" alt="Pistachio brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 id="merch" style="margin: 10px 0;">Pistachio Brownie</h3>
+      <p style="color: #555;">7,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Pistachio Brownie', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+    
+</section>
+
+<section class="image-grid" id="bakedbliss" style="padding: 40px; background: transparent;
+scroll-margin-top: 500px;
+width: 98%;
+font-size: 2rem;
+margin-top: 100px;">
+
+  <h2 style="text-align: center; margin-bottom: 30px;
+  font-size: 4rem;
+  color: white;font-family: abril fatface; ">THE SCOOP MERCHENDISE</h2>
+<div style="display: grid; 
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  ">
+  <!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/achari.jpg" alt="Achari" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">kayy. Achari</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">4,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal100')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal100" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>kayy. Achari </h2>
+
+    <div style="padding:20px;">
+      <p>Achari 150g <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Achari 150g', 4000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Achari 450g <br> 15,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Achari 450g', 15000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Achari 1kg <br> 30,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Achari 1kg', 30000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/korosho.jpg" alt="Cashew Nuts" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">kayy. Korosho</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">4,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal101')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal101" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>kayy. Korosho</h2>
+
+    <div style="padding:20px;">
+      <p>Korosho 150g <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Korosho 150g', 3000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Korosho 450g <br> 15,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Korosho 450g', 15000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Korosho 1kg <br> 30,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Korosho 1kg', 30000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         
+  </div>
+</div>
+
+<!-- Item 1 -->
+    <!-- === Card Block === -->
+<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+  
+  <!-- Image -->
+  <img src="thumbnails/mabuyu.jpg" alt="iced tea pot" style="width: 100%; border-radius: 10px;" loading="lazy">
+
+  <!-- Title -->
+  <h3 style="margin: 10px 0;">kayy. Mabuyu</h3>
+
+  <!-- Price -->
+  <p style="color: #555; font-size: 30px;">4,000/=</p>
+
+  <!-- View Item Button -->
+  <button onclick="openModal('modal102')" 
+          style=" background: #63c89ccc; color: white; border: none; padding: 20px 40px; 
+                 border-radius: 50px; cursor: pointer;
+                  font-size: 3rem;">
+    View Item
+  </button>
+</div>
+
+<!-- === Popup Modal === -->
+<div id="modal102" class="modal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.6); align-items:center; justify-content:center; 
+            z-index:1000;">
+  
+  <div style="background:white; padding:20px; 
+  border-radius:50px; 
+   width:70%;
+  height: auto; 
+  font-size: 2.5rem; 
+  text-align:center;">
+    
+    <h2>kayy. Mabuyu</h2>
+
+    <div style="padding:20px;">
+      <p>Mabuyu 150g <br> 4,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mabuyu 150g', 4000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+         <div style="padding:20px;">
+          <p>Mabuyu 450g <br> 15,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mabuyu 450g', 15000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+
+        <div style="padding:20px;">
+          <p>Mabuyu 1kg <br> 30,000/=</p>
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color:#63c89ccc ;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('Mabuyu 1kg', 30000)" style="margin:5px;padding:10px 15px;
+  ">Add Item</button>
+        </div>
+        </div>
+        </div>
+
+        <div  style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img  src="thumbnails/Keychains.jpg" alt="keychains" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">kayy. Keychains</h3>
+      <p style="color: #555;">10,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Keychains', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+        
+        <div  style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img  src="thumbnails/mugs.jpg" alt="Pistachio brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">kayy. Mugs</h3>
+      <p style="color: #555;">20,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Mugs', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+        <div  style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 90%; text-align: center;">
+      <img  src="thumbnails/stickers.jpg" alt="Pistachio brownie" style="width: 100%; border-radius: 10px;" loading="lazy">
+      <h3 style="margin: 10px 0;">kayy. Stickers</h3>
+      <p style="color: #555;">5,000/=</p>
+
+      <div style="padding:20px;">
+  <button style="padding: 20px 40px;
+  display: block;
+  margin: auto;
+  background-color: #63c89ccc;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 3rem;" onclick="addToCart('kayy. Stickers', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+        </div>
+        </div>
+
+
+
+        
+    
+</section>
+
+
+<section  style="background-color: transparent; text-align: center;
+    margin-top: 50px;
+    margin-left: 60px;">
+  <h2 style="font-size: 4rem; margin-bottom: 50px;
+  margin-top: 90px;
+  color: white; font-family: abril fatface;">REVIEWS</h2>
+
+  <!-- Reviews Panel -->
+  <div class="reviews-slider">
+  <div class="review-card">
+    <p style="font-size: 2rem;">"The Latte Was Out Of This World"</p>
+    <p style="font-size: 2rem;"><strong>- Chacha C.</strong><br><span style="color: gray" >Via Google</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Best restaurant experience I’ve had in a long time. Highly recommend."</p>
+    <p style="font-size: 2rem;"><strong>- James K.</strong><br><span style="color: gray"  >Via Google</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem;">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray;" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+
+  <div class="review-card">
+    <p style="font-size: 2rem">"Great service, delicious meals, and a cozy vibe. Will come again!"</p>
+    <p style="font-size: 2rem;"><strong>- Aisha</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+  </div>
+</div>
+  </section>
+  </section>
+
+
+<section>
+<!-- Leave a Review Section -->
+<section id="leave-review" style="padding: 40px; background-color: transparent; text-align: center;
+color: white;
+width: 80%;
+margin-left: 85px;
+display: block;">
+  <h2 style="font-size: 4rem; margin-bottom: 20px;
+  margin-top: 50px;font-family: abril fatface; ">WE VALUE YOUR FEEDBACK</h2>
+  <p style="margin-bottom: 50px;
+  font-size: 2rem;">Share your experience with us on your favorite platform:</p>
+
+  
+    
+    <div>
+    <a href="https://www.google.com/maps" target="_blank" 
+       style="background: #34A853; color: white;
+        padding: 50px 25px; border-radius: 30px; text-decoration: none; font-weight: bold;
+        font-size: 2rem;
+        display: block;
+        margin-left: 50px;
+        ">
+       
+       ⭐ Review Us On Google
+    </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<p style="color: white;
+     text-align: center;
+     margin-top: 80px;
+     font-size: 4rem;
+     font-weight: bold;
+     font-family: abril fatface;
+     margin-bottom: 10px;">LOCATION</p>
+
+
+<!-- Responsive map using aspect-ratio -->
+<section  aria-label="Restaurant location map" style="width:100%;
+margin-bottom: 20px;">
+  <div style="width:100%;aspect-ratio:16/9;
+  overflow:hidden;
+  margin-left: 30px;">
+    <iframe id="location"
+      title="Our Restaurant Location"
+      loading="lazy"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3989.818320343149!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4d005a36b993%3A0x57bcea44e01a0439!2sThe%20Scoop!5e0!3m2!1sen!2stz!4v1757968380495!5m2!1sen!2stz"
+      style="width:100%;height:100%;border:0;display:block;"
+      allowfullscreen=""
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- Footer Section -->
+ <section id="contacts" style="margin-left: 90px;">
+<footer >
+  <P style="color: white;
+     text-align: center;
+     margin-top: 80px;
+     font-size: 4rem;
+     font-weight: bold;
+     margin-bottom: 100px; font-family: abril fatface;">LETS CONNECT</P>
+     <section>
+
+<div class="contact-section">
+
+  <a  href="tel:+255788296274" class="contact-link">
+    <i class="fa-solid fa-phone"></i> +255788296274
+  </a>
+
+  <a style="margin-left: 50px;" href="https://wa.me/255788296274" target="_blank" class="contact-link">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+  </a>
+
+  <a href="https://www.instagram.com/kaykafengrill" target="_blank" class="contact-link">
+    <i class="fa-brands fa-instagram"></i> Instagram
+  </a>
+
+  <a style="margin-left: 50px;" href="https://www.tiktok.com/@yourusername" target="_blank" class="contact-link">
+    <i class="fa-brands fa-tiktok"></i> TikTok
+  </a>
+
+  <a href="https://www.threads.net/@yourusername" target="_blank" class="contact-link">
+    <i class="fa-brands fa-threads"></i> Threads
+  </a>
+
+</div>
+<p style="color: white;
+text-align: center;">
+  &copy; 2025 THE SCOOP. All rights reserved.
+</p>
+<p style="color: white;
+text-align: center;
+margin-bottom: 400px;">Designed And Developed By <a style="color: #63C89CCC;
+text-decoration: none;" href="https://wa.me/255788296274" target="_blank">SYNLOTECH</a>
+</p>
+</footer>
+</section>
+
+
+
+<a href="TheScoopbasket.html">
+<button style="color: white" id="cart-toggle">View Basket</button></a>
+<div style="display: none" id="cart">
+  </div>
+
+  
+  <button style="
+    display: none;" class="close-cart">d</button>
+  <ul style="display: none;" id="cart-items"></ul>
+  <div style="display: none;" id="cart-footer">
+  <p style="display: none;" id="cart-subtotal">Subtotal: 0 /=</p>
+  </div>
+
+<div id="toast" style="position: fixed;
+ bottom: 300px;
+  background:  rgba(64, 180, 131, 0.9);
+   color: white;
+   padding: 50px;
+     font-size: 2.5rem;
+      display: block;
+       text-align: center;
+       width: 100%; 
+       z-index: 10000;">
+</div>
+
+
+
+  
+  <button style="
+    display: none;" class="close-cart">d</button>
+  <ul style="display: none;" id="cart-items"></ul>
+  <div style="display: none;" id="cart-footer">
+  <p style="display: none;" id="cart-subtotal">Subtotal: 0 /=</p>
+  </div>
+
+<script>
+function toggleDropdown(id) {
+  const dropdown = document.getElementById(id);
+  const hamburger = document.getElementById('hamburger');
+
+  dropdown.classList.toggle('show');
+  hamburger.classList.toggle('active');
+}
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function (event) {
+  const dropdown = document.getElementById('right-menu');
+  const hamburger = document.getElementById('hamburger');
+
+  if (!hamburger.contains(event.target) && !dropdown.contains(event.target)) {
+    dropdown.classList.remove('show');
+    hamburger.classList.remove('active');
+  }
+});
+
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+
+
+    
+
+// Open modal by id
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+}
+
+// Close modal by id
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+// Optional: Close modal if clicking outside
+window.onclick = function(event) {
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    if(event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+}
+
+function closeModalOnOutsideClick(e) {
+  if (e.target.classList.contains('overlay')) {
+    document.querySelector('.modal').style.display = 'none';
+  }
+}
+
+document.addEventListener('click', closeModalOnOutsideClick);
+document.addEventListener('touchstart', closeModalOnOutsideClick);
+
+
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+
+
+  const cartToggle = document.getElementById('cart-toggle');
+  const cart = document.getElementById('cart');
+  const closeCart = document.querySelector('.close-cart');
+  const cartItems = document.getElementById('cart-items');
+  const orderNow = document.getElementById('order-now');
+
+  cartToggle.addEventListener('click', () => {
+    cart.style.display = cart.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  closeCart.addEventListener('click', () => {
+    cart.style.display = 'none';
+  });
+
+  // Array to store cart items
+  let items = [];
+
+  // Function to add item to cart
+  function addToCart(name, price) {
+    items.push({name, price});
+    localStorage.setItem('basket', JSON.stringify(items));
+    renderCart();
+
+    showToast(`${name} Was Added To Basket! ✅`);
+  }
+
+  
+
+
+
+  // Render cart items
+  function renderCart() {
+    cartItems.innerHTML = '';
+    let subtotal = 0;
+    items.forEach((item, index) => {
+      subtotal += item.price;
+      const li = document.createElement('li');
+      li.innerHTML = `${item.name} - ${item.price} /= <button onclick="removeItem(${index})">Remove</button>`;
+    cartItems.appendChild(li);
+    }); 
+
+    document.getElementById('cart-subtotal').textContent = `Subtotal: ${subtotal} /=`;
+    
+
+     // Display subtotal
+  const subtotalElem = document.getElementById('cart-subtotal');
+  subtotalElem.textContent = `Subtotal: ${subtotal} /=`;
+}
+  
+
+  // Remove item
+  function removeItem(index) {
+    items.splice(index, 1);
+    localStorage.setItem('basket', JSON.stringify(items));
+    renderCart();
+  }
+
+  // WhatsApp order
+orderNow.addEventListener('click', () => {
+  if(items.length === 0) {
+    alert('Cart is empty!');
+    return;
+  }
+
+  const phone = '255748900088'; // replace with your WhatsApp number
+  let msg = 'Hello, I would like to order:\n';
+
+  let subtotal = 0;
+  items.forEach(item => {
+    msg += `- ${item.name} (${item.price} /=)\n`;
+    subtotal += item.price;
+  });
+
+  msg += `\nSubtotal: ${subtotal} /=`;
+
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+});
+
+renderCart();
+
+   function showToast(message) {
+  const toast = document.getElementById('toast');
+  toast.textContent = message;
+  toast.classList.add('show');
+  toast.style.display = 'block';
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.style.display = 'none', 500);
+  }, 2000);
+}
+
+
+ 
+
+
+</script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
