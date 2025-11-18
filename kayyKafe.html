@@ -1,0 +1,4785 @@
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <title>kayy. Kafe | The Scoop</title>
+        <style>
+        html{
+          scroll-behavior: smooth;
+          
+        }
+
+        body {
+        margin: 0px;
+          font-family: 'montserrat classic', sans-serif;
+        background-color:  rgb(11, 11, 46);
+        font-size: 2rem;
+        width: 100%;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+        }
+
+        body.loaded{
+            opacity: 1;
+        }
+
+
+
+        *, *::before, *::after {
+          box-sizing: inherit;
+        }
+
+        body:before {
+          content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)),
+      url('thumbnails/kayyback.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: blur(4px);
+      z-index: -1; 
+      margin: 0px;
+      margin-right: 0px;
+        }
+
+        @media (max-width: 480px) {
+      body:before {
+        background-size: contain;  /* keeps full image visible */
+      }
+    }
+
+
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 85px 30px;
+          background: white;
+          color:black;
+          height: 70px;
+          font-size: 1.5rem;
+          top: 0;
+          position: sticky;
+          z-index: 1000;
+          width: 100%;
+          padding-right: 50px;
+
+        }
+
+        .navbar a{
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .nav-left, .nav-right {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          position: relative;
+        }
+
+        
+
+        .nav-center a{
+            text-decoration: none;
+            color: inherit;
+            align-items: center;
+
+
+        }
+
+        
+
+        .hamburger {
+          font-size: 2rem;
+          cursor: pointer;
+          user-select: none;
+          
+          
+        }
+
+        /* Turn into X when active */
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+        .dropdown {
+          display: none;
+          position: absolute;
+          top: 40px;
+          margin-top: 90px;
+          background: #333;
+          border-radius: 10px;
+          overflow: hidden;
+          min-width: 120px;
+          color: black;
+          background-color: white;
+          z-index: 9999;
+        }
+
+        .dropdown a {
+          display: block;
+          padding: 90px;
+          text-decoration: none;
+          color: inherit;
+          
+        }
+
+        .dropdownright {
+          display: none;
+          position: absolute;
+          font-family: 'Abril Fatface' sans-serif;
+          right: 320px;
+          top: 10px;
+          width: 200%;
+          height: 870%;
+          padding-left: 90px;
+          background: white;
+          border-radius: 50px;
+          overflow: hidden;
+          color: black;
+          background-color: white;
+           opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  display: block;
+
+        }
+
+        .dropdownright.show {
+      display: block;
+      opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+    
+
+
+        .dropdownright a {
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          margin-bottom: 20px;
+          color: inherit;
+          
+        }
+
+        .explore-dishes {
+      padding-top: 40px; /* optional */
+      padding-right: 50px;
+      padding-left: 30px;
+      padding-bottom: 40px;
+      width: 100%;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+        position: sticky;
+        background: #b93d22;
+        top: 30px;
+        z-index: 999;
+      
+    }
+
+
+
+    .explore-dishes a{
+        text-decoration: none;
+
+    }
+
+    .explore-dishes h2 {
+      font-size: 2rem;
+      font-family: 'libre franklin';
+      margin-bottom: 15px;
+      text-align: left;
+      text-align: center;
+    }
+
+    .explore-dishes .slider {
+      display: flex;
+      gap: 15px;
+      overflow-x: auto;
+      scrollbar-width: thin; /* Firefox */
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+    }
+
+    .explore-dishes .slider::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .explore-dishes .slider::-webkit-scrollbar-thumb {
+      background: transparent;
+      border-radius: 5px;
+    }
+
+    .explore-dishes .category {
+      flex: 0 0 auto;
+      background: transparent;
+      color: white;
+      border-radius: 12px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      min-width: 120px;
+      text-align: center;
+      font-weight: bold;
+      
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .explore-dishes .category:hover {
+      background: white;
+      color: #b93d22;
+      
+    }
+
+    .slider{
+        width: 100%;
+        
+        color: white;
+    }
+
+    .category{
+        margin-right: 100px;
+        
+
+    }
+
+
+    .book-reserve{
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .book-reserve button {
+      padding: 35px 45px;
+      font-size: 2.5rem;
+      font-weight: bold;
+      border: none;
+      margin-left: 70px;
+      border-radius: 40px;
+      background: #ff5733;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .book-reserve button:hover {
+      background: #ff5733;
+      transform: scale(1.05);
+    }
+
+    .main-menu {
+      padding: 40px 20px 20px;
+      text-align: center;
+    }
+
+
+
+    .main-menu h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      margin: 10px auto 0;
+      border-radius: 3px;
+    }
+
+    .menu-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            align-items: center;
+            border-bottom: 1px solid #444;
+            padding: 15px 0;
+        }
+
+        .menu-item img {
+            width: 250px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 20px;
+            
+        }
+
+        .menu-details {
+            flex-direction: column;
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+
+        .menu-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #b93d22;
+            align-items: last baseline;
+            
+        }
+
+        .menu-desc {
+            display: inline-block;
+            font-size: 2.5rem;
+            margin: 5px 0;
+            margin-left: 20px;
+            color: #ccc;
+            padding: 20px;
+        }
+
+        .menu-price {
+            font-weight: bold;
+            font-size: 3rem;
+            margin-top: 5px;
+            padding: 20px;
+        }
+
+        .heading{
+            color: #b93d22;
+            font-size: 4rem;
+            text-align: center;
+            text-decoration-color: white;
+        }
+
+        .menu-price{
+          color: white;
+          margin-left: 20px;
+          display: inline-block
+        }
+
+        .category{
+            text-decoration: none;
+            color: #ff5733;
+            width: 100%;
+        }
+
+        @media (max-width: 480px) {
+      body:before {
+        background-size: contain;  /* keeps full image visible */
+      }
+    }
+
+    @keyframes fadeIn {
+          from {opacity: 0;}
+          to {opacity: 1;}
+    }
+
+    @media (max-width: 768px) {
+      .nav-left span, .nav-right span {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-left span, .nav-right span {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-item img {
+        max-height: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid-item img {
+        max-height: 120px;
+      }
+    }
+
+
+    @media (max-width: 480px) {
+      body:before {
+        background-position: center center;
+      }
+    }
+
+    .map-embed {
+      width: 100%;
+      height: 450px;
+      padding: 0;
+      margin-left: 20px;
+      position: relative;
+      font-size: large;
+    }
+
+    .map-embed iframe {
+      margin-left: 20px;
+      display: block;
+      border: 0;
+      width: 100%;
+      height: 100%;
+      margin-bottom: 70px;
+    }
+
+    .reviews-slider {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;       /* enables horizontal scroll */
+      scroll-snap-type: x mandatory; /* snap effect */
+      padding: 20px;
+    }
+
+    .review-card {
+      flex: 0 0 300px;        /* fixed card width */
+      background: white;
+      padding: 20px;
+      margin-right: 50px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      scroll-snap-align: start;
+    }
+    .reviews-slider::-webkit-scrollbar {
+      display: none;      
+    }
+
+    .brand{
+        text-decoration: none;
+    }
+
+    .brand a{
+        text-decoration: none;
+        color: #ff7043;
+    }
+
+    .menu-button {
+        text-align: cente;   /* centers the button horizontally */
+        margin-top: 10px;     /* adds spacing above the button */
+    }
+
+    .menu-button button {
+        padding: 40px 70px 40px 70px;
+        background-color: #333;
+        color: #ffff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 40px;
+        border-radius: 30px;
+        margin: auto;
+        display: block;
+    }
+
+    .menu-button button:hover {
+        background-color: #555;
+    }
+
+      #cart-toggle {
+        position: fixed;
+        bottom: 80px;
+        background: rgba(185, 61, 34, 0.9);
+        color: white;
+        border: none;
+        width: 100%;
+        height: 170px;
+        font-size: 3rem;
+        cursor: pointer;
+        z-index: 1000;
+      }
+
+      
+
+      .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #E4405F; /* Instagram color */
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .social-link:hover {
+      color: #b63152;
+    }
+
+    .phone-contact {
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .phone-contact a {
+      text-decoration: none;
+      color: #007bff; /* Main blue tone */
+      font-size: 1.2em;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.3s;
+    }
+
+    .phone-contact i {
+      font-size: 1.4em;
+    }
+
+
+
+    .contact-section {
+      display: grid;
+      
+      grid-template-columns: 1fr 1fr;
+      margin-left: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      font-family: 'Poppins', sans-serif;
+      width: fit-content;
+      margin-bottom: 100px;
+    }
+
+    /* Shared style for all links */
+    .contact-link {
+      text-decoration: none;
+      color: #b93d22;
+      font-size: 3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 50px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    /* Icon size */
+    .contact-link i {
+      font-size: 1.3em;
+
+    }
+
+    /* Hover effect */
+    .contact-link:hover {
+      color: #0056b3;
+      transform: translateX(5px);
+    }
+
+    /* Center on smaller screens */
+    @media (max-width: 600px) {
+      .contact-section {
+        align-items: center;
+      }
+    }
+
+    #toast {
+      transition: opacity 0.5s;
+      opacity: 0;
+      padding: 20px;
+    }
+
+    #toast.show {
+      opacity: 0.9;
+    }
+
+    </style>
+
+
+      </head>
+      <body>
+        <div style="vertical-align: middle;" class="navbar">
+        <!-- Left side -->
+        <div class="nav-left">
+          <a href="index.html" style="text-decoration: none; color: inherit;">
+          <img style="height: 100px;
+          align-items: center;
+          margin-top: 100px;
+          width: auto;
+          margin-bottom: 90px;" src="thumbnails/house.png" loading="lazy">
+          </a>
+
+
+          <div class="dropdown" id="left-menu">
+            <a href="menu">Menu</a>
+            <a href="#contact">Contacts</a>
+            <a href="#location">Location</a>
+          </div>
+        </div>
+
+
+        <!-- Center -->
+      <div class="nav-center">
+          <img style="height: 100px;
+          align-items: center;
+          margin-top: 100px;
+          width: auto;
+          margin-left: 180px;
+          height: 100px;
+          width: auto;
+          margin-bottom: 90px;" src="thumbnailss/kayylog.PNG" loading="lazy">
+      </div>
+          
+
+          <!--right nav-->
+      <div class="nav-right">
+          <a href="TheScoop.html">
+        <img style="border-color: black;
+      border-style: solid;
+      border-radius: 30px;
+      margin-right: 60px;
+      margin-top: 30px;
+      height: 200px;
+      width: 200px;
+      border: none;" src="thumbnailss/two cones.PNG" alt="The Scoop Logo" loading="lazy">
+        </a>
+          <span 
+      style="font-size: 6rem; margin-left: 0px;" 
+      class="hamburger" 
+      id="hamburger"
+      onclick="toggleDropdown('right-menu')">
+      &#9776;
+    </span>
+    <div class="dropdownright" id="right-menu">
+      <!-- your menu content here -->
+
+
+
+            <a href="TheScoop.html">
+              <img style="height: 600px;
+              width: 600px;
+              margin: auto;
+              display: block" src="thumbnailss/tslogo.PNG">
+            </a>
+            <a
+              style="font-size: 3rem;
+            font-family: 'Abril Fatface';
+            font-weight: bold;
+            margin-bottom: 100px;
+            margin-left: 20px;" href="TheScoop.html">MENU
+            </a>
+            <a style="font-size: 3rem;
+            font-family:'Abril Fatface';
+            font-weight: bold;
+            margin-bottom: 100px;
+            margin-left: 20px;" href="TheScoop.html#location">LOCATION</a>
+            <a style="font-size: 3rem;
+            font-family:'Abril Fatface';
+            font-weight: bold;
+            margin-bottom: 100px;
+            margin-left: 20px;" href="TheScoop.html#contacts">LET'S CONNECT</a>
+            <a style="font-size: 3rem;
+            font-family:'Abril Fatface';
+            font-weight: bold;
+            margin-bottom: 100px;
+            margin-left: 20px;" href="TheScoop.html#reviews">REVIEWS</a>
+            <a style="font-size: 3rem;
+            font-family:'Abril Fatface';
+            font-weight: bold;
+            margin-bottom: 100px;
+            margin-left: 20px;" href="homepage.html#About">ABOUT US</a>
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <section id="menu" 
+      id="top" class="explore-dishes">
+      <h2 style="font-size: 5rem;
+      margin-bottom: 70px;
+      width: 100%; " >EXPLORE MENU</h2>
+
+    
+
+      
+      <div style="width: 100%;
+      color: white;
+      font-family: abril fatface;" class="slider">
+        <a href="#youaresouper"><div class="category">YOU-ARE-SOUPER</div></a>
+        <a href="#appetizers">
+        <div class="category">APPETIZERS</div>
+      </a>
+      <a href="#betweentheslices">
+        <div class="category">BETWEEN THE SLICES</div>
+        </a>
+        <a href="#burgerful">
+        <div class="category">BURGER-FUL</div>
+        </a>
+        <a href="#staycheezey">
+        <div class="category">STAY CHEEZEY</div>
+        </a>
+        <a href="#captainsfavourite">
+        <div class="category">CAPTAINS FAVOURITE</div>
+        </a>
+        <a href="#ohpastabilities">
+        <div class="category">OH PASTA-BILITIES</div>
+        </a>
+        <a href="#justwingit">
+        <div class="category">JUST WING IT</div>
+        </a>
+        <a href="#explorethemain">
+        <div class="category">EXPLORE THE MAIN</div>
+        </a>
+      <a href="#chomachoma">
+      <div class="category">CHOMACHOMA</div></a>
+      <a href="#chomaplatters">
+      <div class="category">CHOMA PLATTERS</div>
+      </a>
+      <a href="#platters">
+      <div class="category">PLATTERS</div></a>
+      <a href="#sides">
+      <div class="category">SIDES</div>
+      </a>
+      <a href="#kidsmeal">
+      <div class="category">KIDS MEAL</div></a>
+      <a href="#freshjuice">
+      <div class="category">FRESH JUICE</div></a>
+      <a href="#mojitos">
+      <div class="category">MOJITOS</div>
+      </a>
+      <a href="#extras">
+      <div class="category">EXTRAS</div>
+      </a>
+      <a href="#fruitfusion">
+      <div class="category">FRUIT FUSION</div></a>
+      
+    </section>
+
+
+
+    <section style="scroll-margin-top: 480px;
+    text-align: left;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="youaresouper">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">YOU-ARE-SOUPER</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/mushroom soup.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Creamy Mushroom Soup</div>
+                <div class="menu-desc">A blend of earthly mushrooms, chopped onions, and a touch of creamy goodness.</div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Creamy Mushroom Soup', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/chowder.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Seafood Chowder Soup</div>
+                <div class="menu-desc">A tantalizing combination of red snapper, prawns, calamari, and squid. Finely chopped onions, and a touch of creamy goodness. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Seafood Chowder Soup', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/chicken corn soup.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Corn Soup</div>
+                <div class="menu-desc">Savory broth with fresh fish of the day, potatoes, and seasoned vegetables</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Corn Soup', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/mchemsho wa samaki.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mchemsho Wa Samaki</div>
+                <div class="menu-desc">Savory broth with fresh fish of the day, potatoes and seasoned vegetables. </div>
+                <div class="menu-price">15,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mchemsho Wa Samaki', 15000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/creamy veg soup.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Creamy Vegetable Soup</div>
+                <div class="menu-desc">Savory broth with fresh fish of the day, potatoes, and seasoned vegetables. </div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Creamy Vegetable Soup', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+      </section>
+
+    <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="appetizers">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">APPETIZERS</h1>
+        <div class="menu-item">
+            <img src="thumbnailss/chicken lollipop.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Lollipop</div>
+                <div class="menu-desc">Tender chicken drumettes 5 pieces, expertly marinated and coated in a flavorful blend of herbs and spices</div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Lollipop', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/mayo steak.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mayo Steak Bites</div>
+                <div class="menu-desc">150g Tender steak bites coated in flour and smothered in creamy mayo.</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mayo Steak Bites', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/shrimp dynamite.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Shrimp Dynamite</div>
+                <div class="menu-desc">100g Shrimp marinated in a blend of spices, lightly battered and fried. Served with a dipping sauce</div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Shrimp Dynamite', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/pakoras.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Vegetable Pakoras</div>
+                <div class="menu-desc">Crispy and flavorful mixed vegetables fritters. Served with a dipping sauce. </div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Vegetable Pakoras', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/calamari.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Crispy Calamari</div>
+                <div class="menu-desc">5 ringsdelightfully crispy and tender calamari rings. Served with a dipping sauce. </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Crispy Calamari', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/prawns.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">kayy. Prawns</div>
+                <div class="menu-desc">5 pieces Crispy and succulent prawns coated in a golden, crunchy batter. Served with a dipping sauce. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Prawns', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="betweentheslices">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">BETWEEN THE SLICES</h1>
+
+      <div class="menu-item">
+            <img src="thumbnailss/egg sandwich.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Egg Sandwich</div>
+                <div class="menu-desc">Fluffy folded eggs with tomato, lettuce, cucumber, and onion in between slices of bread </div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Egg Sandwich', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/chicken mayo.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken & Mayo</div>
+                <div class="menu-desc">Grilled chicken breast with mayo, lettuce, onion, tomato, and cucumber between slices of bread</div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken & Mayo', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/tuna corn mauo.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Tuna Corn Mayo</div>
+                <div class="menu-desc">Tasty tuna with onion, tomato, lettuce, and mayo in between slices of bread</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Tuna Corn Mayo', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/club sandwich.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Club Sandwich</div>
+                <div class="menu-desc">A delicious combination of chicken breast, beef bacon, turnover egg, tomato, lettuce, onion, and cucumber in between slices of bread. </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Club Sandwich', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+    <p style="color: #b93d22" class="para">Served with fries and colesaw salad.</p>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="burgerful">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">BURGER-FUL</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SCC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Spicy Crispy Chicken</div>
+                <div class="menu-desc">Crispy Chicken breasts coated in bread crumbs, lettuce, cucumber, onion, and tomato, and cheese.</div>
+                <div class="menu-price">17,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Spicy Crispy Chicken', 17000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/HMC.avif" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Honey Mustard Chicken</div>
+                <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber & onion. </div>
+                <div class="menu-price">15,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Honey Mustard Chicken', 15000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/BB.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Beef Burger</div>
+                <div class="menu-desc">Classic and flavorful beef patty, tomato, lettuce, cucumber and onion </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Beef Burger', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/VB.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Veggie Burger</div>
+                <div class="menu-desc">Patty consists of carrot, onion, potato and zucchini, coated in bread crumbs, with lettuce and tomato. </div>
+                <div class="menu-price">9,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Veggie Burger', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CB.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">kayy. Classic Burger</div>
+                <div class="menu-desc">A delicious combination of chicken and beef patties, lettuce, tomato, cucumber, caramelized onions and cheese. </div>
+                <div class="menu-price">20,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Classic Burger', 20000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <P style="color: #b93d22" class="para">Served with fries and colesaw salad</P>
+        </section>
+
+          <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="staycheezey">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">STAY CHEEEZZY</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MP.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Margarita Pizza</div>
+                <div class="menu-desc">Classic Italian pizza with fresh tomato, cheese, olives and basil on a thin crust. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Margarita Pizza', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/chickenpizza.JPG" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Tikka Pizza</div>
+                <div class="menu-desc">Tender chicken tikka cubes with green pepper, tomato, onion, oregano, and cheese on a thin crust. </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Tikka Pizza', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/VP.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Veggie Pizza</div>
+                <div class="menu-desc">Seasoned vegetables and cheese on a thin crust.</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Veggie Pizza', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/BTP.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Beef Twist Pizza</div>
+                <div class="menu-desc">Sauteed beef strips with onion, pepper, and oregano on a thin crust. </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Beef Twist Pizza', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SP.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Kayy Special Pizza</div>
+                <div class="menu-desc">A delightful mix of seafood, chicken, beef, mushrooms, and oregano on a thin crust </div>
+                <div class="menu-price">20,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Special Pizza', 20000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="captainsfavourite">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">CAPTAIN'S FAVOURITE</h1>
+
+      <div class="menu-item">
+            <img src="thumbnailss/SN.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Squid Nazi</div>
+                <div class="menu-desc">Cubed squid in coconut sauce, garnished with coriander leaves.</div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Squid Nazi', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Pweza Nazi</div>
+                <div class="menu-desc">Stir-fried shrimp in coconut sauce garnished with coriander leaves</div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Pweza Nazi', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/PN.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Prawns Nazi</div>
+                <div class="menu-desc">Stir-fried shrimp in coconut sauce, garnished with coriander leaves.</div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Prawns Nazi', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/TFC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Thai Fish Curry</div>
+                <div class="menu-desc">Simmered fish fillet in a flavorful coconut sauce, thai curry paste, aromatic herbs and spices. </div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Thai Fish Curry', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CPF.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chilli Pepper Fish</div>
+                <div class="menu-desc">Cubed fish fillet with mixed bell peppers and sautéed vegetables. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chilli Pepper Fish', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        <P style="color: #b93d22" class="para">Served with side dish of your choice</P>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="ohpastabilities">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">OH  PASTA-BILITIES</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SB.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Spaghetti Bolognese</div>
+                <div class="menu-desc">Spaghetti with minced meat in a tomato gravy, onion, carrot, parsley, topped with parmesan cheese. </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sphaghetti Bolognese', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PA.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Penne Arabiata</div>
+                <div class="menu-desc">Penne Pasta in a zesty tomato sauce with chilli flakes, topped with Parmesan cheese. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Penne Arabiata', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/CCP.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Creamy Chicken Pasta</div>
+                <div class="menu-desc">Fusilli pasta, tender chicken breast, cajun spice,in creamy sauce, topped with Parmesan cheese</div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Creamy Chicken Pasta', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CSSP.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chef Style Shrimp Pasta</div>
+                <div class="menu-desc">Choice of pasta, shrimp, mushroom, in white sauce, black olives, topped with Parmesan cheese </div>
+                <div class="menu-price">20,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chef Style Shrimp Pasta', 20000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="justwingit">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">JUST WING IT</h1> 
+
+      <div class="menu-item">
+            <img src="thumbnailss/CCW.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Crispy Chicken Wings</div>
+                <div class="menu-desc">Chicken wings seasoned to perfection, crunchy exterior and fried to a golden perfection. Served with fries, colesaw salad and dipping sauce </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Crispy Chicken Wings', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/HG.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Hot Garlic</div>
+                <div class="menu-desc">Coated in a blend of garlic, onion, fresh chilli, and sauce, creating a fiery taste. served with fries, colesaw salad and dipping sauce. </div>
+                <div class="menu-price">15,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Hot Garlic', 15000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/HBBQ.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Honey BBQ</div>
+                <div class="menu-desc">Blend of honey and smoky barbeque sauce, creating a perfect harmony of flavors. Served with fries, colesaw salad and dipping sauce.</div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Honey BBQ', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/stickythaiwings.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Sticky Thai</div>
+                <div class="menu-desc">Glazed with a sticky blend of sesame seeds, tangy BBQ sauce, and savory sauce. Served with fries, colesaw salad and dipping sauce.</div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sticky Thai', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Sweet Chilli</div>
+                <div class="menu-desc">Coated in tantalizing sweet chilli sauce that perfec sweetness and spiciness. served with fries, colesaw salad and dipping sauce</div>
+                <div class="menu-price">13,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sweet Chilli', 13000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/KC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">kayy. Chilli</div>
+                <div class="menu-desc">Seasoned with a blend of garlic, onion, fresh chilli, and fragrant coriander. Garnished with a sprinkle of chilli flakes, served with fries, colesaw salad and dipping sauce.</div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Chilli', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="explorethemain">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">EXPLORE THE MAIN</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/ASP.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Asian Steak Potatoes</div>
+                <div class="menu-desc">Tender grilled steak marinated in a flavorful blend of Asian spices and fried cubed potatoes seasoned with aromatic herbs </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Asian Steak Potatoes', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CBiryani.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Biryani</div>
+                <div class="menu-desc">Fragrant basmati rice cooked with tender chicken pieces, aromatic spices and garnished with herbs </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Biryani', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/LB.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Lamb Biryani</div>
+                <div class="menu-desc">Fragrant basmati rice cooked with succulent pieces of lamb, aromatic spices, and garnished with herbs.</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Lamb Biryani', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/FB.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Fish Biryani</div>
+                <div class="menu-desc">Fragrant basmati rice cooked with flavorful fish pieces aromatic spices and garnished with herbs </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Fish Biryani', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CFR.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Fried Rice</div>
+                <div class="menu-desc">Savory stir-fried rice with tender pieces of chicken, mixed vegetables and aromatic seasonings</div>
+                <div class="menu-price">13,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Fried Rice', 13000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/SFR.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Shrimp Fried Rice</div>
+                <div class="menu-desc">Flavourful stir-fried rice with succulent shrimp, mixed vegetables and savory seasonings </div>
+                <div class="menu-price">16,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Shrimp Fried Rice', 16000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/VFR.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Veg Fried Rice</div>
+                <div class="menu-desc">Stir-fried rice with colorful assortment of vegetables and flavorful seasoning </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Veg Fried Rice', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/BC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Butter Chicken</div>
+                <div class="menu-desc">Chicken pieces marinated in aromatic spices, velvety tomato and butter-based sauce, blend of indian spices with touch of cream </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Butter Chicken', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Makange</div>
+                <div class="menu-desc">Tender chicken cooked in a spicy and flavorsome tomato-based sauce with aromatic spices, served with side of your choice  </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Makange', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Fish Makange</div>
+                <div class="menu-desc">Fresh fish cooked in flavorful and tangy tomato-based sauce with aromatic spices and herbs, served with side of your choice. </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Fish Makange', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SCCC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Spicy Crispy Chicken</div>
+                <div class="menu-desc">Crispy and succulent chicken pieces, seasoned and fried to golden perfection, served with fries and salad. </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Spicy Crispy Chicken', 14000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Changu Fried</div>
+                <div class="menu-desc">Crispy and seasoned fried changu fish, served with a side of your choice and a tangy dipping sauce.  </div>
+                <div class="menu-price">18,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Changu Fried', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="chomachoma">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">CHOMACHOMA</h1>
+
+        <div class="menu-item">
+            <img src="thumbnails/sekela.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Sekela</div>
+                <div class="menu-desc">Char-Grilled half chicken marinated in flavorful tandoori spices, served with fries and salad.</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Sekela', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CL.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Lemon</div>
+                <div class="menu-desc">Char-Grilled half chicken infused with zesty lemon flavor, served with fries and salad </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Lemon', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CG.avif" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Gajjar</div>
+                <div class="menu-desc">Char-Grilled half chicken marinated with special blend of gajjar spices, served with fries and salad. </div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken gajjar', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/CPP.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Peri-Peri</div>
+                <div class="menu-desc">Char-Grilled half chicken marinated in peri-peri sauce, served with fries and salad.</div>
+                <div class="menu-price">12,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Peri-Peri', 12000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MPP.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mishkaki Plate</div>
+                <div class="menu-desc">Char-Grilled skewers of tender meat, served with fries and salad.</div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mishkaki Plate', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MPP.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Nundu Plate</div>
+                <div class="menu-desc">Char-Grilled nundu skewers bursting with flavor, served with fries and salad.</div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Nundu Plate', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mbuzi Choma</div>
+                <div class="menu-desc">250g Char-Grilled goat meat seasoned with aromatic spices served with fries and salad.</div>
+                <div class="menu-price">15,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mbuzi Choma', 15000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/KCC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Kuku Choma</div>
+                <div class="menu-desc">Char-Grilled chicken marinated with flavorful spices, served with fries and salad.</div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Kuku Choma', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/WC.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Wings Choma</div>
+                <div class="menu-desc">Char-Grilled chicken wings with a delicious smoky flavor, served with fries and salad </div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Wings Choma', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        
+        <div class="menu-item">
+            <img src="thumbnailss/SChom.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Samaki Choma</div>
+                <div class="menu-desc">Grilled changu or sato fish with a smoky flavor, mixed with aromatic herbs served with fries and salad  </div>
+                <div class="menu-price">14,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Samaki Choma', 18000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="chomaplatters">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">CHOMA PLATTERS</h1>
+
+        <div class="menu-item">
+            <img src="thumbnails/chicken makange.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Duo Delight</div>
+                <div class="menu-desc">Sekela 1/2, Nundu 5 sticks, Mishkaki 5 sticks served with plain fries x2 & Ndizi mzuzu x2.</div>
+                <div class="menu-price">25,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Duo Delight', 25000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/family fiestra.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Family Fiesta</div>
+                <div class="menu-desc">Whole Sekela, Nundu 10 sticks, Mishkaki 10 sticks served with plain fries x3 & Ndizi mzuzu x3. </div>
+                <div class="menu-price">45,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Family Fiesta', 45000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/chomabonanza.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Choma Bonanza</div>
+                <div class="menu-desc">Whole Sekela, Nundu 8 sticks, mishkaki 8 sticks, Burger or Small pizza x2, Beef sausage x4, served with plain fries x4 & Ndizi mzuzu x4 </div>
+                <div class="menu-price">70,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Choma Bonanza', 70000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Choma Extravaganza</div>
+                <div class="menu-desc">Whole sekela, Nundu 8 sticks, Mishkaki 8 sticks, Burger or small pizza x2, Whole changu choma, Firigisi, Beef sausage x4 served with plain fries x4, Zege x1 & Ndizi Mzuzu x5 </div>
+                <div class="menu-price">90,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Choma Extravaganza', 90000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+    <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Choma Wings Platter</div>
+                <div class="menu-desc">8pcs Mouthwatering char-grilled chicken wings, with a choice of four flavors; Tandoori, Lemon, Gajjar or Classic Choma. Served with a dipping sauce, salad and fries (2 pax)</div>
+                <div class="menu-price">25,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Choma Wings Platter', 25000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="platters">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">PLATTERS</h1>
+
+        <div class="menu-item">
+            <img src="thumbnails/fisherman platter.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Fisherman's Platter</div>
+                <div class="menu-desc">Delightful assortment of calamari, prawns, fish fillet, and grilled octopus, served with sauces, salad and fries (4 pax)</div>
+                <div class="menu-price">55,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Fisherman`s Platter', 55000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mixed Grill Platter</div>
+                <div class="menu-desc">A delicious assortment of grilled beef, chicken and fish, served with sauces, salad and fries (3 pax) </div>
+                <div class="menu-price">45,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mixed Grill Platter', 45000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Wings Platter</div>
+                <div class="menu-desc">16 pieces Mouthwatering chicken wings, each coated in your choice of four flavors, served with a dipping sauce, salad and fries (2 pax)</div>
+                <div class="menu-price">25,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Wings Platter', 25000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Kuku Platter</div>
+                <div class="menu-desc">Feast of crispy chicken, chicken wings, juicy chicken tenders, chicken lollipops, and chicken sausages. served with dipping sauces, salad and fries (5 pax). Served with soft drinks</div>
+                <div class="menu-price">62,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Kuku Platter', 62000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">kayy. Platter</div>
+                <div class="menu-desc">Delicious combination of crispy calamari, golden prawns, grilled octopus, fish fillet, grilled beef and coated chicken. served with dipping sauces, salad and fries (6 pax). </div>
+                <div class="menu-price">90,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Platter', 90000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="sides">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">SIDES</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PF.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Plain Fries</div>
+                <div> </div>
+                <div class="menu-price">3,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Plain Fries', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MF.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Masala Fries</div>
+              
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Masala Fries', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CFri.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Cassava Fries</div>
+                
+                <div class="menu-price">4,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Cassava Fries', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SPF.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Sweet Potato Fries</div>
+                
+                <div class="menu-price">4,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sweet Potato Fries', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/ZCM.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Zege (Chips Mayai)</div>
+                
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Zege (Chips Mayai)', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/GF.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Garlic Fries</div>
+                
+                <div class="menu-price">4,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('garlic Fries', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MPota.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Mash Potato</div>
+                
+                <div class="menu-price">4,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mash Potato', 4000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/NM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Ndizi Mzuzu</div>
+                
+                <div class="menu-price">3,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Ndizi Mzuzu', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/UG.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Ugali</div>
+                
+                <div class="menu-price">3,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Ugali', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CHPT.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chapati</div>
+                
+                <div class="menu-price">3,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chapati', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+            <div class="menu-item">
+            <img src="thumbnailss/SR.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Steamed Rice</div>
+                
+                <div class="menu-price">3,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('steamed rice', 3000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        
+        width: 100%;
+        padding-right: 40px;
+        padding-left: 20px; " id="kidsmeal">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          color: #b93d22;
+          font-family: abril fatface;
+          " class="heading">KIDS MEAL</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Fish Fingers</div>
+                <div class="menu-desc">Crispy breaded fish strips, perfect for little appetites, served with fries.</div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Fish Fingers', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CT.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Chicken Tenders</div>
+                <div class="menu-desc">Bite-Sized chicken pieces with a crispy coating, served with fries. </div>
+                <div class="menu-price">10,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Chicken Tenders', 10000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/GC.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Grilled Cheese</div>
+                <div class="menu-desc">A tasty sandwich with melted cheese, grilled to perfection in between slices, served with fries</div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Grilled Cheese', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/sausageandchips.png" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;" class="menu-title">Sausage And Chips</div>
+                <div class="menu-desc">Juicy sausages with a side of crispy chips, a classic and tasty choice for kids. </div>
+                <div class="menu-price">9,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: #b93d22;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sausage And Chips', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        background-color:rgba(126, 210, 125, 0.4); 
+        width: 100%;
+        padding-right: 22px;
+        padding-left: 20px;" id="freshjuice">
+          <h1 style="margin-top: 150px;
+          padding-top: 50px;
+          text-align: center;
+          font-family: abril fatface;
+          color: white;" class="heading">FRESH JUICE</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PJ.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Pineapple</div>
+                <div></div>
+                <div class="menu-price">5,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Pineapple Juice', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MJ.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Mango</div>
+                <div></div>
+                <div class="menu-price">5,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mango Juice', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PJui.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Passion</div>
+                <div></div>
+                <div class="menu-price">5,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Passion Juice', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/WJ.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Watermelon</div>
+                <div></div>
+                <div class="menu-price">5,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Watermelon Juice', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/OJ.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Orange</div>
+                <div></div>
+                <div class="menu-price">5,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Orange Juice', 5000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SJ.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Stafeli</div>
+                <div></div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Stafeli Juice', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/bungospecial.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Bungo Special</div>
+                <div></div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Bungo Special Juice', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/TJ.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Tropical</div>
+                <div></div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Tropical Juice', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        background-color:  rgba(126, 210, 125, 0.4);
+        width: 100%;
+        padding-right: 22px;
+        padding-left: 20px; " id="mojitos">
+          <h1 style="margin-top: 150px;
+          color: white;
+          padding-top: 50px;
+          font-family: abril fatface;
+          text-align: center;" class="heading">MOJITOS</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/VMM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Virgin Mary</div>
+                <div></div>
+                <div class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Virgin Mary Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/STRM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Strawberry</div>
+                <div></div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Strawberry Mojito', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/berry mix.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Berry Mix</div>
+                <div></div>
+                <div class="menu-price">9,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Berry Mix Mojito', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnails/strawberrypassionbluelagoon.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Passion</div>
+                <div></div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Passion Mojito', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+      <div class="menu-item">
+            <img src="thumbnailss/PM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Pineapple</div>
+                <div></div>
+                <div class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Pineapple Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/MM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Mango</div>
+                <div></div>
+                <div class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mango Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/BLM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Blue Lagoon</div>
+                <div></div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Blue Lagoon Mojito', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/LM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Lemonade</div>
+                <div></div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Lemonade Mojito', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PLM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Fruit Lemonade</div>
+                <div></div>
+                <div class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Fruit Lemonade Mojito', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PCM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Pinacolada</div>
+                <div></div>
+                <div class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Pina Colada Mojito', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnails/captain fav.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Jembe</div>
+                <div></div>
+                <div class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Jembe Mojito', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/KSM.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">kayy. Special</div>
+                <div></div>
+                <div class="menu-price">9,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Special Mojito', 9000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        background-color:  rgba(126, 210, 125, 0.4);
+        width: 100%;
+        padding-right: 22px;
+        padding-left: 20px; " id="extras">
+          <h1 style="margin-top: 150px;
+          color: white;
+          padding-top: 50px;
+          font-family: abril fatface;
+          text-align: center;" class="heading">EXTRAS</h1>
+          
+          <div class="menu-item">
+            <img src="thumbnailss/PJ.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Small Water</div>
+                <div></div>
+                <div class="menu-price">1,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Small Water', 1000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/PJ.jpeg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Large Water</div>
+                <div></div>
+                <div class="menu-price">2,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Large Water', 2000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/CW.jpg" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">CoconutWater</div>
+                <div></div>
+                <div class="menu-price">2,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Coconut Water', 2000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/SD.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: white;" class="menu-title">Soft Drink</div>
+                <div></div>
+                <div class="menu-price">1,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color: rgba(126, 210, 125, 0.2);;
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: white;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Soft Drink', 1000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+        
+        </section>
+
+        <section style="scroll-margin-top: 480px;
+        background-color:  rgba(238, 203, 27, 0.7);
+        width: 100%;
+        padding-right: 22px;
+        padding-left: 20px; " id="fruitfusion">
+          <h1 style="margin-top: 150px;
+          color: white;
+          padding-top: 50px;
+          text-align: center;
+          font-family: abril fatface;
+          color: black" class="heading">FRUIT FUSION</h1>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Celebrity Crush</div>
+                <div style="color: black;" class="menu-desc">Apple, Orange, Pineapple, Banana, Lime, & Coconut Water </div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Celebrity Crush', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Big Bad Wolf</div>
+                <div style="color: black;" class="menu-desc">Orange, Mango, Apple & Lime.</div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Big Bad Wolf', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Golden Hour</div>
+                <div style="color: black;" class="menu-desc">Coconut water, Cucumber, Pineapple, & Lime</div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Golden Hour', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Very Berry</div>
+                <div style="color: black;" class="menu-desc">Strawberry, Blue Berry, Black Berry, & Raspberry </div>
+                <div style="color: black;" class="menu-price">8,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Very Berry', 8000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Tropical Twist</div>
+                <div style="color: black;" class="menu-desc">Orange, Pineapple, Mango, & Passion </div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Tropical Twist', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Mango Madness</div>
+                <div style="color: black;" class="menu-desc">Mango, Banana, & Strawberry </div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Mango Madness', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Refresher</div>
+                <div style="color: black;" class="menu-desc">Apple, Watermelon, Pineapple, & Mint</div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Refresher', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Sunshine</div>
+                <div style="color: black;" class="menu-desc">Orange, Carrot and Ginger </div>
+                <div style="color: black;" class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Sunshine', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Hawaii Trio</div>
+                <div style="color: black;" class="menu-desc">Pineapple, Apple & Orange</div>
+                <div style="color: black;" class="menu-price">6,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Hawaii Trio', 6000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">Detoxify</div>
+                <div style="color: black;" class="menu-desc">Cucumber, Pineapple, Mint, & Lemon</div>
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('Detoxify', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="thumbnailss/FF.webp" loading="lazy" alt="Creamy mushroom soup">
+            <div class="menu-details">
+                <div id="reviews" style="text-align: left;
+              margin-top: 90px;
+                margin-left: 40px;
+                color: black;" class="menu-title">kayy. Mix</div>
+                <div style="color: black;" class="menu-desc">Tamarind, Hibiscus, & Baobab </div> &copy;
+                <div style="color: black;" class="menu-price">7,000/= 
+                  <button style="padding: 20px 40px;
+      display: inline-block;
+      margin: auto;
+      margin-left: 50px;
+      margin-bottom: 20px;
+      background-color:   rgba(238, 203, 27, 0.1);
+      border-style: solid;
+      border-width: 5px;
+      border-color: white;
+      color: black;
+      border-radius: 50px;
+      font-size: 3rem;" onclick="addToCart('kayy. Mix', 7000)" style="margin:5px;padding:10px 15px;">Add Item</button>
+                </div>
+
+                <div style="padding:20px;">
+      
+            </div>
+            </div>
+        </div>
+
+        
+        </section>
+
+        
+
+        
+
+        <section  style="background-color: transparent; text-align: center;
+        margin-top: 50px;
+        margin-left: 60px;">
+      <h2 style="font-size: 4rem; margin-bottom: 50px;
+      margin-top: 90px;
+      font-family: abril fatface;
+      color: white;">REVIEWS</h2>
+
+      <!-- Reviews Panel -->
+      <div  class="reviews-slider">
+      <div class="review-card">
+        <p>"Food was served as requested. Chicken extra cooked, Just how i love it⭐⭐⭐⭐⭐"</p>
+        <p><strong>- Chacha C.</strong><br><span style="color: gray" >Via Google</span></p>
+      </div>
+
+      <div class="review-card">
+        <p>"Food was amazing, we tried a few different things. Staff were friendly and the restaurant has a lovely owner! They were very accommodating. The location is also perfect -by the sea."</p>
+        <p><strong>- Roomana L.</strong><br><span style="color: gray"  >Via Google</span></p>
+      </div>
+
+      <div class="review-card">
+        <p>"Nice Halal food and good service"</p>
+        <p><strong>- Mo Be</strong><br><span style="color: gray" >Via Google</span></p>
+      </div>
+
+      <div class="review-card">
+        <p>"The Food was Great, I had the Shrimp dynamite as an appetizer ( The sauce has mayo ) and we got the wings platter as a main course. The wings were a 9/10 For sure and the shrimp 10/10!"</p>
+        <p><strong>- Melanie M.</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+      </div>
+
+      <div class="review-card">
+        <p>"Awesome meal with awesome service. Fetty, you are an asset to this restaurant. You smile, your service, and your attitude is amazing. I would recommend Kayy Kafe to anyone visiting Dar es Salaam."</p>
+        <p><strong>- RalphSinger</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+      </div>
+
+      <div class="review-card">
+        <p>"Guys, hear me out!!
+    This is ONE OF THE BEST PLACES I have ever eaten at in the entire world! 🌍 I went to Tanzania 🇹🇿 for holiday, and decided to try it out."</p>
+        <p><strong>- Muhammad</strong><br><span style="color: gray" >Via TripAdvisor</span></p>
+      </div>
+    </div>
+      </section>
+      </section>
+    <section>
+    <!-- Leave a Review Section -->
+    <section id="leave-review" style="padding: 40px; background-color: transparent; text-align: center;
+    color: white;
+    margin-left: 85px;
+    width: 80%;
+
+    display: block;">
+      <h2 style="font-size: 4rem; margin-bottom: 20px;
+      font-family: abril fatface;
+      margin-top: 50px;">WE VALUE YOUR FEEDBACK</h2>
+      <p style="margin-bottom: 25px;">Share your experience with us on your favorite platform:</p>
+
+      <div >
+
+        <a href="https://www.tripadvisor.com/UserReview-g293748-d23933928-Kayy_Kafe_Grill-Dar_es_Salaam_Dar_Es_Salaam_Region.html" target="_blank" 
+          style="background: #34bf59; color: white; padding: 50px 25px; border-radius: 30px;
+            text-decoration: none; font-weight: bold;
+            display: block;
+            margin-left: 50px;
+            margin-bottom: 40px;">
+          ⭐ Review Us On TripAdvisor
+        </a>
+
+        <a href="https://search.google.com/local/writereview?placeid=ChIJUY80wHNNXBgR8-Awd5hFwMk" target="_blank" 
+          style="background: darkblue; 
+          color: white; 
+          padding: 50px 25px; border-radius: 30px; text-decoration: none;
+          display: block;
+          margin-left: 50px; 
+          font-weight: bold;">
+          
+          ⭐ Review Us On Google
+        </a>
+
+        <a href="https://wa.me/255748900088" target="_blank" 
+          style="background: #34A869; color: white; padding: 50px 25px; border-radius: 30px; text-decoration: none;
+          display: block;
+          margin-top: 40px;
+          margin-left: 50px; 
+          font-weight: bold;">
+          
+          ⭐ Share Feedback On WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <section style="width: 100%;" >
+        <!-- Responsive Google Maps iframe -->
+        <p id="location" style="color: white;
+        text-align: center;
+        margin-top: 80px;
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-family: abril fatface;
+        margin-left: 90px;">LOCATION</p>
+        
+    <div id="location" style="margin-bottom: 50px;" class="map-embed">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.3829003729966!2d39.2820387!3d-6.771766399999988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4d73c0348f51%3A0xc9c045987730e0f3!2sKayy%20Kafe%20%26%20Grill%20-%20Coco%20Beach!5e1!3m2!1sen!2stz!4v1757552159386!5m2!1sen!2stz"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <section id="contacts" style="margin-left: 90px;">
+    <footer >
+      <P style="color: white;
+        text-align: center;
+        margin-top: 80px;
+        font-size: 4rem;
+        font-weight: bold;
+        font-family: abril fatface;
+        margin-bottom: 100px;">LETS CONNECT</P>
+        <section>
+
+    <div class="contact-section">
+
+      <a  href="tel:+255788296274" class="contact-link">
+        <i class="fa-solid fa-phone"></i> +255788296274
+      </a>
+
+      <a style="margin-left: 50px;" href="https://wa.me/255788296274" target="_blank" class="contact-link">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+
+      <a href="https://www.instagram.com/kaykafengrill" target="_blank" class="contact-link">
+        <i class="fa-brands fa-instagram"></i> Instagram
+      </a>
+
+      <a style="margin-left: 50px;" href="https://www.tiktok.com/@yourusername" target="_blank" class="contact-link">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+
+      <a href="https://www.threads.net/@yourusername" target="_blank" class="contact-link">
+        <i class="fa-brands fa-threads"></i> Threads
+      </a>
+    </div>
+
+    <p style="color: #b93d22;">
+      &copy; 2025 kayy. Kafe & Grill. All rights reserved.
+    </p>
+    <p style="color: #b93d22;
+    text-align: center;
+    margin-bottom: 400px;">Designed And Developed By <a style="color: white;
+    text-decoration: none;" href="https://wa.me/255788296274" target="_blank">SYNLOTECH</a>
+    </p>
+    </footer>
+    </section>
+
+    <div id="toast" style="position: fixed;
+    bottom: 300px;
+      background: #b93d22;
+      color: white;
+      padding: 50px;
+        font-size: 2.5rem;
+          display: block;
+          text-align: center;
+          width: 100%; 
+          z-index: 10000;">
+    </div>
+
+    <a href="kayyKafebasket.html">
+    <button style="color: white" id="cart-toggle">View Basket</button></a>
+    <div style="display: none" id="cart">
+      </div>
+
+      
+      <button style="
+        display: none;" class="close-cart">d</button>
+      <ul style="display: none;" id="cart-items"></ul>
+      <div style="display: none;" id="cart-footer">
+      <p style="display: none;" id="cart-subtotal">Subtotal: 0 /=</p>
+      </div>
+      
+      
+
+      
+
+    <script>
+        function toggleDropdown(id) {
+          const dropdown = document.getElementById(id);
+          const hamburger = document.getElementById('hamburger');
+          dropdown.classList.toggle('show');
+          hamburger.classList.toggle('active');
+        }
+
+        // Close dropdown when clicking outside
+    window.addEventListener('click', function (event) {
+      const dropdown = document.getElementById('right-menu');
+      const hamburger = document.getElementById('hamburger');
+      
+
+      // if click is NOT on the hamburger or inside the dropdown, close it
+      if (!hamburger.contains(event.target) && !dropdown.contains(event.target)) {
+        dropdown.classList.remove('show');
+        hamburger.classList.remove('active');
+      }
+    });
+
+      
+
+
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+      });
+
+
+      const cartToggle = document.getElementById('cart-toggle');
+      const cart = document.getElementById('cart');
+      const closeCart = document.querySelector('.close-cart');
+      const cartItems = document.getElementById('cart-items');
+      const orderNow = document.getElementById('order-now');
+
+      cartToggle.addEventListener('click', () => {
+        cart.style.display = cart.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      closeCart.addEventListener('click', () => {
+        cart.style.display = 'none';
+      });
+
+      // Array to store cart items
+      let items = [];
+
+      // Function to add item to cart
+      function addToCart(name, price) {
+        items.push({name, price});
+        localStorage.setItem('basket', JSON.stringify(items));
+        renderCart();
+
+        showToast(`${name} Was Added To Basket! ✅`);
+      }
+
+      
+
+
+
+      // Render cart items
+      function renderCart() {
+        cartItems.innerHTML = '';
+        let subtotal = 0;
+        items.forEach((item, index) => {
+          subtotal += item.price;
+          const li = document.createElement('li');
+          li.innerHTML = `${item.name} - ${item.price} /= <button onclick="removeItem(${index})">Remove</button>`;
+        cartItems.appendChild(li);
+        }); 
+
+        document.getElementById('cart-subtotal').textContent = `Subtotal: ${subtotal} /=`;
+        
+
+        // Display subtotal
+      const subtotalElem = document.getElementById('cart-subtotal');
+      subtotalElem.textContent = `Subtotal: ${subtotal} /=`;
+    }
+      
+
+      // Remove item
+      function removeItem(index) {
+        items.splice(index, 1);
+        localStorage.setItem('basket', JSON.stringify(items));
+        renderCart();
+      }
+
+      // WhatsApp order
+    orderNow.addEventListener('click', () => {
+      if(items.length === 0) {
+        alert('Cart is empty!');
+        return;
+      }
+
+      const phone = '255748900088'; // replace with your WhatsApp number
+      let msg = 'Hello, I would like to order:\n';
+
+      let subtotal = 0;
+      items.forEach(item => {
+        msg += `- ${item.name} (${item.price} /=)\n`;
+        subtotal += item.price;
+      });
+
+      msg += `\nSubtotal: ${subtotal} /=`;
+
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    });
+
+    renderCart();
+
+      function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      toast.style.display = 'block';
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.style.display = 'none', 500);
+      }, 2000);
+    }
+
+        // Open modal by id
+function openModal(id) {
+  document.getElementById(id).style.display = "flex";
+}
+
+// Close modal by id
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+// Optional: Close modal if clicking outside
+window.onclick = function(event) {
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    if(event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+}
+
+function closeModalOnOutsideClick(e) {
+  if (e.target.classList.contains('overlay')) {
+    document.querySelector('.modal').style.display = 'none';
+  }
+}
+
+document.addEventListener('click', closeModalOnOutsideClick);
+document.addEventListener('touchstart', closeModalOnOutsideClick);
+
+
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+  });
+
+
+        </script>
+
+      </body>
+    </html>

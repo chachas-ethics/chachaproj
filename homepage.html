@@ -104,22 +104,30 @@
     .dropdownright {
       display: none;
       position: absolute;
-      top: 40px;
-      margin-top: 30px;
-      background: #333;
-      border-radius: 10px;
+      font-family: 'Abril Fatface' sans-serif;
+      right: 100px;
+      top: 10px;
+      width: 270%;
+      height: 870%;
+      padding: 19px;
+      background: white;
+      border-radius: 50px;
       overflow: hidden;
-      min-width: 120px;
       color: black;
       background-color: white;
-      z-index: 9999;
+
     }
+
+    .dropdownright.show {
+  display: block;
+}
 
 
     .dropdownright a {
       display: block;
       padding: 10px;
       text-decoration: none;
+      margin-bottom: 20px;
       color: inherit;
       
     }
@@ -445,111 +453,7 @@ body:before {
   }
 }
 
-#cart-toggle {
-    position: sticky;
-    top: 50px;
-    right: 10px;
-    background: white;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 1000;
-  }
 
-  #cart {
-    position: fixed;
-    bottom: 60px;
-    right: 20px;
-    width: 300px;
-    height: 600px;
-    background: white;
-    color: black;
-    border-radius: 10px;
-    display: none;
-    font-size: 1rem;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000;
-  }
-
-  .cart-header {
-    background: white;
-    color: black;
-    padding: 10px;
-    font-size: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .cart-header button {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-  }
-
-  #cart-items {
-    list-style: none;
-    padding: 10px;
-    margin: 0;
-    overflow-y: auto;
-    flex: 1;
-    height: auto;
-    
-  }
-
-  #cart-items li {
-    display: block;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #eee;
-    font-size: 1rem;
-    height: auto;
-    
-  }
-
-  #cart-items li button {
-    background: #e85c2f;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 4px;
-    display: block;
-    margin: auto;
-    font-size: 1rem;
-   
-  }
-
-  #cart-footer {
-    padding: 5px;
-    border-top: 1px solid #eee;
-    text-align: center;
-  }
-
-  #order-now {
-    background: #e85c2f;
-    color: white;
-    font-size: 3rem;
-    border: none;
-    padding: 20px 40px;
-    border-radius: 30px;
-    cursor: pointer;
-    width: auto;
-    font-weight: bold;
-  }
-
-  #close-cart{
-    font-size: 4rem;
-    color: red;
-  }
 
 
 
@@ -560,51 +464,32 @@ body:before {
   <div class="navbar">
     <!-- Left side -->
     <div class="nav-left">
-      <span style="font-size: 2rem;" class="hamburger" onclick="toggleDropdown('left-menu')">&#9776;</span>
+      
       <a href="kayykafe.html" style="text-decoration: none; color: inherit;
+      
       ">
-      <span style="font-family: 'abril fatface';
-      font-size: 3rem;
-      padding: 10px;
-      width: 50px;
-      height: 90px;
-      font-weight: bold;
-      text-align: center;">k.
-      </span>
+       <img style="height: 35px;
+       width: auto;
+       margin-left: 50px;
+       " src="thumbnailss/kayylog.PNG" loading="lazy">
       </a>
-      <div class="dropdown" id="left-menu">
-        <a href="kayykafe.html">Menu</a>
-        <a href="#contact">Contacts</a>
-        <a href="kayykafe.html#location">Location</a>
-      </div>
+      
     </div>
-
-     <!-- Center (Home Icon) -->
-  <div class="nav-center">
-    <a href="index.html">
-      <img src="thumbnails/house.png" alt="Home" style="height: 40px; width: auto;
-      margin-left: 18px; " loading="lazy">
-    </a>
-  </div>
+    
 
     <!-- Right side -->
     <div class="nav-right">
-      <a href="scoop.html">
+      <a href="TheScoop.html">
     <img style="border-color: black;
-   margin-top: 10px;
-    height: 75px;" src="thumbnails/Screenshot 2025-09-09 183717.png" alt="The Scoop Logo" 
-         style="height: 40px; width: auto;
-         " loading="lazy">
+    height: 95px;
+    width: auto;
+    margin-right: 50px;" src="thumbnailss/two cones.PNG" alt="The Scoop">
   </a>
-      <span style="font-size: 2rem;
-      margin-left: 0px;" class="hamburger" onclick="toggleDropdown('right-menu')">&#9776;</span>
-      <div class="dropdownright" id="right-menu">
-        <a href="scoop.html#menu">Menu</a>
-        <a href="#contact">Contacts</a>
-        <a href="scoop.html#location">Location</a>
-      </div>
-    </div>
   </div>
+  </div>
+  
+
+    
 
    <div class="slideshow-container">
     <div class="slide active">
@@ -625,171 +510,46 @@ body:before {
     </div>
   </div>
 
-  <section>
-    <p style="font-size: 2rem; " class="featured-products">Featured Products </p>
-    </section>
+  <section style="background-color: white;
+  border-radius: 30px;
+  padding: 20px;">
+    <p id="About" style="font-family:'Abril Fatface';
+     font-weight: bold;
+     color: black;
+     text-align: center;
+     font-size: 2rem;">
+      ABOUT US
+    </p>
+    <h1 style="color: black; margin-bottom: 10px;
+    font-size: 2rem;">Our Story</h3>
+    <p style="color: black;
+    font-size: 1.5rem;">
+      Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
+      to bring people together around the table. From humble beginnings, we have grown into a place where 
+      delicious meals and unforgettable moments are shared daily.
+    </p>
 
+    <h2 style="color: black; margin-top: 25px; margin-bottom: 10px;
+    font-size: 2rem;">Our Vision</h3>
+    <p style="color: black;
+    font-size: 1.5rem;">
+      To become the most beloved dining destination in the city, known for our exceptional food, 
+      welcoming atmosphere, and commitment to quality. We envision a space where every customer 
+      feels at home while experiencing the richness of diverse cuisines.
+    </p>
 
-   
-    <div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/achari.jpg" alt="achari" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
+    <h3 style="color: black; margin-top: 25px; margin-bottom: 10px;
+    font-size: 2rem;">Our Mission</h3>
+    <p style="color: black;
+    font-size: 1.5rem;">
+      Our mission is to craft flavorful dishes made with love and the finest ingredients, 
+      to serve with a smile, and to create lasting memories for every guest. 
+      We are dedicated to sustainability, community, and excellence in everything we do.
+    </p>
 
-  
-  <h3 style="margin: 10px 0;">kayy. Achari</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/korosho.jpg" alt="cashew nuts" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
-  ">kayy. Korosho</h3>
+  </section>
 
   
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-  </div>
-</div>
-
-<div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/keychains.jpg" alt="keychians" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;">kayy. Keychains</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">10,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/stickers.jpg" alt="stickers" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
- ">kayy. Stickers</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">5,000/=</p>
-
-  </div>
-</div>
-     
-<div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/mabuyu.jpg" alt="ubuyu" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;">kayy. Mabuyu</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">3,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/mugs.jpg" alt="mugs" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
- ">kayy. Mugs</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-  </div>
-</div>
-
-<footer id="contact" style="background-color: white;
-padding: 10px;">
-<div style="display: grid;
-grid-template-columns: 1fr 1fr;">
-<div style="display: flex;">
-<p class="kaysoc" style="text-align: center;">
-  <span style="font-family: 'abril fatface';
-  font-size: 1.4rem;
-  font-weight: bold;">kayy.</span><br>
-  
-  <a href="https://instagram.com/kayykafengrill" target="_blank" >Instagram</a> | <a href="https://wa.me/255748900088" >WhatsApp</a>
-  <br>
-  <a href="tel:+255748900088">Tel: +255 748 900 088</a>
-</p>
-</div>
-<div style="display: flex;">
-<p class="scsoc" style="display: inline;
-text-align: center;
-">
-  <span style="font-family: 'abril fatface';
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 20px;">THE SCOOP</span>
-  <br>
-    <a href="https://instagram.com/thescoop.tz" targe="_blank" >Instagram</a> | <a href="https://wa.me/255676777611" target="_blank" >WhatsApp</a>
-    <br>
-    <a href="tel:+255676777611" target="_blank" style="margin-bottom: 10px;" > Tel: +255 676 777 611</a>
-</p>
-</div>
-</div>
-  <p class="yyanguiyo" style="text-align: center;
-  color: gray;">
-    Designed And Developed By <a href="https://wa.me/255788296274" target="_blank" >SynloTech</a>
-  </p>
-  
-</footer>
 
 
 
