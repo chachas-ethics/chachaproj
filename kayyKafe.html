@@ -3,7 +3,7 @@
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        <title>kayy. Kafe | The Scoop</title>
+        <title>kayy. Kafe And Grill | The Scoop Coco</title>
         <style>
         html{
           scroll-behavior: smooth;
@@ -539,8 +539,8 @@
       margin-left: 20px;
       flex-direction: column;
       align-items: flex-start;
-      gap: 15px;
-      font-family: 'Poppins', sans-serif;
+      gap: 30px;
+      font-family: 'Poppins';
       width: fit-content;
       margin-bottom: 100px;
     }
@@ -549,17 +549,19 @@
     .contact-link {
       text-decoration: none;
       color: #b93d22;
-      font-size: 3rem;
+      font-size: 2.5rem;
+      justify-items: center;
+      justify-content: center;
       display: inline-flex;
       align-items: center;
-      gap: 50px;
+      gap: 90px;
       transition: 0.3s;
       display: inline-block;
     }
 
     /* Icon size */
     .contact-link i {
-      font-size: 1.3em;
+      font-size: 1em;
 
     }
 
@@ -3885,7 +3887,7 @@
                 <div style="text-align: left;
               margin-top: 90px;
                 margin-left: 40px;
-                color: white;" class="menu-title">Pinacolada</div>
+                color: white;" class="menu-title">Pina Colada</div>
                 <div></div>
                 <div class="menu-price">8,000/= 
                   <button style="padding: 20px 40px;
@@ -4043,7 +4045,7 @@
                 <div style="text-align: left;
               margin-top: 90px;
                 margin-left: 40px;
-                color: white;" class="menu-title">CoconutWater</div>
+                color: white;" class="menu-title">Coconut Water</div>
                 <div></div>
                 <div class="menu-price">2,000/= 
                   <button style="padding: 20px 40px;
@@ -4407,7 +4409,7 @@
               margin-top: 90px;
                 margin-left: 40px;
                 color: black;" class="menu-title">kayy. Mix</div>
-                <div style="color: black;" class="menu-desc">Tamarind, Hibiscus, & Baobab </div> &copy;
+                <div style="color: black;" class="menu-desc">Tamarind, Hibiscus, & Baobab </div>
                 <div style="color: black;" class="menu-price">7,000/= 
                   <button style="padding: 20px 40px;
       display: inline-block;
@@ -4562,7 +4564,7 @@
     <div class="contact-section">
 
       <a  href="tel:+255788296274" class="contact-link">
-        <i class="fa-solid fa-phone"></i> +255788296274
+        <i class="fa-solid fa-phone"></i> +255748900088
       </a>
 
       <a style="margin-left: 50px;" href="https://wa.me/255788296274" target="_blank" class="contact-link">
@@ -4582,12 +4584,15 @@
       </a>
     </div>
 
-    <p style="color: #b93d22;">
+    <p style="color: #b93d22;
+    text-align: center;
+    font-size: 16px;">
       &copy; 2025 kayy. Kafe & Grill. All rights reserved.
     </p>
     <p style="color: #b93d22;
     text-align: center;
-    margin-bottom: 400px;">Designed And Developed By <a style="color: white;
+    margin-bottom: 400px;
+    font-size: 15px;">Designed And Developed By <a style="color: white;
     text-decoration: none;" href="https://wa.me/255788296274" target="_blank">SYNLOTECH</a>
     </p>
     </footer>
@@ -4624,31 +4629,29 @@
 
     <script>
         function toggleDropdown(id) {
-          const dropdown = document.getElementById(id);
-          const hamburger = document.getElementById('hamburger');
-          dropdown.classList.toggle('show');
-          hamburger.classList.toggle('active');
-        }
+  const dropdown = document.getElementById(id);
+  const hamburger = document.getElementById('hamburger');
+  dropdown.classList.toggle('show');
+  hamburger.classList.toggle('active');
+}
 
-        // Close dropdown when clicking outside
-    window.addEventListener('click', function (event) {
-      const dropdown = document.getElementById('right-menu');
-      const hamburger = document.getElementById('hamburger');
-      
+// Close dropdown when clicking/tapping outside (Fix for iPhone Safari)
+['click', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, function (event) {
+    const dropdown = document.getElementById('right-menu');
+    const hamburger = document.getElementById('hamburger');
 
-      // if click is NOT on the hamburger or inside the dropdown, close it
-      if (!hamburger.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.classList.remove('show');
-        hamburger.classList.remove('active');
-      }
-    });
+    if (!hamburger.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.classList.remove('show');
+      hamburger.classList.remove('active');
+    }
+  });
+});
 
-      
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
 
-
-      window.addEventListener("load", () => {
-        document.body.classList.add("loaded");
-      });
 
 
       const cartToggle = document.getElementById('cart-toggle');
@@ -4744,25 +4747,6 @@
       }, 2000);
     }
 
-        // Open modal by id
-function openModal(id) {
-  document.getElementById(id).style.display = "flex";
-}
-
-// Close modal by id
-function closeModal(id) {
-  document.getElementById(id).style.display = "none";
-}
-
-// Optional: Close modal if clicking outside
-window.onclick = function(event) {
-  const modals = document.querySelectorAll('.modal');
-  modals.forEach(modal => {
-    if(event.target === modal) {
-      modal.style.display = 'none';
-    }
-  });
-}
 
 function closeModalOnOutsideClick(e) {
   if (e.target.classList.contains('overlay')) {
