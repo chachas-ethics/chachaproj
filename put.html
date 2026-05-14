@@ -1,227 +1,37 @@
-<section>
-    <p style="font-size: 2rem; " class="featured-products">Featured Products </p>
-    </section>
+<!-- Header Logo -->
+    <div style="padding: 20px; text-align: center;">
+        <img src="thumbnailss/kayydot.PNG" alt="kayy. Kafe Logo" style="height: 60px;">
+    </div>
+
+     <!-- The Scoop Side -->
+        <a href="#scoop-menu" class="group relative flex-1 flex items-center justify-center overflow-hidden transition-all duration-700 ease-in-out md:hover:flex-[1.4]">
+            <!-- Background Image -->
+            <div class="absolute inset-0 bg-scoop bg-cover bg-center transition-transform duration-700 group-hover:scale-110"></div>
+            <!-- Black Tint -->
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 text-center p-6">
+                <h1 class="text-white text-4xl md:text-6xl font-display uppercase tracking-widest mb-2 drop-shadow-lg">The Scoop</h1>
+                <p class="text-zinc-200 text-lg mb-8 italic">Mouthwatering Desserts</p>
+                <div class="inline-block border-2 border-white px-8 py-3 text-white rounded-3xl font-bold uppercase tracking-widest transition-all duration-300 group-hover:bg-white group-hover:text-black">
+                    View Desserts Menu
+                </div>
+            </div>
+        </a>
+
+    </div>
 
 
-   
-    <div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
+
+    <!-- CARD 8 -->
+<div class="bg-white rounded-2xl shadow-md p-3 sm:p-4 flex flex-col">
+  <img src="thumbnailss/green tea.jpg" alt="Milk Tea" class="rounded-xl object-cover aspect-square" loading="lazy" />
+  <h3 class="mt-3 text-lg sm:text-xl font-semibold text-center">Milk Tea</h3>
+  <p class="text-center text-gray-500 mb-3 text-sm sm:text-base">4,000/=</p>
   
-  
-  <img src="thumbnails/achari.jpg" alt="achari" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;">kayy. Achari</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/korosho.jpg" alt="cashew nuts" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
-  ">kayy. Korosho</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-  </div>
+  <!-- Updated button to open modal -->
+  <button onclick="openMilkTeaModal()" class="mt-auto bg-[#63c89c] hover:bg-[#57b88d] text-white py-2.5 sm:py-3 rounded-full text-sm sm:text-lg font-medium transition">
+    View Varieties
+  </button>
 </div>
-
-<div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/keychains.jpg" alt="keychians" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;">kayy. Keychains</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">10,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/stickers.jpg" alt="stickers" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
- ">kayy. Stickers</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">5,000/=</p>
-
-  </div>
-</div>
-     
-<div style="display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 10px;
-    column-gap: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 30px;">
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/mabuyu.jpg" alt="ubuyu" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;">kayy. Mabuyu</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">3,000/=</p>
-
-       
-  </div>
-
-
-     
-<div  class="modal" style="background: white; padding: 20px; border-radius: 10px; 
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.1); width: 80%; text-align: center;">
-  
-  
-  <img src="thumbnails/mugs.jpg" alt="mugs" style="width: 100%; height: 70%; border-radius: 10px;" loading="lazy">
-
-  
-  <h3 style="margin: 10px 0;
- ">kayy. Mugs</h3>
-
-  
-  <p style="color: #555; font-size: 1.3rem;">4,000/=</p>
-
-  </div>
-</div>
-
-<footer id="contact" style="background-color: white;
-padding: 10px;">
-<div style="display: grid;
-grid-template-columns: 1fr 1fr;">
-<div style="display: flex;">
-<p class="kaysoc" style="text-align: center;">
-  <span style="font-family: 'abril fatface';
-  font-size: 1.4rem;
-  font-weight: bold;">kayy.</span><br>
-  
-  <a href="https://instagram.com/kayykafengrill" target="_blank" >Instagram</a> | <a href="https://wa.me/255748900088" >WhatsApp</a>
-  <br>
-  <a href="tel:+255748900088">Tel: +255 748 900 088</a>
-</p>
-</div>
-<div style="display: flex;">
-<p class="scsoc" style="display: inline;
-text-align: center;
-">
-  <span style="font-family: 'abril fatface';
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 20px;">THE SCOOP</span>
-  <br>
-    <a href="https://instagram.com/thescoop.tz" targe="_blank" >Instagram</a> | <a href="https://wa.me/255676777611" target="_blank" >WhatsApp</a>
-    <br>
-    <a href="tel:+255676777611" target="_blank" style="margin-bottom: 10px;" > Tel: +255 676 777 611</a>
-</p>
-</div>
-</div>
-  <p class="yyanguiyo" style="text-align: center;
-  color: gray;">
-    Designed And Developed By <a href="https://wa.me/255788296274" target="_blank" >SynloTech</a>
-  </p>
-  
-</footer>
-
-
-
-
-
-
-
-
-<!-- About Us Section -->
-<section id="about-us" style=" background-color: white; text-align: center;
-margin-left: 85px;
-border-radius: 50px;
-margin-bottom: 50px;">
-  <h2 style="font-size: 5rem; margin-bottom: 20px;
-  color: Black;
-  margin-top: 150px;
-  text-align: center;
-  margin-left: 50px;">About Us</h2>
-
-  <div style="max-width: 800px; margin: auto; text-align: left; line-height: 1.8; font-size: 1.1rem; color: #333;">
-
-    <h3 style="color: black; margin-bottom: 10px;
-    font-size: 5rem;">Our Story</h3>
-    <p style="color: black;
-    font-size: 2rem;">
-      Born from a passion for authentic flavors and warm hospitality, our restaurant started as a small family dream 
-      to bring people together around the table. From humble beginnings, we have grown into a place where 
-      delicious meals and unforgettable moments are shared daily.
-    </p>
-
-    <h3 style="color: black; margin-top: 25px; margin-bottom: 10px;
-    font-size: 5rem;">Our Vision</h3>
-    <p style="color: black;
-    font-size: 2rem;">
-      To become the most beloved dining destination in the city, known for our exceptional food, 
-      welcoming atmosphere, and commitment to quality. We envision a space where every customer 
-      feels at home while experiencing the richness of diverse cuisines.
-    </p>
-
-    <h3 style="color: black; margin-top: 25px; margin-bottom: 10px;
-    font-size: 5rem;">Our Mission</h3>
-    <p style="color: black;
-    font-size: 2rem;">
-      Our mission is to craft flavorful dishes made with love and the finest ingredients, 
-      to serve with a smile, and to create lasting memories for every guest. 
-      We are dedicated to sustainability, community, and excellence in everything we do.
-    </p>
-
-  </div>
-</section>
-
-
-
-<a href="#top">
-  <button style="background-color: #b93d22;
-  border: none;
-  padding: 30px;
-  font-size: 3rem;
-  border-radius: 30px;
-  color: white;
-  margin-top: 10px;">Back To Top </button>
-</a>

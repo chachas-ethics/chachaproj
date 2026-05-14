@@ -1,84 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>kayy. Kafe And Grill | The Scoop Coco</title>
-  <style>
-    :root{--bg:#ffffff;--card:#000000;--muted:rgba(255,255,255,0.65)}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
-    .stage{display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(135deg,#ffffff 0%, #ffffff 100%);overflow:hidden}
-
-    /* Loader */
-    .loader-wrap{display:flex;flex-direction:column;align-items:center;gap:28px;transition:opacity .6s ease,transform .6s ease}
-    .logo{color:var(--card);font-weight:700;letter-spacing:1px}
-    .dots{display:flex;gap:10px}
-    .dot{width:14px;height:14px;border-radius:50%;background:var(--card);opacity:0.9;transform:translateY(0);animation:jump 0.9s infinite ease-in-out}
-    .dot:nth-child(1){animation-delay:0s}
-    .dot:nth-child(2){animation-delay:0.15s}
-    .dot:nth-child(3){animation-delay:0.3s}
-    @keyframes jump{
-      0%{transform:translateY(0);opacity:0.8}
-      40%{transform:translateY(-12px);opacity:1}
-      100%{transform:translateY(0);opacity:0.8}
-    }
-
-    /* When loaded, fade out loader */
-    .stage.loaded .loader-wrap{opacity:0;transform:scale(.98);pointer-events:none}
-
-    /* Main menu (hidden initially) */
-    .main{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;opacity:0;transform:translateY(8px);transition:opacity .6s ease,transform .6s ease}
-    .stage.loaded .main{opacity:1;transform:translateY(0)}
-
-    .menu{background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);padding:28px;border-radius:12px;color:var(--card);min-width:280px;text-align:center;box-shadow:0 6px 30px rgba(2,6,23,0.6)}
-    .menu h1{margin:0 0 8px;font-size:22px}
-    .menu p{margin:0 0 18px;color:var(--muted);font-size:14px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:8px;background:white;color:#071126;text-decoration:none;font-weight:600}
-
-    /* make loader full width on small screens */
-    @media (max-width:420px){.dot{width:12px;height:12px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kayy. Kafe & The Scoop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            /* Your single background image */
+            --main-bg: url('images/mainpage.png');
+        }
+        body { font-family: 'Poppins', sans-serif; }
+        .bg-main { background-image: var(--main-bg); }
+    </style>
 </head>
-<body>
-  <div class="stage" id="stage">
-    <div class="loader-wrap" id="loader">
-      <div>
-        <img style="height: 100px;
-      width: 300px;
-      margin-top: 70px;" src="thumbnailss/kayylog.PNG">
-      </div>
-      
-      <div>
-         <img style="height: 300px;;
-      width: auto;
-      margin-bottom: 20px;
-      " src="thumbnailss/two cones.PNG"> </div>
-      <div class="dots" aria-hidden="true">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-      <div style="color:var(--muted);font-size:13px">Loading…</div>
+<body class="overflow-x-hidden md:overflow-hidden bg-black text-white">
+
+    <!-- SINGLE BACKGROUND IMAGE LAYER -->
+    <div class="fixed inset-0 bg-main bg-cover bg-center transition-transform duration-700"></div>
+
+    <!-- WRAPPER FOR THE TWO SIDES -->
+    <div class="relative flex flex-col md:flex-row min-h-screen md:h-screen w-full">
+        
+        <!-- Kafe Side -->
+        <a href="kayyKafe.html" class="group relative min-h-[50vh] md:min-h-0 flex-1 flex items-center justify-center overflow-hidden transition-all duration-700 ease-in-out md:hover:flex-[1.4] border-b md:border-b-0 md:border-r border-white/10">
+            <!-- Black Tint -->
+            <div class="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-500"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 text-center p-4 md:p-6 flex flex-col items-center justify-center h-full w-full max-w-sm mx-auto">
+                <img src="images/kayynew.PNG" alt="kayy. Kafe & Grill" class="h-40 sm:h-40 md:h-40 w-auto rounded-full drop-shadow-lg transition-transform duration-500 group-hover:scale-110 object-contain">
+                <p class="text-zinc-200 text-sm sm:text-base md:text-lg my-3 md:mb-8 italic">Good Times, Great Taste</p>
+                <div class="inline-block border-2 border-[#b93d22] px-6 py-2.5 md:px-8 md:py-3 text-xs sm:text-sm font-bold rounded-3xl uppercase tracking-widest transition-all duration-300 group-hover:bg-[#b93d22] group-hover:text-white whitespace-nowrap">
+                    View Main Menu
+                </div>
+            </div>
+        </a>
+
+        <!-- Scoop Side -->
+        <a href="TheScoop.html" class="group relative min-h-[50vh] md:min-h-0 flex-1 flex items-center justify-center overflow-hidden transition-all duration-700 ease-in-out md:hover:flex-[1.4]">
+            <!-- Black Tint -->
+            <div class="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-all duration-500"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 text-center p-4 md:p-6 flex flex-col items-center justify-center h-full w-full max-w-sm mx-auto">
+                <img src="" alt="The Scoop" class="h-32 sm:h-40 md:h-32 w-auto rounded-full drop-shadow-lg transition-transform duration-500 group-hover:scale-110 object-contain">
+                <p class="text-zinc-200 text-sm sm:text-base md:text-lg my-3 md:mb-8 italic">Mouthwatering Desserts</p>
+                <div class="inline-block border-2 border-[#63c89c] px-6 py-2.5 md:px-8 md:py-3 text-xs sm:text-sm font-bold rounded-3xl uppercase tracking-widest transition-all duration-300 group-hover:bg-[#63c89c] group-hover:text-white whitespace-nowrap">
+                    View Desserts Menu
+                </div>
+            </div>
+        </a>
+
     </div>
 
-    
+    <script>
+        
+/* ios hover */
+ document.addEventListener("touchstart", function() {}, true);
+    </script>
 
-  <script>
-    // Duration of loader in milliseconds
-    const LOADER_DURATION = 1690; // change this value to control how long the dots show
-
-    const stage = document.getElementById('stage');
-    const loader = document.getElementById('loader');
-
-    // Simulate loading work (e.g., fetching data). After the timeout, reveal the main menu.
-   window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.location.href = "homepage.html"; // replace with your page
-  }, LOADER_DURATION);
-});
-
-
-    
-  </script>
 </body>
 </html>
