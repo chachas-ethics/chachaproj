@@ -35,3 +35,75 @@
     View Varieties
   </button>
 </div>
+
+
+<!-- OFFERS SLIDESHOW SECTION -->
+<div class="pt-[160px] pb-10 bg-white">
+    <div class="max-w-xl mx-auto px-4">
+        
+        <h2 class="text-2xl pt-5 font-bold font-[Abril-Fatface] text-[#b93d22] mb-4 text-center uppercase tracking-wider">Daily Offers</h2>
+        
+        <div class="relative overflow-hidden rounded-[2rem] shadow-2xl group border-4 border-[#b93d22]" id="touch-area">
+            
+            <!-- Glass Navigation Buttons -->
+            <button onclick="prevOffer()" class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#b93d22] backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-[#b93d22] transition-all">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button onclick="nextOffer()" class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-[#b93d22] backdrop-blur-md border border-white/30 text-white flex items-center justify-center hover:bg-[#b93d22] transition-all">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Slides Container -->
+            <div id="offer-slides" class="flex transition-transform duration-500 ease-out cursor-grab active:cursor-grabbing">
+                
+                <!-- Slide 1 -->
+                <div class="min-w-full relative h-[350px]">
+                    <img src="img/offa.jpeg" class="w-45 h-70 object-cover" alt="Monday Special">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-center">
+                        <h3 class="text-white text-2xl font-bold mb-4">Monday Special Deal</h3>
+                        <button onclick="addToCart('Monday Special', 12000)" 
+                                class="bg-white text-[#b93d22] py-4 rounded-full font-black uppercase text-sm tracking-widest shadow-xl active:scale-95 transition-all">
+                            Order This Offer
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="min-w-full relative h-[350px]">
+                    <img src="thumbnailss/egg sandwich.jpeg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-center">
+                        <h3 class="text-white text-2xl font-bold mb-4">Tuesday Deals</h3>
+                        <button onclick="addToCart('Family Platter', 35000)" class="bg-white text-[#b93d22] py-4 rounded-full font-black uppercase text-sm tracking-widest shadow-xl">Order This Offer</button>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="min-w-full relative h-[350px]">
+                    <img src="thumbnailss/bb.jpg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-center">
+                        <h3 class="text-white text-2xl font-bold mb-4">Thursday Fiesta</h3>
+                        <button onclick="addToCart('Twin Burgers', 18000)" class="bg-white text-[#b93d22] py-4 rounded-full font-black uppercase text-sm tracking-widest shadow-xl">Order This Offer</button>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="min-w-full relative h-[350px]">
+                    <img src="thumbnailss/mp.jpeg" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8 text-center">
+                        <h3 class="text-white text-2xl font-bold mb-4">Kitchen Splash</h3>
+                        <button onclick="addToCart('Juice Bucket', 10000)" class="bg-white text-[#b93d22] py-4 rounded-full font-black uppercase text-sm tracking-widest shadow-xl">Order This Offer</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dots -->
+            <div class="absolute bottom-4 left-0 w-full flex justify-center gap-2">
+                <span class="offer-dot w-2 h-2 rounded-full bg-white/50" data-idx="0"></span>
+                <span class="offer-dot w-2 h-2 rounded-full bg-white/50" data-idx="1"></span>
+                <span class="offer-dot w-2 h-2 rounded-full bg-white/50" data-idx="2"></span>
+                <span class="offer-dot w-2 h-2 rounded-full bg-white/50" data-idx="3"></span>
+            </div>
+        </div>
+    </div>
+</div>
